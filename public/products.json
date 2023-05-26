@@ -1,0 +1,115 @@
+[
+    {
+        "id": 1,
+        "img": "https://i.ibb.co/QrxVvr1/vim-dishwashing-liquid-1-ltr.png",
+        "name": "Vim Liquid",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 2,
+        "img": "https://i.ibb.co/8NxQynK/download.jpg",
+        "name": "Trix Dish Wash",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 3,
+        "img": "https://i.ibb.co/Dz24gLB/coke-225-ltr-600x600.jpg",
+        "name": "Vim Liquid",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 4,
+        "img": "https://i.ibb.co/TMthNp1/Trix-Dishwashing-Liquid-Double-Pack-250ml-min-copy.png",
+        "name": "Trix Dish Wash",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 5,
+        "img": "https://i.ibb.co/QrxVvr1/vim-dishwashing-liquid-1-ltr.png",
+        "name": "Vim Liquid",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 6,
+        "img": "https://i.ibb.co/TMthNp1/Trix-Dishwashing-Liquid-Double-Pack-250ml-min-copy.png",
+        "name": "Trix Dish Wash",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 7,
+        "img": "https://i.ibb.co/QrxVvr1/vim-dishwashing-liquid-1-ltr.png",
+        "name": "Vim Liquid",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 8,
+        "img": "https://i.ibb.co/TMthNp1/Trix-Dishwashing-Liquid-Double-Pack-250ml-min-copy.png",
+        "name": "Trix Dish Wash",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 9,
+        "img": "https://i.ibb.co/QrxVvr1/vim-dishwashing-liquid-1-ltr.png",
+        "name": "Vim Liquid",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 10,
+        "img": "https://i.ibb.co/TMthNp1/Trix-Dishwashing-Liquid-Double-Pack-250ml-min-copy.png",
+        "name": "Trix Dish Wash",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 11,
+        "img": "https://i.ibb.co/QrxVvr1/vim-dishwashing-liquid-1-ltr.png",
+        "name": "Vim Liquid",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 12,
+        "img": "https://i.ibb.co/TMthNp1/Trix-Dishwashing-Liquid-Double-Pack-250ml-min-copy.png",
+        "name": "Trix Dish Wash",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 13,
+        "img": "https://i.ibb.co/QrxVvr1/vim-dishwashing-liquid-1-ltr.png",
+        "name": "Vim Liquid",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    },
+    {
+        "id": 14,
+        "img": "https://i.ibb.co/TMthNp1/Trix-Dishwashing-Liquid-Double-Pack-250ml-min-copy.png",
+        "name": "Trix Dish Wash",
+        "description": "500 gm",
+        "discountPrice": "168.59",
+        "mainPrice": "249"
+    }
+    
+]
