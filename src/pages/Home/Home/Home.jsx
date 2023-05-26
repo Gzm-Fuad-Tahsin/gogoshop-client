@@ -1,12 +1,11 @@
 import React from 'react';
-import Banner from '../Banner/Banner';
-import SubCategoryProductView from '../../SubCategoryProductView/SubCategoryProductView';
+import TopNavbar from '../../Shared/TopNavBar/TopNavbar';
 
 const Home = () => {
     return (
         <>
-        {/* <Banner/> */}
-            <SubCategoryProductView></SubCategoryProductView>
+
+        <TopNavbar/>         
         </>
     );
 };
