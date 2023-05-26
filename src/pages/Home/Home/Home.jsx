@@ -4,8 +4,7 @@ import TopNavbar from '../../Shared/TopNavBar/TopNavbar';
 const Home = () => {
     return (
         <>
-
-        <TopNavbar/>         
+            <TopNavbar />
         </>
     );
 };
