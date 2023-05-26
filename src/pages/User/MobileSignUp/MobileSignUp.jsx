@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { validateMobileNumber } from '../../../assets/Scripts/utility';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
-const MobileSignUp = ({ setShowUserPage, handlePageLoad }) => {
+const MobileSignUp = () => {
 
 
     const [submitted, setSubmitted] = useState(false);
@@ -23,9 +24,11 @@ const MobileSignUp = ({ setShowUserPage, handlePageLoad }) => {
         setNumberCorrect(true);
 
         let numberBeforeCrop = e.target.phone.value;
+      
 
         //validation
         const isValid = await validateMobileNumber(numberBeforeCrop);
+      
 
         if (isValid) {
 
@@ -52,10 +55,10 @@ const MobileSignUp = ({ setShowUserPage, handlePageLoad }) => {
         event.preventDefault();
 
         const otp = event.target.otp.value;
-        if (otp.length !== 4){
+        if (otp.length !== 4) {
             toast.error('Wrong OTP')
         }
-            
+
     }
     return (
         <>
@@ -74,7 +77,7 @@ const MobileSignUp = ({ setShowUserPage, handlePageLoad }) => {
                                     name='otp'
                                     placeholder="Enter OTP" className="input bg-light-100" required />
                                 <label className="label text-sm text-root-100 mx-auto" aria-label='forgot passsword'>
-                                   Provide the OTP Sent to your phone
+                                    Provide the OTP Sent to your phone
                                 </label>
                             </div>
 
@@ -96,7 +99,7 @@ const MobileSignUp = ({ setShowUserPage, handlePageLoad }) => {
 
                             <div className="form-control mb-7">
                                 <input
-                                    type="number"
+                                    type="text"
 
                                     onChange={handleInputChange}
                                     name='phone'
@@ -115,20 +118,20 @@ const MobileSignUp = ({ setShowUserPage, handlePageLoad }) => {
                     </div>
 
             }
-             <div className="inline-flex items-center justify-center w-full">
+            <div className="inline-flex items-center justify-center w-full">
                 <hr className="w-80 md:w-96 h-[0.15rem] font-thin my-8 bg-gray-200 border-0 rounded :bg-gray-700" />
                 <div className="absolute px-3 -translate-x-1/2 bg-white left-1/2 :bg-gray-900 text-xl font-light">or</div>
             </div>
 
             <div aria-label="other-sign-in-method" className='w-72 mx-auto'>
+                <Link to='/login' >
+                    <button
+                        aria-label='sign-in'
+                        className="w-full h-16 border-0 text-base-100 bg-root-100 hover:bg-root-200  text-base font-light rounded-2xl flex justify-center items-center">
+                        Sign in with E-mail
+                    </button>
+                </Link>
 
-                <button
-                onClick={()=>{handlePageLoad('sign-in')}} 
-                aria-label='sign-in'
-                 className="w-full h-16 border-0 text-base-100 bg-root-100 hover:bg-root-200  text-base font-light rounded-2xl flex justify-center items-center">
-                    Sign in with E-mail
-                </button>
-               
 
             </div>
         </>
