@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
-import {FcGoogle} from 'react-icons/fc'
+import { FcGoogle } from 'react-icons/fc'
 import phoneSvg from '../../../assets/icons/phone.svg'
-const SignUp = ({setShowUserPage,handlePageLoad}) => {
+import { Link } from 'react-router-dom';
+const SignUp = () => {
 
 
-   
     const [showPass, setShowPass] = useState(false);
-    const [passSame,setPassSame] = useState(true);
+    const [passSame, setPassSame] = useState(true);
 
 
-    const handleSignInByGoogle= ()=>{
+    const handleSignInByGoogle = () => {
         console.log('g')
 
     }
- 
+
 
     const handleSubmit = event => {
         setPassSame(true);
@@ -30,7 +30,7 @@ const SignUp = ({setShowUserPage,handlePageLoad}) => {
             toast.error('Provide necessary information');
             return;
         }
-        if(password !== confirmpassword){
+        if (password !== confirmpassword) {
             setPassSame(false);
             toast.error("password didn't match");
             return;
@@ -58,17 +58,17 @@ const SignUp = ({setShowUserPage,handlePageLoad}) => {
                 </div>
 
                 <div className="form-control mb-7 relative">
-                    <input onChange={()=>setPassSame(true)} type={showPass ? 'text' : 'password'} placeholder="Confirm Password" id='confirmpassword' name='confirmpassword' className="input bg-[#ECFAEE] " required />
+                    <input onChange={() => setPassSame(true)} type={showPass ? 'text' : 'password'} placeholder="Confirm Password" id='confirmpassword' name='confirmpassword' className="input bg-[#ECFAEE] " required />
 
-        
-                    
-                          <label className="label text-sm text-red-500" aria-label='forgot passsword'>
-                            {
-                                !passSame && `* password didn't match`
-                            }
-                          </label>
-                    
-                   
+
+
+                    <label className="label text-sm text-red-500" aria-label='forgot passsword'>
+                        {
+                            !passSame && `* password didn't match`
+                        }
+                    </label>
+
+
                 </div>
 
                 <div className="form-control mt-7 mx-auto md:w-40  ">
@@ -78,8 +78,7 @@ const SignUp = ({setShowUserPage,handlePageLoad}) => {
 
             <label className="mt-9 label text-base " aria-label='Register '>
                 Already have an account?
-                <span className='mx-1 hover:underline  text-root-100 hover:cursor-pointer'
-                    onClick={() => {handlePageLoad('sign-in') }}> Sign in</span>
+              <Link to='/login'>  <span className='mx-1 hover:underline  text-root-100 hover:cursor-pointer' > Sign in</span></Link>
             </label>
 
             <div className="inline-flex items-center justify-center w-full">
@@ -89,19 +88,20 @@ const SignUp = ({setShowUserPage,handlePageLoad}) => {
 
             <div aria-label="other-sign-in-method" className='w-72 '>
 
+                <Link to='/auth-phone'>
+                    <button aria-label='sign-in-with-phone' className="w-full h-16 border-0 bg-light-100 hover:bg-light-200 text-[#535553] text-base font-light rounded-2xl flex justify-center items-center">
+                        <div className="mr-5 ">
+                            <img src={phoneSvg} alt="phone icon" className='w-6' />
+                        </div>
+                        <p >Sign in with Phone</p>
+                    </button>
+                </Link>
                 <button
-                onClick={()=>{handlePageLoad('mobile-sign-up')}} aria-label='sign-in-with-phone' className="w-full h-16 border-0 bg-light-100 hover:bg-light-200 text-[#535553] text-base font-light rounded-2xl flex justify-center items-center">
+                    onClick={handleSignInByGoogle}
+                    aria-label='sign-in-with-gmail'
+                    className="mt-3 w-full h-16 border-0 bg-light-100 hover:bg-light-200 text-[#535553] text-base font-light rounded-2xl flex justify-center items-center">
                     <div className="mr-5 ">
-                        <img src={phoneSvg} alt="phone icon" className='w-6' />
-                    </div>
-                    <p >Sign in with Phone</p>
-                </button>
-                <button 
-                onClick={handleSignInByGoogle} 
-                aria-label='sign-in-with-gmail' 
-                className="mt-3 w-full h-16 border-0 bg-light-100 hover:bg-light-200 text-[#535553] text-base font-light rounded-2xl flex justify-center items-center">
-                    <div className="mr-5 ">
-                        <FcGoogle alt="google icon" className='text-2xl '/>                       
+                        <FcGoogle alt="google icon" className='text-2xl ' />
                     </div>
                     <p>Sign in with Google</p>
                 </button>
