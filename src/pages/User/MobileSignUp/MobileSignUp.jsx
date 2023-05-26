@@ -23,9 +23,11 @@ const MobileSignUp = ({ setShowUserPage, handlePageLoad }) => {
         setNumberCorrect(true);
 
         let numberBeforeCrop = e.target.phone.value;
+        console.log(numberBeforeCrop)
 
         //validation
         const isValid = await validateMobileNumber(numberBeforeCrop);
+        console.log(isValid)
 
         if (isValid) {
 
@@ -96,7 +98,7 @@ const MobileSignUp = ({ setShowUserPage, handlePageLoad }) => {
 
                             <div className="form-control mb-7">
                                 <input
-                                    type="number"
+                                    type="text"
 
                                     onChange={handleInputChange}
                                     name='phone'
