@@ -49,8 +49,9 @@ const TopNavbar = () => {
 
 
             <div className="navbar px-1 bg-base-100 relative">
-                <div className="navbar-start md:basis-2/12 ">
-                    <button className='  hover:bg-slate-100 active:bg-slate-200' onClick={() => { setShowSideNav(!showSideNav) }}>
+
+                <div className="navbar-start w-fit ">
+                    <button className='hover:bg-slate-100 active:bg-slate-200' onClick={() => { setShowSideNav(!showSideNav) }}>
                         {
                             (!showSideNav && screenWidth < 768) ?
 
@@ -75,32 +76,34 @@ const TopNavbar = () => {
 
 
                     </button>
-
-                    <div className="indicator bg-slate-200 ml-2 w-28 ">
-                        <img src={logo} alt='gogoshop logo ' className='w-full' />
-                    </div>
-
+                    <Link  to='/' className="indicator bg-slate-200 ml-2 w-28 ">
+                            <img src={logo} alt='gogoshop logo ' className='w-full' />
+                       
+                    </Link>
                 </div>
-                <div className="navbar-center   md:basis-6/12">
-                    <form className='w-full'>
 
 
-                        <div className="relative hidden md:block">
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg className="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" ></path></svg>
-                                <span className="sr-only">Search icon</span>
-                            </div>
-                            <input type="search" id="search-navbar" name='search' className="block w-full p-2 pl-10 text-sm text-light-black-100 border border-0 rounded-lg bg-light-200 focus:bg-light-200 focus:outline-0-0 " placeholder="Search..." />
+
+                <div className="navbar-center grow px-6">
+                    <form className='w-full relative hidden md:block'>
+
+
+
+                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg className="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" ></path></svg>
+                            <span className="sr-only">Search icon</span>
                         </div>
+                        <input type="search" id="search-navbar" name='search' className="block w-full h-10 p-2 pl-10 text-sm  input bg-light-100 " placeholder="Search..." />
+
                     </form>
                 </div>
 
-                <div className="navbar-end md:basis-4/12">
+                <div className="navbar-end w-fit ">
 
                     {
                         screenWidth < 768 &&
-                        <div className='border-[#D9D9D9]  ml-2 flex items-center  '>
-                            <div className="search-sm  md:hidden  ">
+                        <div className='border-[#D9D9D9]  ml-2 flex md:hidden  items-center  '>
+                            <div className="search-sm flex  md:hidden  ">
                                 <label
                                     tabIndex={1}
                                     className="hover:cursor-pointer search-sm-icon"
@@ -124,7 +127,7 @@ const TopNavbar = () => {
                                         type="search"
 
                                         name='search'
-                                        className="block h-12 w-full p-2 pl-10 text-sm text-light-black-100  rounded-lg bg-light-200 focus:bg-light-200 "
+                                        className="block h-12 w-full p-2 pl-10 text-sm input bg-light-100 "
                                         placeholder="Search..."
                                     />
 
@@ -140,20 +143,21 @@ const TopNavbar = () => {
 
                     {
                         !(screenWidth < 768) &&
-                        <div className="flex">
+                        <div className="hidden md:flex">
 
 
                             {
                                 !user &&
                                 <Link to='/profile'>
-                                    <div className=' '>
-                                        <div className='mr-2'>
+                                    <div className='hidden md:flex w-24 '>
+                                        <div className='mx-2 mr-2'>
                                             <svg width="18" height="18" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M12.5 12.75C15.1862 12.75 17.4166 10.6519 17.4166 8C17.4166 5.34809 15.1862 3.25 12.5 3.25C9.81373 3.25 7.58331 5.34809 7.58331 8C7.58331 10.6519 9.81373 12.75 12.5 12.75Z" stroke="#434343" strokeWidth="1.5" />
                                                 <path d="M6.25 21C6.25 21 6.25 19.75 6.25 18.5C6.25 17.25 8.59286 16 12.5 16C16.4072 16 18.75 17.25 18.75 18.5C18.75 20.375 18.75 21 18.75 21" stroke="#434343" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </div>
-                                        <p className='text-sm'>Sign Up / Sign In</p>
+
+                                        <p className='hidden md:block'>Sign In</p>
                                     </div>
                                 </Link>
 
@@ -222,7 +226,7 @@ const TopNavbar = () => {
                 </div>
             </div>
 
-        </nav>
+        </nav >
     );
 };
 

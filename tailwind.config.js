@@ -19,7 +19,8 @@ export default {
         "light-black-200" : '#5a5a5a',
       },
       width : {
-        '478' : '29.87rem'
+        '478' : '29.87rem',
+        '30' : '7.5rem',
       }
     },
   },
