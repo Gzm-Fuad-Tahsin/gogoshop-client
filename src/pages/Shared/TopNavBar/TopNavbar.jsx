@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import logoFull from '../../../assets/icons/logo-full.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
-import {RxCross2} from 'react-icons/rx'
+import { RxCross2 } from 'react-icons/rx'
 const TopNavbar = () => {
     const { user } = useContext(AuthContext);
-    const {screenWidth} = useContext(UtilityContext);
+    const { screenWidth } = useContext(UtilityContext);
 
 
     const [showSideNav, setShowSideNav] = useState(true);
@@ -42,8 +42,8 @@ const TopNavbar = () => {
                             (!showSideNav && screenWidth < 768) ?
 
                                 <>
-                                <RxCross2 className='text-2xl text-black'/>
-                                
+                                    <RxCross2 className='text-2xl text-black' />
+
 
                                 </>
                                 :
@@ -61,9 +61,9 @@ const TopNavbar = () => {
 
 
                     </button>
-                    <Link  to='/' className="indicator  pl-3 w-28 ">
-                            <img src={logoFull} alt='gogoshop logo ' className='w-full' />
-                       
+                    <Link to='/' className="indicator  pl-3 w-28 ">
+                        <img src={logoFull} alt='gogoshop logo ' className='w-full' />
+
                     </Link>
                 </div>
 
@@ -155,8 +155,8 @@ const TopNavbar = () => {
 
 
 
-                    <Link className='ml-2 border-l-2 border-[#D9D9D9]  flex items-center'>
-                        <div className='mx-2 mr-2'>
+                    <Link className='ml-2 border-l-2 border-[#D9D9D9]  flex items-center relative '>
+                        <div className='mx-2 mr-2 '>
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M5.47154 15.4348C5.83024 15.4348 6.12179 15.7264 6.12179 16.0851C6.12179 16.4438 5.83024 16.7345 5.47154 16.7345C5.11284 16.7345 4.82214 16.4438 4.82214 16.0851C4.82214 15.7264 5.11284 15.4348 5.47154 15.4348Z" stroke="#434343" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 <path fillRule="evenodd" clipRule="evenodd" d="M15.0361 15.4348C15.3948 15.4348 15.6863 15.7264 15.6863 16.0851C15.6863 16.4438 15.3948 16.7345 15.0361 16.7345C14.6774 16.7345 14.3858 16.4438 14.3858 16.0851C14.3858 15.7264 14.6774 15.4348 15.0361 15.4348Z" stroke="#434343" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -165,6 +165,7 @@ const TopNavbar = () => {
                             </svg>
                         </div>
                         <span className='hidden md:block'>Cart</span>
+                        <span className="badge text-xs m-0 p-1 border-0 absolute -top-5 -right-1 bg-[#F2B8B5] text-[#601410]  ">99+</span>
                     </Link>
 
 
