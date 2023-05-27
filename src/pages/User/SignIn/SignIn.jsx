@@ -1,21 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { BsEye, BsEyeSlash } from 'react-icons/bs'
-import {FcGoogle} from 'react-icons/fc'
+import { FcGoogle } from 'react-icons/fc'
 import phoneSvg from '../../../assets/icons/phone.svg'
 import AuthProvider, { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-const SignIn = ({setShowUserPage,handlePageLoad}) => {
+import { Link } from 'react-router-dom';
+const SignIn = () => {
 
-   
+
 
     const [showPass, setShowPass] = useState(false);
 
 
-    const handleSignInByGoogle= ()=>{
+    const handleSignInByGoogle = () => {
         console.log('g')
 
     }
- 
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -49,10 +50,9 @@ const SignIn = ({setShowUserPage,handlePageLoad}) => {
                         }
                     </div>
 
-                    <label className="label text-base hover:underline hover:cursor-pointer" aria-label='forgot passsword'
-                        onClick={() => {handlePageLoad('forget-password')}}>
-                        Forget your password?
-                    </label>
+                    <Link to='/forget-password'>
+                        <label className="label text-base hover:underline hover:cursor-pointer" aria-label='forgot passsword'>Forget your password?</label>
+                    </Link>
                 </div>
 
                 <div className="form-control mt-7 mx-auto md:w-40  ">
@@ -62,8 +62,9 @@ const SignIn = ({setShowUserPage,handlePageLoad}) => {
 
             <label className="mt-9 label text-base " aria-label='Register '>
                 Don’t have an account?
-                <span className='mx-1 hover:underline  text-root-100 hover:cursor-pointer'
-                    onClick={() => {handlePageLoad('sign-up') }}> Register</span>
+                <Link to='/sign-up'>
+                    <span className='mx-1 hover:underline  text-root-100 hover:cursor-pointer'> Register</span>
+                </Link>
             </label>
 
             <div className="inline-flex items-center justify-center w-full">
@@ -73,19 +74,20 @@ const SignIn = ({setShowUserPage,handlePageLoad}) => {
 
             <div aria-label="other-sign-in-method" className='w-72 '>
 
+                <Link to='/auth-phone'>
+                    <button aria-label='sign-in-with-phone' className="w-full h-16 border-0 bg-light-100 hover:bg-light-200 text-[#535553] text-base font-light rounded-2xl flex justify-center items-center">
+                        <div className="mr-5 ">
+                            <img src={phoneSvg} alt="phone icon" className='w-6' />
+                        </div>
+                        <p >Sign in with Phone</p>
+                    </button>
+                </Link>
                 <button
-                onClick={()=>{handlePageLoad('mobile-sign-up')}} aria-label='sign-in-with-phone' className="w-full h-16 border-0 bg-light-100 hover:bg-light-200 text-[#535553] text-base font-light rounded-2xl flex justify-center items-center">
+                    onClick={handleSignInByGoogle}
+                    aria-label='sign-in-with-gmail'
+                    className="mt-3 w-full h-16 border-0 bg-light-100 hover:bg-light-200 text-[#535553] text-base font-light rounded-2xl flex justify-center items-center">
                     <div className="mr-5 ">
-                        <img src={phoneSvg} alt="phone icon" className='w-6' />
-                    </div>
-                    <p >Sign in with Phone</p>
-                </button>
-                <button 
-                onClick={handleSignInByGoogle} 
-                aria-label='sign-in-with-gmail' 
-                className="mt-3 w-full h-16 border-0 bg-light-100 hover:bg-light-200 text-[#535553] text-base font-light rounded-2xl flex justify-center items-center">
-                    <div className="mr-5 ">
-                        <FcGoogle alt="google icon" className='text-2xl '/>                       
+                        <FcGoogle alt="google icon" className='text-2xl ' />
                     </div>
                     <p>Sign in with Google</p>
                 </button>
