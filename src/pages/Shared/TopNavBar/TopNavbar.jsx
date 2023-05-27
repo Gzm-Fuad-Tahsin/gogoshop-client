@@ -2,10 +2,14 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoFull from '../../../assets/icons/logo-full.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
+import {RxCross2} from 'react-icons/rx'
 const TopNavbar = () => {
     const { user } = useContext(AuthContext);
+    const {screenWidth} = useContext(UtilityContext);
+
+
     const [showSideNav, setShowSideNav] = useState(true);
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [isExpanded, setIsExpanded] = useState(false);
 
     //smaller screen search
@@ -14,25 +18,8 @@ const TopNavbar = () => {
     };
 
 
-
-
-    // _______________________
-
-    const handleResize = () => {
-        setScreenWidth(window.innerWidth);
-    };
-
     useEffect(() => {
-        // Add event listener for resize
-        window.addEventListener('resize', handleResize);
 
-        // Cleanup the event listener on component unmount
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
         setIsExpanded(false)
         setShowSideNav(false);
         if (screenWidth < 768) {
@@ -55,14 +42,13 @@ const TopNavbar = () => {
                             (!showSideNav && screenWidth < 768) ?
 
                                 <>
-                                    <svg width="26" height="26" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9.70404 1.60191C10.0945 1.23568 10.0945 0.64091 9.70404 0.274676C9.3136 -0.0915586 8.67952 -0.0915586 8.28908 0.274676L5 3.36277L1.70779 0.277606C1.31735 -0.0886288 0.683273 -0.0886288 0.292831 0.277606C-0.0976105 0.64384 -0.0976105 1.23861 0.292831 1.60484L3.58504 4.69L0.295955 7.77809C-0.094487 8.14432 -0.094487 8.73909 0.295955 9.10532C0.686397 9.47156 1.32047 9.47156 1.71092 9.10532L5 6.01723L8.29221 9.10239C8.68265 9.46863 9.31673 9.46863 9.70717 9.10239C10.0976 8.73616 10.0976 8.14139 9.70717 7.77516L6.41496 4.69L9.70404 1.60191Z" fill="black" />
-                                    </svg>
+                                <RxCross2 className='text-2xl text-black'/>
+                                
 
                                 </>
                                 :
                                 <>
-                                    <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="24" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <line x1="0.75" y1="-0.75" x2="25.25" y2="-0.75" transform="matrix(1 0 0 -1 0 18)" stroke="#434343" strokeWidth="1.5" strokeLinecap="round" />
                                         <line x1="0.75" y1="-0.75" x2="18.1591" y2="-0.75" transform="matrix(1 0 0 -1 0 9)" stroke="#434343" strokeWidth="1.5" strokeLinecap="round" />
                                         <line x1="0.75" y1="-0.75" x2="12.25" y2="-0.75" transform="matrix(1 0 0 -1 0 0)" stroke="#434343" strokeWidth="1.5" strokeLinecap="round" />
@@ -83,8 +69,8 @@ const TopNavbar = () => {
 
 
 
-                <div className="navbar-center grow px-7 lg:px-9">
-                    <form className='w-full relative hidden md:block'>
+                <div className="navbar-center grow px-7 justify-center lg:px-9">
+                    <form className='w-full lg:w-[45rem] 2xl:w-[55rem] relative hidden md:block'>
 
 
 
@@ -116,9 +102,9 @@ const TopNavbar = () => {
                                 </label>
                                 <form
                                     tabIndex={1}
-                                    className={`menu absolute  dropdown-content left-2 -bottom-12 w-[95vw]  ${isExpanded ? 'expanded' : 'hidden'}`} aria-hidden={!isExpanded}>
+                                    className={`menu absolute  dropdown-content left-2 -bottom-14 w-[95vw]  ${isExpanded ? 'expanded' : 'hidden'}`} aria-hidden={!isExpanded}>
 
-                                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-50">
                                         <svg className="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" ></path></svg>
                                         <span className="sr-only">Search icon</span>
                                     </div>
@@ -126,7 +112,7 @@ const TopNavbar = () => {
                                         type="search"
 
                                         name='search'
-                                        className="block h-12 w-full p-2 pl-10 text-sm input bg-light-100 "
+                                        className="block h-12 w-full p-2 pl-10 text-sm input bg-light-200 z-40"
                                         placeholder="Search..."
                                     />
 
