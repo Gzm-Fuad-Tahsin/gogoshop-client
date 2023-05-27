@@ -1,0 +1,34 @@
+[
+    {
+      "id": 1,     
+      "name": "Vim Liquid1",
+      "u_name" : "vim-liquid1",
+      "size": "500 gm",
+      "buyingprice": "2479",
+      "quantity" : "12"
+    },
+    {
+      "id": 2,     
+      "name": "Vim Liquid2",
+      "u_name" : "vim-liquid2",
+      "size": "500 gm",
+      "buyingprice": "7249",
+      "quantity" : "12"
+    },
+    {
+      "id": 3,     
+      "name": "Vim Liquid3",
+      "u_name" : "vim-liquid3",
+      "size": "500 gm",
+      "buyingprice": "29",
+      "quantity" : "12"
+    },
+    {
+      "id": 4,     
+      "name": "Vim Liquid4",
+      "u_name" : "vim-liquid4",
+      "size": "500 gm",
+      "buyingprice": "24",
+      "quantity" : "12"
+    }
+]
