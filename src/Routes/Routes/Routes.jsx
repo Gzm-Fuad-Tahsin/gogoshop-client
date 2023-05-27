@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
                 element : <PrivateRoute><Orderhistory/></PrivateRoute>
             },
             {
-                path : '/category/:subcategory',
+                path : '/category',
                 element : <SubCategoryProductView/>
             },
             {
