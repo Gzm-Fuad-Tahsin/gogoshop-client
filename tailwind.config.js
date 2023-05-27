@@ -14,6 +14,9 @@ export default {
         "light-200" : "#dbf3df",
 
         "shadow-100" : "#F7F7F7",
+        
+        "light-black-100" : '#666666',
+        "light-black-200" : '#5a5a5a',
       },
       width : {
         '478' : '29.87rem'
