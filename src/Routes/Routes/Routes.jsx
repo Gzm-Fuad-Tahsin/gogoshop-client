@@ -13,6 +13,7 @@ import UserProfile from "../../pages/User/UserProfile/UserProfile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ReviewCart from "../../pages/ReviewCart/ReviewCart";
 import Orderhistory from "../../pages/OrderHistory/Orderhistory";
+import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 
@@ -57,6 +58,15 @@ export const router = createBrowserRouter([
             {
                 path : '/category',
                 element : <SubCategoryProductView/>
+            },
+            {
+                path : '/product/:productID',
+                element : <ProductDetail/>,
+                loader : async ({ params }) => {
+                    console.log("param ",params.productID)
+                    // return fetch(`/api/teams/${params.teamId}.json`);
+                    return await fetch('productDetailData.json')
+                  },
             },
             {
                 path : '*',
