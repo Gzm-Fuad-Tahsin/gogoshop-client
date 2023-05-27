@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-// import logo from '../../../assets/icons/logo.png';
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/icons/logo.png'
+import logoFull from '../../../assets/icons/logo-full.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 const TopNavbar = () => {
     const { user } = useContext(AuthContext);
@@ -50,8 +49,8 @@ const TopNavbar = () => {
 
             <div className="navbar px-1 bg-base-100 relative">
 
-                <div className="navbar-start w-fit ">
-                    <button className='hover:bg-slate-100 active:bg-slate-200' onClick={() => { setShowSideNav(!showSideNav) }}>
+                <div className="navbar-start w-fit pl-1 md:pl-3 ">
+                    <button className='text-slate-100 hover:text-slate-200 ' onClick={() => { setShowSideNav(!showSideNav) }}>
                         {
                             (!showSideNav && screenWidth < 768) ?
 
@@ -76,15 +75,15 @@ const TopNavbar = () => {
 
 
                     </button>
-                    <Link  to='/' className="indicator bg-slate-200 ml-2 w-28 ">
-                            <img src={logo} alt='gogoshop logo ' className='w-full' />
+                    <Link  to='/' className="indicator  pl-3 w-28 ">
+                            <img src={logoFull} alt='gogoshop logo ' className='w-full' />
                        
                     </Link>
                 </div>
 
 
 
-                <div className="navbar-center grow px-6">
+                <div className="navbar-center grow px-7 lg:px-9">
                     <form className='w-full relative hidden md:block'>
 
 
@@ -149,7 +148,7 @@ const TopNavbar = () => {
                             {
                                 !user &&
                                 <Link to='/profile'>
-                                    <div className='hidden md:flex w-24 '>
+                                    <div className='hidden md:flex items-center w-24 '>
                                         <div className='mx-2 mr-2'>
                                             <svg width="18" height="18" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M12.5 12.75C15.1862 12.75 17.4166 10.6519 17.4166 8C17.4166 5.34809 15.1862 3.25 12.5 3.25C9.81373 3.25 7.58331 5.34809 7.58331 8C7.58331 10.6519 9.81373 12.75 12.5 12.75Z" stroke="#434343" strokeWidth="1.5" />
