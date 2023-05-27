@@ -5,7 +5,13 @@
         "name": "Vim Liquid",
         "description": "500 gm",
         "discountPrice": "168.59",
-        "mainPrice": "249"
+        "mainPrice": "249",
+        "quantity": "1",
+        "shippingCharge": "168.59",
+        "discount": "168.59",
+        "subtotal": "168.59",
+        "coupon": "168.59",
+        "total": "168.59"
     },
     {
         "id": 2,
