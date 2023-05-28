@@ -11,8 +11,8 @@ const Card = ({ product }) => {
   return (
     <>
 
-      <div className="card border-2 w-[140px] h-[180px] md:w-[200px] md:h-[320px] lg:w-[220px] lg:h-[290px] 2xl:w-[220px] 2xl:h-[290px] hover:shadow-lg">
-        <Link to={`/product/${u_name}`}>
+      <div className="card border-2 w-[140px] h-[180px] md:w-[200px] md:h-[320px] lg:w-[230px] lg:h-[340px] 2xl:w-[230px] 2xl:h-[340px]">
+        <Link to={`/product/${size}`}>
           <figure>
             <img className="w-28 h-28 md:w-40 md:h-40 lg:w-38 lg:h-38 2xl:w-38 2xl:h-38 p-2" src={img} />
           </figure>

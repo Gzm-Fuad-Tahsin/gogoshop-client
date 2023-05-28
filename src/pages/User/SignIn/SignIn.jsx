@@ -51,7 +51,7 @@ const SignIn = () => {
                     </div>
 
                     <Link to='/forget-password'>
-                        <label className="label text-base hover:underline hover:cursor-pointer" aria-label='forgot passsword'>Forget your password?</label>
+                        <label className="label text-base hover:underline hover:cursor-pointer" aria-label='forgot passsword'>Forgot your password?</label>
                     </Link>
                 </div>
 

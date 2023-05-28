@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
                 element : <PrivateRoute><ReviewCart/></PrivateRoute>
             },
             {
-                path : '/orders/:orderID',
+                path : '/orders',
                 element : <PrivateRoute><Orderhistory/></PrivateRoute>
             },
             {
@@ -60,13 +60,8 @@ export const router = createBrowserRouter([
                 element : <SubCategoryProductView/>
             },
             {
-                path : '/product/:productID',
-                element : <ProductDetail/>,
-                loader : async ({ params }) => {
-                    console.log("param ",params.productID)
-                    // return fetch(`/api/teams/${params.teamId}.json`);
-                    return await fetch('productDetailData.json')
-                  },
+                path : '/product',
+                element : <ProductDetail/>,                
             },
             {
                 path : '*',

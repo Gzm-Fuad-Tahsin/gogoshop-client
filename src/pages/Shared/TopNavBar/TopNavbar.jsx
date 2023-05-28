@@ -6,7 +6,7 @@ import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
 import { RxCross2 } from 'react-icons/rx'
 const TopNavbar = () => {
     const { user } = useContext(AuthContext);
-    const { screenWidth } = useContext(UtilityContext);
+    const { cart,screenWidth } = useContext(UtilityContext);
 
 
     const [showSideNav, setShowSideNav] = useState(true);
@@ -31,7 +31,7 @@ const TopNavbar = () => {
 
 
     return (
-        <nav className='border-b-[1px] '>
+        <nav className='border-b-[1px] max-w-full '>
 
 
             <div className="navbar px-1 bg-base-100 relative">
@@ -69,8 +69,8 @@ const TopNavbar = () => {
 
 
 
-                <div className="navbar-center grow px-7 justify-center lg:px-9">
-                    <form className='w-full lg:w-[45rem] 2xl:w-[55rem] relative hidden md:block'>
+                <div className="navbar-center grow px-7 justify-center md:px-9">
+                    <form className='w-full  2xl:w-[55rem] relative hidden md:block'>
 
 
 
@@ -165,7 +165,7 @@ const TopNavbar = () => {
                             </svg>
                         </div>
                         <span className='hidden md:block'>Cart</span>
-                        <span className="badge text-xs m-0 p-1 border-0 absolute -top-5 -right-1 bg-[#F2B8B5] text-[#601410]  ">99+</span>
+                        <span className="badge text-xs m-0 p-1 border-0 absolute -top-5 md:-top-4 -right-1 bg-[#F2B8B5] text-[#601410] rounded-lg ">{cart ? cart.length : ''}</span>
                     </Link>
 
 
