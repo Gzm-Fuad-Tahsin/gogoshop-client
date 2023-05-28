@@ -12,7 +12,7 @@ const Card = ({ product }) => {
     <>
 
       <div className="card border-2 w-[140px] h-[180px] md:w-[200px] md:h-[320px] lg:w-[230px] lg:h-[340px] 2xl:w-[230px] 2xl:h-[340px]">
-        <Link to={`/product/${u_name}`}>
+        <Link to={`/product/${size}`}>
           <figure>
             <img className="w-28 h-28 md:w-40 md:h-40 lg:w-44 lg:h-44 2xl:w-44 2xl:h-44" src={img} />
           </figure>

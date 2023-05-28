@@ -1,9 +1,27 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 export const UtilityContext = createContext();
-const UtilityProvider = ({children}) => {
+const UtilityProvider = ({ children }) => {
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [cart, setCart] = useState([]);
+
+
+    useEffect(() => {
+        fetch('cartsdata.json')
+            .then(res => res.json())
+            .then(data => {
+                setCart(data)
+            })
+    }, [])
+    
+
+    const updateCart = (item_id,item_unique_name,qunatity) =>{
+        console.log(item_id,item_unique_name,qunatity)
+        toast.success(`${qunatity} ${item_unique_name} added ---${item_id} `)
+
+    }
 
 
     const handleResize = () => {
@@ -23,6 +41,9 @@ const UtilityProvider = ({children}) => {
 
     const value = {
         screenWidth,
+        cart,
+        setCart,
+        updateCart
     }
     return (
         <UtilityContext.Provider value={value}>
