@@ -1,4 +1,4 @@
-[
+
     {
         "id": 1,
         "customerName": "Normal Human",
@@ -7,4 +7,3 @@
         "billingAddress":  "Bashundhara, Dhaka",
         "email": "abcdefg@gmail.com"
     }
-]
