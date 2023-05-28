@@ -61,7 +61,7 @@ const SignIn = () => {
             </form>
 
             <label className="mt-9 label text-base " aria-label='Register '>
-                Don’t have an account?
+                Don&#8217;t have an account?
                 <Link to='/sign-up'>
                     <span className='mx-1 hover:underline  text-root-100 hover:cursor-pointer'> Register</span>
                 </Link>
