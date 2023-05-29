@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
+import { fetchJson } from "../../assets/Scripts/utility";
+import { useLoaderData } from "react-router-dom";
+export async function loader({ params }) {
+ 
+  return await fetchJson("products.json");
+
+}
 
 const SubCategoryProductView = () => {
-  const [products, setProducts] = useState([]);
+  const productsData = useLoaderData();
 
-  useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
 
   return (
     <>
-      <div className="flex flex-wrap">
-        {products.map((product) => (
+      <div className="flex flex-wrap ">
+        {productsData.map((product) => (
           <Card key={product.id} product={product}></Card>
         ))}
       </div>
+
+
     </>
   );
 };

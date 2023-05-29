@@ -3,7 +3,7 @@ import Main from "../../Layout/Main/Main";
 import Home from "../../pages/Home/Home/Home";
 
 import NotFound from "../../pages/ErrorPages/NotFound/NotFound";
-import SubCategoryProductView from "../../pages/SubCategoryProductView/SubCategoryProductView";
+import SubCategoryProductView, { loader } from "../../pages/SubCategoryProductView/SubCategoryProductView";
 import SignIn from "../../pages/User/SignIn/SignIn";
 import PreventLogin from "../PreventLogin/PreventLogin";
 import SignUp from "../../pages/User/SignUp/SignUp";
@@ -14,6 +14,10 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ReviewCart from "../../pages/ReviewCart/ReviewCart";
 import Orderhistory from "../../pages/OrderHistory/Orderhistory";
 import ProductDetail from "../../pages/ProductDetail/ProductDetail";
+
+
+// loader 
+import {loader as subcategoryLoader} from '../../pages/SubCategoryProductView/SubCategoryProductView'
 
 
 
@@ -56,8 +60,9 @@ export const router = createBrowserRouter([
                 element : <PrivateRoute><Orderhistory/></PrivateRoute>
             },
             {
-                path : '/category',
-                element : <SubCategoryProductView/>
+                path : '/subcategory',
+                element : <SubCategoryProductView/>,
+                loader: subcategoryLoader,
             },
             {
                 path : '/product',

@@ -10,8 +10,6 @@ const ProductDetail = () => {
 
     const [productData, setproductData] = useState('');
 
-
-
     const [cartItem, setCartItem] = useState({
         "id": null,
         "u_name": null,

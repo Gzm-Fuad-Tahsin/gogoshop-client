@@ -6,7 +6,44 @@ const UtilityProvider = ({ children }) => {
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [cart, setCart] = useState([]);
+    const [cart1, setCart1] = useState([]);
 
+
+    //_________________navbar____________________________
+    const [showSideNav, setShowSideNav] = useState(true);
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    useEffect(() => {
+        setIsExpanded(false)
+        setShowSideNav(true);
+        if (screenWidth < 768) {
+            setShowSideNav(false);
+
+        }
+    }, [screenWidth])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ___________________________cart_____________________________
 
     useEffect(() => {
         fetch('cartsdata.json')
@@ -15,13 +52,42 @@ const UtilityProvider = ({ children }) => {
                 setCart(data)
             })
     }, [])
-    
 
-    const updateCart = (item_id,item_unique_name,qunatity) =>{
-        console.log(item_id,item_unique_name,qunatity)
+
+
+    const updateCart = (item_id, item_unique_name, qunatity) => {
+        console.log(item_id, item_unique_name, qunatity)
         toast.success(`${qunatity} ${item_unique_name} added ---${item_id} `)
 
     }
+
+    // _____________________________________footer__________________________
+    const [footerData, setfooterData] = useState(null);
+
+    useEffect(() => {
+        fetch('footer.json')
+            .then(res => res.json())
+            .then(data => setfooterData(data))
+    }, [])
+
+
+
+    // ____________________________________touch__________________
+    const showSideNavbyTouch = () => {
+        if(screenWidth<768){
+            setShowSideNav(true);
+
+        }
+      };
+    
+      const hideSideNavbyTouch = () => {
+        if(screenWidth<768){
+
+            setShowSideNav(false);
+        }
+      };
+
+
 
 
     const handleResize = () => {
@@ -35,6 +101,7 @@ const UtilityProvider = ({ children }) => {
         // Cleanup the event listener on component unmount
         return () => {
             window.removeEventListener('resize', handleResize);
+            
         };
     }, []);
 
@@ -43,7 +110,15 @@ const UtilityProvider = ({ children }) => {
         screenWidth,
         cart,
         setCart,
-        updateCart
+        updateCart,
+        footerData,
+        showSideNav,
+        setShowSideNav,
+        showSideNavbyTouch,
+        hideSideNavbyTouch,
+        isExpanded,
+        setIsExpanded,
+
     }
     return (
         <UtilityContext.Provider value={value}>

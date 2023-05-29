@@ -82,7 +82,7 @@ const MobileSignUp = () => {
                             </div>
 
                             <div className="form-control mx-auto md:w-40  ">
-                                <input type="submit" value="Enter" className="btn border-0 bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
+                                <input type="submit" value="Enter" className="cursor-pointer btn border-0 bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
                             </div>
                         </form>
 
@@ -111,14 +111,14 @@ const MobileSignUp = () => {
                                 </label>
                             </div>
                             <div className="form-control mx-auto md:w-40  ">
-                                <input type="submit" value="Get OTP" className="h-10 w-full border-0 bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
+                                <input type="submit" value="Get OTP" className="cursor-pointer h-10 w-full border-0 bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
                             </div>
                         </form>
 
                     </div>
 
             }
-            <div className="inline-flex items-center justify-center w-full">
+            <div className="inline-flex items-center justify-center w-full relative">
                 <hr className="w-80 md:w-96 h-[0.15rem] font-thin my-8 bg-gray-200 border-0 rounded :bg-gray-700" />
                 <div className="absolute px-3 -translate-x-1/2 bg-white left-1/2 :bg-gray-900 text-xl font-light">or</div>
             </div>
@@ -127,7 +127,7 @@ const MobileSignUp = () => {
                 <Link to='/login' >
                     <button
                         aria-label='sign-in'
-                        className="w-full h-16 border-0 text-base-100 bg-root-100 hover:bg-root-200  text-base font-light rounded-2xl flex justify-center items-center">
+                        className="cursor-pointer w-full h-16 border-0 text-base-100 bg-root-100 hover:bg-root-200  text-base font-light rounded-2xl flex justify-center items-center">
                         Sign in with E-mail
                     </button>
                 </Link>
