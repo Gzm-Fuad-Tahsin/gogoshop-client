@@ -106,7 +106,29 @@ const UtilityProvider = ({ children }) => {
     }, []);
 
 
+
+    const [screenHeight, setScreenHeight] = useState(0);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setScreenHeight(window.innerHeight);
+      };
+  
+      // Set initial screen height
+      setScreenHeight(window.innerHeight);
+  
+      // Update screen height on window resize
+      window.addEventListener('resize', handleResize);
+  
+      // Clean up event listener on component unmount
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+
+
     const value = {
+        screenHeight,
         screenWidth,
         cart,
         setCart,

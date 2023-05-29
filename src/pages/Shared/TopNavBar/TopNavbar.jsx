@@ -4,7 +4,7 @@ import logoFull from '../../../assets/icons/logo-full.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
 import { RxCross2 } from 'react-icons/rx'
-const TopNavbar = ({children}) => {
+const TopNavbar = ({ children }) => {
     const { user } = useContext(AuthContext);
     const { cart, screenWidth, showSideNav, setShowSideNav, isExpanded, setIsExpanded } = useContext(UtilityContext);
 
@@ -24,7 +24,7 @@ const TopNavbar = ({children}) => {
     return (
         <>
 
-            <nav className='border-b-[1px] max-w-full  sticky top-0 z-[1000]'>
+            <div className='border-b-[1px] max-w-full  sticky top-0 z-[1000]'>
 
 
                 <div className="navbar px-1 bg-base-100 relative">
@@ -117,10 +117,6 @@ const TopNavbar = ({children}) => {
                             </div>
                         }
 
-
-
-
-
                         {
                             !(screenWidth < 768) &&
                             <div className="hidden md:flex">
@@ -150,7 +146,7 @@ const TopNavbar = ({children}) => {
 
 
 
-                        <Link className='ml-2 border-l-2 border-[#D9D9D9]  flex items-center relative '>
+                        <Link to='/cart' className='ml-2 border-l-2 border-[#D9D9D9]  flex items-center relative '>
                             <div className='mx-2 mr-2 '>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M5.47154 15.4348C5.83024 15.4348 6.12179 15.7264 6.12179 16.0851C6.12179 16.4438 5.83024 16.7345 5.47154 16.7345C5.11284 16.7345 4.82214 16.4438 4.82214 16.0851C4.82214 15.7264 5.11284 15.4348 5.47154 15.4348Z" stroke="#434343" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -195,23 +191,22 @@ const TopNavbar = ({children}) => {
                                 }
                                 </label>
                                 <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-12">
-                                    <Link><li className='clibg-red-500'>View profile</li></Link>
-                                    <Link><li className=''>Order history</li></Link>
-                                    <Link><li className=''>Edit address</li></Link>
+                                    <Link to='/profile'><li className='clibg-red-500'>View profile</li></Link>
+                                    <Link to='/'><li className=''>Order history</li></Link>
+                                    <Link to='/'><li className=''>Edit address</li></Link>
                                     <Link><li className=''>Log Out</li></Link>
                                 </ul>
 
                             </div>
                         }
 
+                    
                     </div>
                 </div>
+              
+            </div >
 
-            </nav >
 
-            {
-                children
-            }
         </>
     );
 };

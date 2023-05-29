@@ -11,13 +11,13 @@ import MobileSignUp from "../../pages/User/MobileSignUp/MobileSignUp";
 import ForgotPassword from "../../pages/User/ForgotPassword/ForgotPassword";
 import UserProfile from "../../pages/User/UserProfile/UserProfile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import ReviewCart from "../../pages/ReviewCart/ReviewCart";
-import Orderhistory from "../../pages/OrderHistory/Orderhistory";
 import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 // loader 
 import {loader as subcategoryLoader} from '../../pages/SubCategoryProductView/SubCategoryProductView'
+import Orderhistory from "../../pages/OrderHistory/OrderHistory";
+import ReviewCartsDiv from "../../pages/ReviewCart/ReviewCartsDiv";
 
 
 
@@ -52,8 +52,12 @@ export const router = createBrowserRouter([
                 element : <PrivateRoute><UserProfile/></PrivateRoute>
             },
             {
-                path : '/review-cart',
-                element : <PrivateRoute><ReviewCart/></PrivateRoute>
+                path : '/cart',
+                element : <PrivateRoute><ReviewCartsDiv/></PrivateRoute>
+            },
+            {
+                path : '/proceed-to-pay',
+                element : <PrivateRoute><ReviewCartsDiv/></PrivateRoute>
             },
             {
                 path : '/orders',

@@ -8,9 +8,10 @@ import Orderhistory from '../../OrderHistory/OrderHistory';
 const Home = () => {
     return (
         <>
+        <div className="w-full"></div>
         {/* <ReviewCarts></ReviewCarts> */}
         {/* <ReviewCartsDiv></ReviewCartsDiv> */}
-        <Orderhistory></Orderhistory>
+        {/* <Orderhistory></Orderhistory> */}
         </>
     );
 };
