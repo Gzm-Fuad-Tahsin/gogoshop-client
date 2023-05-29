@@ -1,0 +1,85 @@
+
+    {
+        "customerService": [
+            {
+                "id": 1,
+                "name": "About Us"
+            },
+            {
+                "id": 2,
+                "name": "Terms & Conditions"
+            },
+            {
+                "id": 3,
+                "name": "FAQ"
+            },
+            {
+                "id": 4,
+                "name": "Privacy Policy"
+            },
+            {
+                "id": 5,
+                "name": "E-waste Policy"
+            },
+            {
+                "id": 6,
+                "name": "Cancellation & Return Policy"
+            }
+        ],
+        "popularCategories": [
+            {
+                "id": 1,
+                "name": "Staples"
+            },
+            {
+                "id": 2,
+                "name": "Beverage"
+            },
+            {
+                "id": 3,
+                "name": "Personal Care"
+            },
+            {
+                "id": 4,
+                "name": "Home Care"
+            },
+            {
+                "id": 5,
+                "name": "Baby Care"
+            },
+            {
+                "id": 6,
+                "name": "Vegitable & Fruits"
+            },
+            {
+                "id": 7,
+                "name": "Snacks & Foods"
+            },
+            {
+                "id": 8,
+                "name": "Dairy & Bekary"
+            }
+        ],
+
+        "companyInfo": {
+            
+                "id": 1,
+                "title": "About Us",
+                "info": "Lorem ipsum dolor sit amet consectetur. Eget arcu aliquam enim lectus. Dictum auctor mattis fermentum metus eu integer morbi sit. Neque mauris a nec elit enim elementum arcu. Bibendum enim donec non morbi iaculis fusce sagittis."
+            
+        },
+        "phone": {
+            "number1": "+8801906913254"
+        },
+
+        "social": {
+            "whatsApp": "+8801868726172",
+            "instagram": "https://www.instagram.com/",
+            "facebook": "https://www.facebook.com/"
+        }
+            
+    }
+
+
+
+
