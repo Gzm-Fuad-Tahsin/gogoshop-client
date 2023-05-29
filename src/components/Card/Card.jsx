@@ -21,15 +21,15 @@ const Card = ({ product }) => {
               <h2 className="card-title text-[11px] md:text-xl lg:text-lg font-normal">
                 {name}
               </h2>
-              <p className="text-[9px] md:text-[12px] text-[#A9A9A9]">
+              <p className="text-[9px] md:text-xs text-[#A9A9A9]">
                 {size}
               </p>
 
-              <p className="flex text-[11px] md:text-[18px] text-[#807F7F]">
+              <p className="flex text-[11px] md:text-lg text-[#807F7F]">
                 <TbCurrencyTaka></TbCurrencyTaka>
                 {finalPrice}
                 {mainPrice && (
-                  <s className="flex text-[11px] md:text-[13px] lg:text-[13px] 2xl:text-[13px] text-[#A9A9A9]">
+                  <s className="flex text-[11px] md:text-[13px] text-[#A9A9A9]">
                     <TbCurrencyTaka></TbCurrencyTaka>
                     {mainPrice}
                   </s>
@@ -38,10 +38,9 @@ const Card = ({ product }) => {
             </div>
           </div>
         </Link>
-        <button onClick={() => handleCart(u_name)} className="btn btn-sm btn-circle bg-root-100 hover:bg-root-200 md:w-[190px] md:h-[46px] lg:w-[208px] lg:h-[38px] border-0 rounded-xl md:font-medium md:text-[20px] normal-case absolute bottom-1 right-1 md:bottom-1 md:left-1 md:gap-2">
+        <button onClick={() => handleCart(u_name)} className="btn btn-sm btn-circle bg-root-100 hover:bg-root-200 md:w-[190px] md:h-[46px] lg:w-[208px] lg:h-[38px] border-0 rounded-xl md:font-medium md:text-xl normal-case absolute bottom-1 right-1 md:bottom-1 md:left-1 md:gap-2">
           <AiOutlineShoppingCart></AiOutlineShoppingCart>
-          <span className="hidden md:block lg:block 2xl:block">Add to Cart</span>
-          
+          <span className="hidden md:block">Add to Cart</span>
         </button>
       </div>
 
