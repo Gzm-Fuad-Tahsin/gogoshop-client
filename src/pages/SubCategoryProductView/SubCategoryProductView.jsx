@@ -3,13 +3,16 @@ import Card from "../../components/Card/Card";
 import { fetchJson } from "../../assets/Scripts/utility";
 import { useLoaderData } from "react-router-dom";
 export async function loader({ params }) {
- 
+
   return await fetchJson("products.json");
 
 }
 
 const SubCategoryProductView = () => {
   const productsData = useLoaderData();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
 
 
   return (

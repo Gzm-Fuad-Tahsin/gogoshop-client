@@ -7,6 +7,11 @@ import { toast } from 'react-hot-toast';
 
 
 const ProductDescription = ({ productData, cartItem }) => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
+
+    
     const { updateCart } = useContext(UtilityContext);
     const { id, img, name, u_name, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
 
@@ -166,15 +171,15 @@ const ProductDescription = ({ productData, cartItem }) => {
                 <div className="col-span-12 order-4 pt-9 px-1 md:px-5">
                     {
                         description &&
-                            <>
-                                <h2 className='font-semibold text-lg mb-2'>Description</h2>
-                                <p className='font-normal text-base leading-7'>
-                                    {
-                                        description
+                        <>
+                            <h2 className='font-semibold text-lg mb-2'>Description</h2>
+                            <p className='font-normal text-base leading-7'>
+                                {
+                                    description
 
-                                    }
-                                </p>
-                            </>
+                                }
+                            </p>
+                        </>
                     }
 
                 </div>

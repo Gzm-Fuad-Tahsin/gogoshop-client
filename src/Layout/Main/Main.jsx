@@ -4,6 +4,7 @@ import TopNavbar from '../../pages/Shared/TopNavBar/TopNavbar';
 import SideNavbar from '../../pages/Shared/SideNavbar/SideNavbar';
 import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import Footer from '../../pages/Shared/Footer/Footer';
+import ScrollToTopButton from '../../pages/Shared/ScrollToTop/ScrollToTop';
 
 
 const Main = () => {
@@ -14,27 +15,75 @@ const Main = () => {
 
     const { showSideNav, setShowSideNav } = useContext(UtilityContext);
 
+    const [goToTop, setGoToTop] = useState(true);
+
+    // scroll to top 
+    useEffect(() => {
+        let isThrottled = false;
+
+        const handleScroll = () => {
+            if (!isThrottled) {
+                isThrottled = true;
+
+                setTimeout(() => {
+                    const isScrollPositionGreaterThanScreenHeight = window.scrollY > window.innerHeight;
+
+                    if (isScrollPositionGreaterThanScreenHeight && goToTop) {
+
+                        setGoToTop(true)
+                        console.log("User's scrolling position is greater than the screen height");
+
+                    } else {
+                        setGoToTop(false)
+
+                    }
+
+                    isThrottled = false;
+                }, 200); // Throttle the event to execute every 200 milliseconds
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
 
     return (
         <>
+            {
+                screenWidth < 768 ?
+                    <>
+                    </>
+                    :
+                    <>
+
+                    </>
+            }
+
+
             <TopNavbar />
-          
+
             <div className='flex'>
 
 
                 {
-                    showSideNav && <SideNavbar  />
+                    showSideNav && <SideNavbar />
                 }
 
                 <div className="w-full" onTouchStart={hideSideNavbyTouch}>
-                    
+
                     <Outlet ></Outlet>
                     <Footer />
+
+                    {
+                        goToTop && <ScrollToTopButton />
+                    }
+
                 </div>
             </div>
-
-
 
 
             {/* <SwipeNavigation showSideNavbySwipe={showSideNavbyTouch} hideSideNavbySwipe={hideSideNavbyTouch} /> */}

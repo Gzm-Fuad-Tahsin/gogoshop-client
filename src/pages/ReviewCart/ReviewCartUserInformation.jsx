@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ReviewCartDiv = ({ customerInfo }) => {
+const ReviewCartUserInformation = ({ customerInfo }) => {
   const { customerName, phone, deliveryAddress, billingAddress, email } =
     customerInfo;
   return (
@@ -46,4 +46,4 @@ const ReviewCartDiv = ({ customerInfo }) => {
   );
 };
 
-export default ReviewCartDiv;
+export default ReviewCartUserInformation;

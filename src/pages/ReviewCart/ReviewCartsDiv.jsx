@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
-import ReviewCartDiv from "./ReviewCartDiv";
 import CartItemDiv from "./CartItemDiv";
 import { BsFillGiftFill } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
+import ReviewCartUserInformation from "./ReviewCartUserInformation";
 
 const ReviewCartsDiv = () => {
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
+
   // Customer Information from json data
   const [customerInfo, setCustomerInfo] = useState([]);
   useEffect(() => {
@@ -24,21 +30,21 @@ const ReviewCartsDiv = () => {
       });
   }, []);
 
-  // Calculation for total price
-  let total = 0;
+  // Calculation for subtotal price
+  let subtotal = 0;
   products.map(
     (item) =>
-      (total += parseFloat(item.buyingprice) * parseFloat(item.quantity))
+      (subtotal += parseFloat(item.buyingprice) * parseFloat(item.quantity))
   );
 
   return (
     <>
-      <div className="w-[300px] md:w-[680px] lg:w-[900px] mx-auto my-8 md:my-20">
+      <div className="  px-0 md:px-5 lg:mx-auto my-2 md:my-7">
 
         {/* Showing Customer Information from ReviewCartDiv.jsx */}
-        <ReviewCartDiv customerInfo={customerInfo}></ReviewCartDiv>
+        <ReviewCartUserInformation customerInfo={customerInfo}></ReviewCartUserInformation>
 
-        <hr className="my-4 md:my-10" />
+        <hr className="my-2 md:my-5" />
 
         {/* Showing Products Information in cart from CartItemDiv.jsx  */}
         <div>
@@ -53,41 +59,60 @@ const ReviewCartsDiv = () => {
         </div>
 
         {/* Showing Shipping Charge, Subtotal and Total Price */}
-        <div className="grid grid-cols-2 text-[#666666] font-medium text-[8px] md:text-base mx-2 md:mx-5">
-          <div className="mt-3">
-            <p className="text-black">Shipping Charge</p>
+        <div className=" text-[#666666] font-medium text-[8px] md:text-base ">
 
-            <hr className="my-4 md:my-10" />
+          <div className="grid grid-cols-12 mt-4 md:mt-6 mx-2 md:mx-5">
+            <div className="col-span-8 md:col-span-7">
+              <p className="text-black">Shipping Charge</p>
+            </div>
+            <div className="col-span-4 md:col-span-5 ">
+              <p className="flex justify-end"><TbCurrencyTaka />150.55</p>
+            </div>
 
-            <p className="text-black">Subtotal</p>
-            <p className="flex items-center text-[#4ABA6F] font-medium text-[6px] md:text-base border-0 bg-[#F7F7F7] rounded-xl px-2 lg:px-8 py-2 mt-6">
-              <BsFillGiftFill></BsFillGiftFill>
-              <input
-                type="text"
-                name=""
-                id="coupn-code"
-                placeholder="Coupon Code"
-                className="text-black mx-1 rounded-lg px-1 lg:px-3 py-1"
-              />
-              Apply Coupon
-            </p>
-
-            <hr className="my-4 md:my-10" />
-
-            <p className="text-black">Total Payment</p>
           </div>
-          <div className="mt-3">
-            <p className="flex justify-end"><TbCurrencyTaka />150.55</p>
+          <hr className="my-2 md:my-5" />
 
-            <hr className="my-4 md:my-10" />
 
-            <p className="flex justify-end"><TbCurrencyTaka />{total}</p> 
-            <p className="flex justify-end py-3 mt-6"><TbCurrencyTaka />1565</p>
-
-            <hr className="my-3 md:my-10" />
-
-            <p className="flex justify-end"><TbCurrencyTaka />65657</p>
+          <div className="grid grid-cols-12 mt-2 md:mt-5 mx-2 md:mx-5" aria-label="subtotal">
+            <div className="col-span-8 md:col-span-7 " >
+              <p className="text-black mr-3">Subtotal</p>
+            </div>
+            <div className="col-span-4 md:col-span-5 ">
+              <p className="flex justify-end" ><TbCurrencyTaka />{subtotal}</p>
+            </div>
           </div>
+
+
+          <div className="grid grid-cols-12 justify-between items-center mt-2 md:mt-7 mr-2 md:mr-5" aria-label="coupon-discount">
+            <div className="col-span-8 md:col-span-7 ">
+              <p className="flex w-fit  items-center  text-[#4ABA6F] font-medium md:text-base border-0 bg-[#F7F7F7] rounded-md md:rounded-lg  px-2 lg:px-8 py-1 md:py-2 ">
+                <BsFillGiftFill ></BsFillGiftFill>
+                <input
+                  type="text"
+                  name=""
+                  id="coupn-code"
+                  placeholder="Coupon Code"
+                  className=" text-black rounded-md md:rounded-lg px-2 md:px-4 py-1 mx-1 md:mx-3"
+                />
+               <span onClick={()=>console.log('tui gorib')}>Apply</span>
+              </p>
+            </div>
+            <div className="col-span-4 md:col-span-5 ">
+              <p className="flex justify-end items-center " ><span className="text-lg md:text-3xl">-</span><TbCurrencyTaka className="ml-2" />156</p>
+            </div>
+          </div>
+          <hr className="my-2 md:my-5" />
+
+          <div className="grid grid-cols-12 my-3 md:my-6 justify-between items-center  mx-2 md:mx-5" aria-label="total-charge-after-calculation">
+            <div className="col-span-8 md:col-span-7 ">
+              <p className="text-black">Total Payment</p>
+            </div>
+            <div className="col-span-4 md:col-span-5 ">
+              <p className="flex justify-end py-3 " ><TbCurrencyTaka />154565</p>
+            </div>
+
+          </div>
+
         </div>
 
         <div className="mt-8 md:mt-16">

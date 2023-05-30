@@ -23,26 +23,6 @@ const UtilityProvider = ({ children }) => {
     }, [screenWidth])
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ___________________________cart_____________________________
 
     useEffect(() => {
@@ -65,7 +45,7 @@ const UtilityProvider = ({ children }) => {
     const [footerData, setfooterData] = useState(null);
 
     useEffect(() => {
-        fetch('footer.json')
+        fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/footer`)
             .then(res => res.json())
             .then(data => setfooterData(data))
     }, [])
@@ -127,7 +107,17 @@ const UtilityProvider = ({ children }) => {
     }, []);
 
 
+
+
+    // _____________________________ SCROLL TO TOP ____________________________________________
+    const ScrollToTop = () =>{
+         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  
+
+
     const value = {
+        ScrollToTop,
         screenHeight,
         screenWidth,
         cart,
