@@ -1,84 +1,110 @@
-import React, { useEffect, useState } from 'react';
-import logo from '../../../assets/icons/logo.png';
+import React, { useContext, useEffect, useState } from 'react';
+import logo from '../../../assets/icons/logo-full.png';
 import AboutUs from './AboutUs';
 import { Link } from 'react-router-dom';
-import Payment from './Payment';
-const Footer = () => {
-    const [links, setLinks] = useState(null);
 
-    useEffect(() => {
-        fetch('footer.json')
-            .then(res => res.json())
-            .then(data => setLinks(data))
-    }, [])
+
+import { TfiFacebook } from 'react-icons/tfi';
+import { ImWhatsapp } from 'react-icons/im';
+import { BsInstagram } from 'react-icons/bs';
+import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
+import bkashLogo from '../../../assets/icons/BKash-Logo 1.svg';
+import nagadLogo from '../../../assets/icons/Nagad-Logo 1.svg'
+import mastercardlogo from '../../../assets/icons/Mastercard-Logo.wine.svg'
+import visalogo from '../../../assets/icons/Visa_Inc.-Logo.wine.svg'
+
+
+const Footer = () => {
+    const { footerData } = useContext(UtilityContext);
+
+    
 
     return (
 
-        <footer className=" bg-[#ECFAEE] p-2 md:p-0 mt-10">
-            {links &&
-                <div className=" w-full p-4 py-6 lg:py-8">
+        <footer className=" bg-[#ECFAEE] m-3  rounded-xl  mt-10">
+
+            {footerData &&
+                <div className=" w-full p-4 py-6 lg:py-8  mx-auto">
                     <div className="md:flex md:flex-row mx-auto">
 
-                        <div className="grid md:grid-cols-4">
-                            <div className="mb-6 md:mb-0 flex flex-col items-center">
+                        <div className="grid grid-cols-1 md:grid-cols-4">
+                            <div className="my-6 flex flex-col items-center md:items-start">
                                 <a href="" className="">
-                                    <img src={logo} className="w-[12rem] mr-3 -mt-[3.75rem]" alt="gogoshop Logo" />
+                                    <img src={logo} className="w-[12rem]" alt="gogoshop Logo" />
                                 </a>
-                                <div className=''>
-                                    {
-                                        <AboutUs companyInfo={links.companyInfo} />
-                                    }
+
+                                <div className='text-[#666666] mt-4  text-center md:text-left'>
+                                    <h3 className='font-medium text-xl'>{footerData?.companyInfo.title}</h3>
+                                    <p className='font-normal'><small>{footerData?.companyInfo.info}</small></p>
+                                    <div className="mt-4 grid grid-cols-4 gap-3 items-center">
+                                        <div className="cursor-pointer">
+                                            <img src={bkashLogo} alt="" />
+                                        </div>
+                                        <div className="cursor-pointer">
+                                            <img src={nagadLogo} alt="" />
+                                        </div>
+                                        <div className="cursor-pointer">
+                                            <img src={mastercardlogo} alt="" />
+                                        </div>
+                                        <div className="cursor-pointer">
+                                            <img src={visalogo} alt="" />
+                                        </div>
+                                        
+                                    </div>
                                 </div>
+
                             </div>
-                            <div className='grid-cols-12 md:grid-cols-4 pl-4 flex flex-col items-center'>
-                                <h2 className="mb-6 w-3/5 pb-3 border-b-2 border-[#7BE495] text-[#666666] text-center md:text-start">Contact Us</h2>
+                            <div className='mt-7 flex flex-col items-center md:items-start'>
+                                <h2 className=" w-11/12 md:w-8/12  mb-6 pb-2 border-b-2 border-[#7BE495] text-[#666666] text-center md:text-left ">Contact Us</h2>
                                 <ul className="text-[#666666] font-medium">
-                                    <li className="mb-8 flex gap-3">
+                                    <li className="mb-6 flex items-center">
                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fillRule="evenodd" clipRule="evenodd" d="M10.0317 10.9724C14.0208 14.9604 14.9258 10.3467 17.4656 12.8848C19.9143 15.3328 21.3216 15.8232 18.2192 18.9247C17.8306 19.237 15.3616 22.9943 6.6846 14.3197C-1.99348 5.644 1.76158 3.17244 2.07397 2.78395C5.18387 -0.326154 5.66586 1.08938 8.11449 3.53733C10.6544 6.0765 6.04266 6.98441 10.0317 10.9724Z" stroke="#205072" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
-                                        <span className='hover:underline cursor-pointer'>{links.phone.number1}</span>
+                                        <span className='ml-2 hover:underline cursor-pointer'>{footerData.phone.number1}</span>
                                     </li>
-                                    <li className='grid grid-cols-3 cursor-pointer'>
-                                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M26.2816 5.25166C23.4914 2.45478 19.7756 0.916504 15.8267 0.916504C7.67577 0.916504 1.04318 7.54909 1.04318 15.7C1.04318 18.3037 1.72242 20.8476 3.01431 23.0917L0.916656 30.7498L8.75456 28.6921C10.9122 29.8708 13.3428 30.4901 15.82 30.4901H15.8267C23.9709 30.4901 30.75 23.8575 30.75 15.7066C30.75 11.7577 29.0719 8.04853 26.2816 5.25166ZM15.8267 27.9996C13.6158 27.9996 11.4515 27.4069 9.56699 26.2881L9.12082 26.0218L4.47268 27.2404L5.7113 22.7055L5.41829 22.2393C4.18634 20.2815 3.54039 18.0241 3.54039 15.7C3.54039 8.92755 9.05423 3.41371 15.8333 3.41371C19.1163 3.41371 22.1995 4.69228 24.5169 7.01635C26.8344 9.34042 28.2594 12.4236 28.2528 15.7066C28.2528 22.4857 22.5991 27.9996 15.8267 27.9996ZM22.5658 18.7965C22.1995 18.6101 20.3816 17.7177 20.0419 17.5979C19.7023 17.4713 19.4559 17.4114 19.2095 17.7843C18.9632 18.1572 18.2573 18.983 18.0375 19.236C17.8244 19.4824 17.6047 19.5157 17.2384 19.3293C15.0675 18.2438 13.6424 17.3914 12.2107 14.9342C11.8311 14.2816 12.5903 14.3282 13.2962 12.9164C13.416 12.67 13.3561 12.4569 13.2629 12.2705C13.1696 12.084 12.4305 10.2661 12.1241 9.52688C11.8245 8.80768 11.5181 8.90757 11.2917 8.89425C11.0786 8.88094 10.8322 8.88094 10.5858 8.88094C10.3395 8.88094 9.9399 8.97417 9.60028 9.34042C9.26066 9.71334 8.30839 10.6057 8.30839 12.4236C8.30839 14.2416 9.63358 15.9996 9.81338 16.246C9.99984 16.4924 12.4171 20.2216 16.1263 21.8265C18.4704 22.8387 19.3893 22.9252 20.5614 22.7521C21.2739 22.6456 22.7456 21.8598 23.0519 20.9941C23.3582 20.1284 23.3582 19.3892 23.265 19.236C23.1784 19.0695 22.9321 18.9763 22.5658 18.7965Z" fill="#434343" />
-                                        </svg>
+                                    <li className=' flex justify-evenly cursor-pointer text-2xl '>
 
-                                        <svg width="15" height="31" viewBox="0 0 15 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.9776 17.6977L14.7509 12.2986H9.91565V8.79495C9.91565 7.31785 10.5911 5.87804 12.7566 5.87804H14.9548V1.28126C14.9548 1.28126 12.96 0.916504 11.0528 0.916504C7.07084 0.916504 4.46803 3.50245 4.46803 8.18372V12.2986H0.041748V17.6977H4.46803V30.7498H9.91565V17.6977H13.9776Z" fill="#434343" />
-                                        </svg>
+                                        <Link to={footerData?.social?.whatsapp}><ImWhatsapp /></Link>
+                                        <Link to={footerData?.social?.facebook}> <TfiFacebook /></Link>
+                                        <Link to={footerData?.social?.instagram}><BsInstagram /></Link>
 
-                                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M15.17 8.18428C10.9371 8.18428 7.52281 11.5993 7.52281 15.8332C7.52281 20.067 10.9371 23.4821 15.17 23.4821C19.4029 23.4821 22.8172 20.067 22.8172 15.8332C22.8172 11.5993 19.4029 8.18428 15.17 8.18428ZM15.17 20.8059C12.4346 20.8059 10.1983 18.5758 10.1983 15.8332C10.1983 13.0905 12.4279 10.8604 15.17 10.8604C17.9121 10.8604 20.1417 13.0905 20.1417 15.8332C20.1417 18.5758 17.9054 20.8059 15.17 20.8059V20.8059ZM24.9137 7.8714C24.9137 8.86329 24.115 9.65548 23.13 9.65548C22.1383 9.65548 21.3463 8.85664 21.3463 7.8714C21.3463 6.88616 22.145 6.08732 23.13 6.08732C24.115 6.08732 24.9137 6.88616 24.9137 7.8714ZM29.9785 9.6821C29.8654 7.29224 29.3196 5.17532 27.5692 3.43118C25.8255 1.68705 23.709 1.14118 21.3197 1.02135C18.8571 0.881555 11.4762 0.881555 9.01364 1.02135C6.63097 1.13452 4.51452 1.68039 2.76412 3.42453C1.01372 5.16866 0.474623 7.28558 0.354824 9.67545C0.215059 12.1385 0.215059 19.5211 0.354824 21.9842C0.467968 24.3741 1.01372 26.491 2.76412 28.2351C4.51452 29.9793 6.62432 30.5252 9.01364 30.645C11.4762 30.7848 18.8571 30.7848 21.3197 30.645C23.709 30.5318 25.8255 29.9859 27.5692 28.2351C29.313 26.491 29.8587 24.3741 29.9785 21.9842C30.1183 19.5211 30.1183 12.1452 29.9785 9.6821V9.6821ZM26.7972 24.6271C26.278 25.9318 25.2731 26.937 23.9619 27.4629C21.9985 28.2418 17.3397 28.0621 15.17 28.0621C13.0003 28.0621 8.33478 28.2351 6.37806 27.4629C5.07358 26.9437 4.0686 25.9385 3.54281 24.6271C2.76412 22.6632 2.94382 18.0033 2.94382 15.8332C2.94382 13.663 2.77077 8.99643 3.54281 7.03928C4.06194 5.7345 5.06693 4.7293 6.37806 4.2034C8.34144 3.42453 13.0003 3.60427 15.17 3.60427C17.3397 3.60427 22.0052 3.43118 23.9619 4.2034C25.2664 4.72264 26.2714 5.72785 26.7972 7.03928C27.5759 9.00309 27.3962 13.663 27.3962 15.8332C27.3962 18.0033 27.5759 22.6699 26.7972 24.6271Z" fill="#434343" />
-                                        </svg>
+
+
+
                                     </li>
                                 </ul>
                             </div>
 
-                                <div className=" grid-cols-4">
-                                    <h2 className="mb-6 w-3/5 pb-3 border-b-2 border-[#7BE495] text-[#666666]">Customer Services</h2>
-                                    <ul className="grid grid-cols-1 dark:text-gray-400 font-medium mb-4">
+
+                            <div className='mt-7 col-span-1 md:col-span-2  grid grid-cols-2 gap-x-5'>
+
+                                <div>
+                                    <h2 className="w-11/12 md:w-9/12  mb-6 pb-2 border-b-2 border-[#7BE495] text-[#666666] ">Customer Services</h2>
+                                    <ul className="text-[#666666] font-medium">
 
                                         {
-                                            links.customerService.map(serviceLink => <Link key={serviceLink.id}><li className='hover:underline text-[#666666] mb-2'>{serviceLink.name}</li></Link>)
+                                            footerData.customerService.map(serviceLink => <Link key={serviceLink.id}><li className='hover:underline text-[#666666] mb-2'>{serviceLink.name}</li></Link>)
                                         }
 
                                     </ul>
                                 </div>
-                                <div className=" grid-cols-4">
-                                    <h2 className="mb-6 w-3/5 pb-3 border-b-2 text-[#666666] border-[#7BE495]">Most Popular Categories</h2>
-                                    <ul className="grid grid-cols-1 dark:text-gray-400 font-medium mb-4">
+
+                                <div>
+                                    <h2 className="  w-11/12 md:w-9/12  mb-6 pb-2 border-b-2 border-[#7BE495] text-[#666666] ">Popular Categories</h2>
+                                    <ul className="text-[#666666] font-medium">
 
                                         {
-                                            links.popularCategories.map(popularLink => <Link key={popularLink.id}><li className='hover:underline text-[#666666] mb-2'>{popularLink.name}</li></Link>)
+                                            footerData.popularCategories.map(popularLink => <Link key={popularLink.id}><li className='hover:underline text-[#666666] mb-2'>{popularLink.name}</li></Link>)
                                         }
 
                                     </ul>
                                 </div>
+                            </div>
                         </div>
                     </div>
-                    {/* <Payment /> */}
-                    <p className='text-center mt-3'> &copy; {new Date().getFullYear()}. All right reserved gogoshop Ltd</p>
+                    
+                    <p className='text-center mt-6'> &copy; {new Date().getFullYear()}. All right reserved gogoshop Ltd</p>
                 </div>
 
             }

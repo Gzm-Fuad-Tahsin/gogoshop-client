@@ -5,7 +5,8 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     //user
-    const [user, setUser] = useState()
+    const [user, setUser] = useState({id:32984,name:'jfdjds',imgURL:'https://avatars.githubusercontent.com/u/89093751?v=4'})
+    // const [user, setUser] = useState()
     //laoding
     const [loading, setLoading] = useState(false);
 

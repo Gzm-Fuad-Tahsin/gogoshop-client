@@ -44,7 +44,7 @@ const SignIn = () => {
                 <div className="form-control mb-7 relative">
                     <input type={showPass ? 'text' : 'password'} placeholder="Password" id='password' name='password' className="input bg-light-100 " required />
 
-                    <div onClick={() => setShowPass(!showPass)} className='absolute right-3 top-3'>
+                    <div onClick={() => setShowPass(!showPass)} className='cursor-pointer absolute right-3 top-3'>
                         {
                             showPass ? <BsEyeSlash className='text-2xl' /> : <BsEye className='text-2xl' />
                         }
@@ -67,7 +67,7 @@ const SignIn = () => {
                 </Link>
             </label>
 
-            <div className="inline-flex items-center justify-center w-full">
+            <div className="inline-flex items-center justify-center w-full relative">
                 <hr className="w-80 md:w-96 h-[0.15rem] font-thin my-8 bg-gray-200 border-0 rounded :bg-gray-700" />
                 <div className="absolute px-3 -translate-x-1/2 bg-white left-1/2 :bg-gray-900 text-xl font-light">or</div>
             </div>
