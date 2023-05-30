@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import OrderInfo from './OrderInfo';
-import CartItemDiv from '../ReviewCart/CartItemDiv';
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
 import { TbCurrencyTaka } from 'react-icons/tb';
+import ItemInfoDiv from '../../components/ItemInfoDiv/itemInfoDiv';
+import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 const Orderhistory = () => {
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
+
+    const { screenWidth } = useContext(UtilityContext);
     // Order details from json data
     const [orderInfo, setOrderInfo] = useState([]);
     useEffect(() => {
@@ -19,6 +23,7 @@ const Orderhistory = () => {
 
     // Products Information which is in cart after add to cart
     const [products, setProducts] = useState([]);
+
     useEffect(() => {
         fetch("table.json")
             .then((res) => res.json())
@@ -27,9 +32,13 @@ const Orderhistory = () => {
                 console.log(data);
             });
     }, []);
+
+    
     return (
         <>
-            <div className="w-[300px] md:w-[680px] lg:w-[900px] mx-auto my-8 md:my-20">
+         <PageTitle text='Order History'/>
+      
+            <div className="w-full lg:w-[900px] mx-auto px-2 md:px-4 my-2">
                 <div>
                     {/* Showing Order Infromation from OrderInfo.jsx */}
                     <OrderInfo orderInfo={orderInfo}></OrderInfo>
@@ -37,27 +46,36 @@ const Orderhistory = () => {
 
                 <hr className="my-4 md:my-10" />
 
-                {/* Showing Products Information from CartItemDiv.jsx  */}
+                {/* Showing Products Information from ItemInfoDiv.jsx  */}
                 <div>
-                    <h3 className="text-[10px] md:text-[20px] text-[#666666] font-medium">
+                    <h3 className="text-lg text-[#666666] font-medium">
                         Products
                     </h3>
-                    <div className="mx-2 md:mx-5">
+                    {
+                        screenWidth < 768 &&
+                        <div className="grid grid-cols-8 md:grid-cols-3 text-[#666666] font-medium text-base my-2">
+                        <p className="col-span-4 md:col-span-1 font-semibold">Name</p>
+                        <p className="col-span-2 md:col-span-1 text-center  font-semibold">Quantity</p>
+                        <p className="col-span-2 md:col-span-1 flex justify-end items-center font-semibold">Price</p>
+                      </div>
+                }
+                    <div className="px-0 md:xx-5">
                         {products.map((product) => (
-                            <CartItemDiv key={product.id} product={product}></CartItemDiv>
+                            <ItemInfoDiv key={product.id} product={product}></ItemInfoDiv>
                         ))}
                     </div>
                 </div>
 
                 <hr className="my-4 md:my-10" />
 
-                <div className="grid grid-cols-2 text-[#666666] font-medium text-[8px] md:text-base">
-                    <div>
+                <div className=" text-[#666666] font-medium text-base  md:text-base px-0 md:px-5">
+                    <div className='grid grid-cols-2'>
                         <p>Total Payment</p>
-                        <p className='mt-3'>Paid Through</p>
-                    </div>
-                    <div>
                         <p className='flex justify-end'><TbCurrencyTaka />134.56</p>
+
+                    </div>
+                    <div className='grid grid-cols-2'>
+                        <p className='mt-3'>Paid Through</p>
                         <p className='mt-3 text-right'>{orderInfo.paidThrough}</p>
                     </div>
                 </div>

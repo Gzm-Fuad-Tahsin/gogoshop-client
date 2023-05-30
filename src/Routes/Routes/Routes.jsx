@@ -15,7 +15,9 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 // loader 
-import {loader as subcategoryLoader} from '../../pages/SubCategoryProductView/SubCategoryProductView'
+import {loader as subcategoryLoader} from '../../pages/SubCategoryProductView/SubCategoryProductView';
+import {loader as productDetailLoader} from '../../pages/ProductDetail/ProductDetail'
+
 import Orderhistory from "../../pages/OrderHistory/OrderHistory";
 import ReviewCartsDiv from "../../pages/ReviewCart/ReviewCartsDiv";
 
@@ -70,7 +72,8 @@ export const router = createBrowserRouter([
             },
             {
                 path : '/product',
-                element : <ProductDetail/>,                
+                element : <ProductDetail/>,  
+                loader :  productDetailLoader,           
             },
             {
                 path : '*',

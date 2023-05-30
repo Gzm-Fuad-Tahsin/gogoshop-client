@@ -5,15 +5,16 @@ import SideNavbar from '../../pages/Shared/SideNavbar/SideNavbar';
 import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import Footer from '../../pages/Shared/Footer/Footer';
 import ScrollToTopButton from '../../pages/Shared/ScrollToTop/ScrollToTop';
+import SwipeNavigation from '../../assets/FunctionalityJSX/SwipeNavigation/SwipeNavigation';
 
 
 const Main = () => {
 
 
-    const { screenWidth, showSideNavbyTouch, hideSideNavbyTouch } = useContext(UtilityContext);
+    const { screenWidth, showSideNav, showSideNavbyTouch,  hideSideNavbyTouch } = useContext(UtilityContext);
 
 
-    const { showSideNav, setShowSideNav } = useContext(UtilityContext);
+ 
 
     const [goToTop, setGoToTop] = useState(true);
 
@@ -56,38 +57,73 @@ const Main = () => {
             {
                 screenWidth < 768 ?
                     <>
+                      <div className='border-b-[1px] max-w-full  sticky top-0 z-[1000] '>
+                            <TopNavbar />
+                        </div>
+                        <div className='flex'>
+                            {
+                                showSideNav &&
+                                <div className=' min-w-[240px] w-60 h-screen  overflow-y-scroll fixed  top-[62px] z-40   pt-4  bg-white flex flex-col ' >
+
+                                    <SideNavbar />
+                                    
+                                </div>
+                            }
+                            <div className="w-full" onTouchStart={hideSideNavbyTouch}>
+
+                                <Outlet ></Outlet>
+                                <Footer />
+
+                                {
+                                    goToTop && <ScrollToTopButton />
+                                }
+
+                            </div>
+                        </div>
+                       
+
+                               
+                               
+
+                         
+                      
+                        <SwipeNavigation showSideNavbySwipe={showSideNavbyTouch} hideSideNavbySwipe={hideSideNavbyTouch} />
+
                     </>
                     :
                     <>
+                        <div className='border-b-[1px] max-w-full  sticky top-0 z-[1000] '>
+                            <TopNavbar />
+                        </div>
+                        <div className='flex'>
+                            {
+                                showSideNav &&
+                                <div className=' min-w-[240px] w-60 h-screen  overflow-y-scroll sticky  top-[60px] z-40  pt-4  bg-white flex flex-col ' >
+
+                                    <SideNavbar />
+                                    
+                                </div>
+                            }
+                            <div className="w-full" onTouchStart={hideSideNavbyTouch}>
+
+                                <Outlet ></Outlet>
+                                <Footer />
+
+                                {
+                                    goToTop && <ScrollToTopButton />
+                                }
+
+                            </div>
+                        </div>
+
 
                     </>
             }
 
 
-            <TopNavbar />
-
-            <div className='flex'>
 
 
-                {
-                    showSideNav && <SideNavbar />
-                }
-
-                <div className="w-full" onTouchStart={hideSideNavbyTouch}>
-
-                    <Outlet ></Outlet>
-                    <Footer />
-
-                    {
-                        goToTop && <ScrollToTopButton />
-                    }
-
-                </div>
-            </div>
-
-
-            {/* <SwipeNavigation showSideNavbySwipe={showSideNavbyTouch} hideSideNavbySwipe={hideSideNavbyTouch} /> */}
-
+           
         </>
     );
 };

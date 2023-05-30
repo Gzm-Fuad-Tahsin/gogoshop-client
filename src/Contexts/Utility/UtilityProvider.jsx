@@ -35,11 +35,12 @@ const UtilityProvider = ({ children }) => {
 
 
 
-    const updateCart = (item_id, item_unique_name, qunatity) => {
-        console.log(item_id, item_unique_name, qunatity)
-        toast.success(`${qunatity} ${item_unique_name} added ---${item_id} `)
+    const updateCart = item => {
+        const {id, u_name, quantity} = item
+        toast.success(`${quantity} ${u_name} added ---${id} `)
 
     }
+    
 
     // _____________________________________footer__________________________
     const [footerData, setfooterData] = useState(null);

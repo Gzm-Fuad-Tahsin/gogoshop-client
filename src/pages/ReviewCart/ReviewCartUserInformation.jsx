@@ -6,42 +6,40 @@ const ReviewCartUserInformation = ({ customerInfo }) => {
     customerInfo;
   return (
     <>
-      <div className="grid grid-cols-2">
-        <div className="text-[#666666] font-medium text-[8px] md:text-base">
+      <div className="text-[#666666] font-medium text-base ">
+        <div className="flex justify-between items-center">
           <p>Deliver To</p>
+          <p>{customerName}</p>
+        </div>
+
+        <div className="flex justify-between items-center">
           <p className="my-2">Phone number</p>
+          <p className="my-2">{phone}</p>
+        </div>
+        <div className="flex justify-between items-center">
           <p>Delivery Address</p>
+          <p>{deliveryAddress}</p>
+        </div>
+        <div className="flex justify-between items-center">
           <p className="my-2">Billing Address</p>
+          <p className="my-2">{billingAddress}</p>
+        </div>
+        <div className="flex justify-between items-center">
           <p>Email</p>
+          <p>{email}</p>
         </div>
-        <div className="text-right text-[#666666] font-medium text-[8px] md:text-base">
-          <p className="mr-8 md:mr-16">{customerName}</p>
-          <p className="my-2">
-            {phone}{" "}
-            <Link className="ml-3 md:ml-6 text-blue-700">
-              Edit
-            </Link>
-          </p>
-          <p>
-            {deliveryAddress}{" "}
-            <Link className="ml-3 md:ml-6 text-blue-700">
-              Edit
-            </Link>
-          </p>
-          <p className="my-2">
-            {billingAddress}{" "}
-            <Link className="ml-3 md:ml-6 text-blue-700">
-              Edit
-            </Link>
-          </p>
-          <p>
-            {email}{" "}
-            <Link className="ml-3 md:ml-6 text-blue-700">
-              Edit
-            </Link>
-          </p>
+        <div className="flex justify-end items-center">
+          <Link className="ml-auto text- text-blue-700 hover:underline">
+            Edit 
+          </Link>
         </div>
+
+
+
+
       </div>
+
+
     </>
   );
 };

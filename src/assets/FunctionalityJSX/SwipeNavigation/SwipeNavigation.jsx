@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 function SwipeNavigation({ showSideNavbySwipe, hideSideNavbySwipe }) {
+  
   useEffect(() => {
     let startX = 0;
     let startY = 0;

@@ -24,10 +24,8 @@ const TopNavbar = ({ children }) => {
     return (
         <>
 
-            <div className='border-b-[1px] max-w-full  sticky top-0 z-[1000]'>
-
-
-                <div className="navbar px-1 bg-base-100 relative">
+           
+                <div className="navbar px-1 bg-base-100 relative border-b-[1px] h-[64px]">
 
                     <div className="navbar-start w-fit pl-1 md:pl-3 ">
                         <button className='text-slate-100 hover:text-slate-200 ' onClick={() => { setIsExpanded(false); setShowSideNav(!showSideNav); }}>
@@ -204,7 +202,7 @@ const TopNavbar = ({ children }) => {
                     </div>
                 </div>
 
-            </div >
+            
 
 
         </>

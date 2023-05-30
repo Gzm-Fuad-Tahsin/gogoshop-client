@@ -1,49 +1,329 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
-
-const SideNavbar = ({contentHeight}) => {
-    const {screenWidth} = useContext(UtilityContext)
+import { BsFillClipboard2CheckFill } from 'react-icons/bs'
+import rightarrow from '../../../assets/icons/rightArrow.svg';
+const SideNavbar = ({ contentHeight }) => {
+    const { screenWidth } = useContext(UtilityContext)
     return (
-        <div className='w-[80vw] md:w-60 
-        border overflow-y-scroll 
-        absolute top-[65px] z-40
-        md:sticky 
-        pt-4
-         bg-white
-        flex flex-col 
-        '
-        
-            style={{ height:
-                screenWidth<768 ?
-                contentHeight :
-    
-             'calc(100vh - 57px)'
-             
-             
-             }}
-        >
-            <div className="relative">
 
-                <div className="">
-                    <Link className='block' to='/subcategory/ja'>2</Link>
-                    <Link className='block' to='/subcategory/ja'>1</Link>
-                    <Link className='block' to='/subcategory/ja'>3</Link>
-                    <Link className='block' to='/subcategory/ja'>4</Link>
-                    <Link className='block' to='/subcategory/ja'>5</Link>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus laborum asperiores voluptatum pariatur maiores delectus architecto aperiam quis exercitationem sit blanditiis facilis rem quod aliquam excepturi, in soluta eaque, explicabo, ut dicta. Cupiditate deleniti, perspiciatis ipsam omnis suscipit culpa ratione est maiores at fugit provident eaque error! Dolore dolorum nihil in odit repellendus itaque, architecto eligendi odio ad, fugit ipsum ducimus, repellat praesentium veritatis ratione ab dolores porro quo non laborum maxime. Pariatur alias incidunt deserunt rerum molestiae minus fugit earum odio id nam sapiente, maxime, laborum vel deleniti temporibus impedit? Iure, molestias? Fuga alias doloremque dicta consectetur rem repellat nobis animi, laborum facilis reiciendis nulla voluptatibus enim quisquam dignissimos ad unde similique porro, culpa fugit distinctio ea. Doloribus tempora nostrum quis suscipit. Facere omnis quam commodi voluptate asperiores exercitationem aspernatur repellat iusto aut maxime aperiam nisi assumenda harum sunt eum vel, quaerat nam nemo amet, natus ipsum? Modi ut reprehenderit vitae dolores, excepturi vero incidunt doloribus! Quia aperiam ut architecto impedit, iure non alias! Quas eveniet quo, impedit harum earum aut dignissimos vitae esse cumque quae repudiandae ad porro sit reiciendis, ratione iusto qui eaque odit. Quaerat nobis neque quos expedita illum facilis numquam aperiam veritatis, itaque sequi atque. Cum, voluptatibus. Magni fugit quidem iste! Perferendis, magni. Amet magni aut, unde consectetur, eligendi inventore quam hic fuga alias tenetur repellat, at saepe? Error aliquid distinctio, consequatur nemo sint, nisi voluptatem quia beatae eius recusandae facere perspiciatis! Sunt qui blanditiis nam eaque? Corrupti quas eaque aperiam dolorem voluptates nesciunt hic possimus quam voluptate voluptatum temporibus quisquam non esse repudiandae provident aliquam, error fugit fuga eligendi maxime unde iste culpa. Cum quam soluta, delectus provident corrupti ipsum sint saepe unde libero. Explicabo deleniti repellendus quisquam cumque, illum debitis, dolor provident expedita nihil itaque error minus ullam labore sed eveniet magni, saepe maiores ea cupiditate facilis at adipisci? Debitis non nostrum voluptate eos! Repudiandae consequatur veritatis suscipit error ea, alias id, nobis velit explicabo earum molestias doloribus animi nulla distinctio voluptates quidem labore aperiam vero provident! Recusandae cumque ipsum perferendis dolorum earum? Sequi nulla fugiat iusto illum tempore dolores enim nostrum laudantium hic architecto repudiandae illo suscipit recusandae, culpa soluta debitis, dicta ipsam repellat iste cumque consequuntur? Optio, expedita minima non, totam sed architecto eius exercitationem ut tenetur veritatis rerum aliquam harum, nisi maxime a quisquam! Necessitatibus commodi placeat deleniti vero eaque accusantium cumque aspernatur unde, consequuntur dolor, corporis, magnam deserunt ex!
-                    <Link to='/subcategory/ja'>ja ja</Link>
-                </div>
+        <aside className="relative border-r bg-white text-black font-medium">
+
+            <ul className="">
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">1</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
 
 
-                <div className="sticky bottom-0 bg-black  text-white">
-                    hdhfsdsh
-                </div>
-            </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">2</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">3</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/subcategory' className="flex items-center justify-between p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <div className="flex items-center justify-between">
+                            <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                            <span className="ml-4">Fruits</span>
+                        </div>
+                        <div className="pr-2">
+                            <img src={rightarrow} alt="" />
+                        </div>
+
+
+                    </Link>
+                </li>
+            </ul>
+
+
+            <ul className="fixed  w-60 bg-white bottom-0  pt-4  pb-1  border-t ">
+                <li>
+                    <Link to='/orders' className="flex items-center p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
+                        <span className="ml-4">My Orders</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/' className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                        <svg width="18" height="18" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fillRule="evenodd" clipRule="evenodd" d="M10.0317 10.9724C14.0208 14.9604 14.9258 10.3467 17.4656 12.8848C19.9143 15.3328 21.3216 15.8232 18.2192 18.9247C17.8306 19.237 15.3616 22.9943 6.6846 14.3197C-1.99348 5.644 1.76158 3.17244 2.07397 2.78395C5.18387 -0.326154 5.66586 1.08938 8.11449 3.53733C10.6544 6.0765 6.04266 6.98441 10.0317 10.9724Z" stroke="#205072" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span className="ml-4">Helpline</span>
+                    </Link>
+                </li>
+
+
+            </ul>
+        </aside>
 
 
 
-        </div>
+
+
+
     );
 };
 
