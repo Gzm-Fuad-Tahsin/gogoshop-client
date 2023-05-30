@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
+import { fetchJson } from "../../assets/Scripts/utility";
+import { useLoaderData } from "react-router-dom";
+import PageTitle from "../../components/PageTitle/PageTitle";
+export async function loader({ params }) {
+
+  return await fetchJson("products.json");
+
+}
 
 const SubCategoryProductView = () => {
-  const [products, setProducts] = useState([]);
-
+  const productsData = useLoaderData();
   useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, []);
+
 
   return (
     <>
-      <div className="flex flex-wrap">
-        {products.map((product) => (
+    <PageTitle text='subcategoryname'/>
+      <div className="flex flex-wrap ">
+        {productsData.map((product) => (
           <Card key={product.id} product={product}></Card>
         ))}
       </div>
+
+
     </>
   );
 };

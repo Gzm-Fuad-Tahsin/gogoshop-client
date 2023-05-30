@@ -1,16 +1,17 @@
-import React from 'react';
-import ReviewCarts from '../../ReviewCart/ReviewCarts';
-import ReviewCartDiv from '../../ReviewCart/ReviewCartDiv';
-import ReviewCartsDiv from '../../ReviewCart/ReviewCartsDiv';
-import Orderhistory from '../../OrderHistory/OrderHistory';
+import React, { useEffect } from 'react';
+
 
 
 const Home = () => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
     return (
         <>
-        {/* <ReviewCarts></ReviewCarts> */}
-        {/* <ReviewCartsDiv></ReviewCartsDiv> */}
-        <Orderhistory></Orderhistory>
+            <div className="w-full"></div>
+            {/* <ReviewCarts></ReviewCarts> */}
+            {/* <ReviewCartsDiv></ReviewCartsDiv> */}
+            {/* <Orderhistory></Orderhistory> */}
         </>
     );
 };
