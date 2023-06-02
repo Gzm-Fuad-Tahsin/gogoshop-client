@@ -6,12 +6,12 @@ const UtilityProvider = ({ children }) => {
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [cart, setCart] = useState([]);
-    const [cart1, setCart1] = useState([]);
+   
 
 
     //_________________navbar____________________________
     const [showSideNav, setShowSideNav] = useState(true);
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);  //search bar in small screen
 
     useEffect(() => {
         setIsExpanded(false)
@@ -26,7 +26,7 @@ const UtilityProvider = ({ children }) => {
 // ___________________________cart_____________________________
 
     useEffect(() => {
-        fetch('cartsdata.json')
+        fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/carts`)
             .then(res => res.json())
             .then(data => {
                 setCart(data)
@@ -42,15 +42,10 @@ const UtilityProvider = ({ children }) => {
     }
     
 
-    // _____________________________________footer__________________________
-    const [footerData, setfooterData] = useState(null);
 
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/footer`)
-            .then(res => res.json())
-            .then(data => setfooterData(data))
-    }, [])
 
+    
+  
 
 
     // ____________________________________touch__________________
@@ -70,61 +65,30 @@ const UtilityProvider = ({ children }) => {
 
 
 
-
-    const handleResize = () => {
-        setScreenWidth(window.innerWidth);
-    };
-
     useEffect(() => {
-        // Add event listener for resize
-        window.addEventListener('resize', handleResize);
+        const handleResize = () => {
+            setScreenWidth(window.innerWidth);
 
-        // Cleanup the event listener on component unmount
-        return () => {
+          };
+      
+          window.addEventListener('resize', handleResize);
+      
+          return () => {
             window.removeEventListener('resize', handleResize);
-            
-        };
-    }, []);
-
-
-
-    const [screenHeight, setScreenHeight] = useState(0);
-
-    useEffect(() => {
-      const handleResize = () => {
-        setScreenHeight(window.innerHeight);
-      };
-  
-      // Set initial screen height
-      setScreenHeight(window.innerHeight);
-  
-      // Update screen height on window resize
-      window.addEventListener('resize', handleResize);
-  
-      // Clean up event listener on component unmount
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
+          };
     }, []);
 
 
 
 
-    // _____________________________ SCROLL TO TOP ____________________________________________
-    const ScrollToTop = () =>{
-         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }
-  
+
 
 
     const value = {
-        ScrollToTop,
-        screenHeight,
         screenWidth,
         cart,
         setCart,
         updateCart,
-        footerData,
         showSideNav,
         setShowSideNav,
         showSideNavbyTouch,

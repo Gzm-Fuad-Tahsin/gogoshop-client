@@ -6,20 +6,21 @@ import { TbCurrencyTaka } from 'react-icons/tb';
 import ItemInfoDiv from '../../components/ItemInfoDiv/itemInfoDiv';
 import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
+import { fetchJson } from '../../assets/Scripts/utility';
 
+
+export async function loader({ params }) {
+
+    return await fetchJson("orderDetails.json");
+  
+  }
 const Orderhistory = () => {
-    useEffect(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }, []);
-
+   
     const { screenWidth } = useContext(UtilityContext);
     // Order details from json data
     const [orderInfo, setOrderInfo] = useState([]);
-    useEffect(() => {
-        fetch("orderDetails.json")
-            .then((res) => res.json())
-            .then((data) => setOrderInfo(data));
-    }, []);
+ 
 
     // Products Information which is in cart after add to cart
     const [products, setProducts] = useState([]);
@@ -29,22 +30,23 @@ const Orderhistory = () => {
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
-                console.log(data);
             });
     }, []);
 
     
     return (
         <>
+         <ScrollToTop/>
+
          <PageTitle text='Order History'/>
       
-            <div className="w-full lg:w-[900px] mx-auto px-2 md:px-4 my-2">
+            <div className="w-full lg:w-[900px] mx-auto px-2 md:px-5 my-2">
                 <div>
                     {/* Showing Order Infromation from OrderInfo.jsx */}
                     <OrderInfo orderInfo={orderInfo}></OrderInfo>
                 </div>
 
-                <hr className="my-4 md:my-10" />
+                <hr className="my-2" />
 
                 {/* Showing Products Information from ItemInfoDiv.jsx  */}
                 <div>
@@ -59,14 +61,14 @@ const Orderhistory = () => {
                         <p className="col-span-2 md:col-span-1 flex justify-end items-center font-semibold">Price</p>
                       </div>
                 }
-                    <div className="px-0 md:xx-5">
+                    <div className="px-0 md:px-5">
                         {products.map((product) => (
                             <ItemInfoDiv key={product.id} product={product}></ItemInfoDiv>
                         ))}
                     </div>
                 </div>
 
-                <hr className="my-4 md:my-10" />
+                <hr className="my-2" />
 
                 <div className=" text-[#666666] font-medium text-base  md:text-base px-0 md:px-5">
                     <div className='grid grid-cols-2'>
@@ -79,7 +81,7 @@ const Orderhistory = () => {
                         <p className='mt-3 text-right'>{orderInfo.paidThrough}</p>
                     </div>
                 </div>
-                <Link to="/" className='flex gap-3 my-16 text-[#666666] font-medium text-[8px] md:text-base'><IoIosArrowBack></IoIosArrowBack>Go back to<span className='text-blue-700'>Home</span></Link>
+                <Link to="/" className='flex items-center gap-1 hover:underline my-16 text-[#666666] font-medium text-[8px] md:text-base'><IoIosArrowBack></IoIosArrowBack>Go back to<span className='text-blue-700'>Home</span></Link>
             </div>
         </>
     );

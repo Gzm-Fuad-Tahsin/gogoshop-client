@@ -10,13 +10,12 @@ import rocketlogo from '../../assets/icons/rocket.svg'
 import nagad from '../../assets/icons/Nagad-Logo 1.svg'
 import mastercard from '../../assets/icons/Mastercard-Logo.wine.svg'
 import visa from '../../assets/icons/Visa_Inc.-Logo.wine.svg'
+import ScrollToTop from "../../components/ScrollToTop/ScrollTotop";
 
 
 const ReviewCartsDiv = () => {
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  }, []);
+ 
 
 
   const { screenWidth } = useContext(UtilityContext);
@@ -49,6 +48,7 @@ const ReviewCartsDiv = () => {
 
   return (
     <>
+    <ScrollToTop/>
       <PageTitle text='Place Order' />
       <div className=" w-full lg:w-[900px] mx-auto px-2 md:px-4 ">
 
@@ -57,13 +57,11 @@ const ReviewCartsDiv = () => {
         {/* Showing Customer Information from ReviewCartDiv.jsx */}
         <ReviewCartUserInformation customerInfo={customerInfo}></ReviewCartUserInformation>
 
-        <hr className="my-2 md:my-5" />
+        <hr className="my-2" />
 
         {/* Showing Products Information in cart from ItemInfoDiv.jsx  */}
         <div>
-          <h3 className="text-lg text-[#666666] font-medium">
-            Products
-          </h3>
+          <h3 className="text-gray-600 font-semibold">Products</h3>
           {
             screenWidth < 768 &&
             <div className="grid grid-cols-8 md:grid-cols-3 text-[#666666] font-medium text-base my-2">
@@ -91,7 +89,7 @@ const ReviewCartsDiv = () => {
             </div>
 
           </div>
-          <hr className="my-2 md:my-5" />
+          <hr className="my-2" />
 
 
           <div className="grid grid-cols-12 mt-2 md:mt-5 mx-2 md:mx-5" aria-label="subtotal">

@@ -16,10 +16,13 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 // loader 
 import {loader as subcategoryLoader} from '../../pages/SubCategoryProductView/SubCategoryProductView';
-import {loader as productDetailLoader} from '../../pages/ProductDetail/ProductDetail'
+import {loader as productDetailLoader} from '../../pages/ProductDetail/ProductDetail';
+import {loader as orderStatusLoader} from '../../pages/OrderStatus/OrderStatus'
+import {loader as HomePageAllDataLoader} from '../../Layout/Main/Main'
 
-import Orderhistory from "../../pages/OrderHistory/OrderHistory";
 import ReviewCartsDiv from "../../pages/ReviewCart/ReviewCartsDiv";
+import Orderhistory from "../../pages/OrderHistory/Orderhistory";
+import OrderStatus from "../../pages/OrderStatus/OrderStatus";
 
 
 
@@ -27,6 +30,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element : <Main/>,
+        loader : HomePageAllDataLoader,
         children : [
             {
                 path : '/',
@@ -54,6 +58,10 @@ export const router = createBrowserRouter([
                 element : <PrivateRoute><UserProfile/></PrivateRoute>
             },
             {
+                path : '/updateprofile',
+                element : <PrivateRoute><div>sdkljflskdajfklsd</div></PrivateRoute>
+            },
+            {
                 path : '/cart',
                 element : <PrivateRoute><ReviewCartsDiv/></PrivateRoute>
             },
@@ -62,11 +70,16 @@ export const router = createBrowserRouter([
                 element : <PrivateRoute><ReviewCartsDiv/></PrivateRoute>
             },
             {
-                path : '/orders',
+                path : '/order-history',
                 element : <PrivateRoute><Orderhistory/></PrivateRoute>
             },
             {
-                path : '/subcategory',
+                path : '/orderstatus/:orderId',
+                element : <PrivateRoute><OrderStatus/></PrivateRoute>,
+                loader: orderStatusLoader
+            },
+            {
+                path : '/:path_Subcat_Uname',
                 element : <SubCategoryProductView/>,
                 loader: subcategoryLoader,
             },

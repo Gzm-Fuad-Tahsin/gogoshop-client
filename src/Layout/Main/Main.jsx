@@ -1,107 +1,54 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import TopNavbar from '../../pages/Shared/TopNavBar/TopNavbar';
-import SideNavbar from '../../pages/Shared/SideNavbar/SideNavbar';
+import SideNavbar from '../../pages/Shared/SideNavbar/SideNavbar/SideNavbar';
 import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import Footer from '../../pages/Shared/Footer/Footer';
-import ScrollToTopButton from '../../pages/Shared/ScrollToTop/ScrollToTop';
-import SwipeNavigation from '../../assets/FunctionalityJSX/SwipeNavigation/SwipeNavigation';
+import { fetchJson } from '../../assets/Scripts/utility';
 
 
+export const WebpageDataContext = createContext();
+
+
+export async function loader({ params }) {
+
+    return await fetchJson(`${import.meta.env.VITE_SERVER_ADDRESS}/home`);
+
+}
 const Main = () => {
 
 
-    const { screenWidth, showSideNav, showSideNavbyTouch,  hideSideNavbyTouch } = useContext(UtilityContext);
+
+    //load the all products, category and footer data;
+    const homepageInformation = useLoaderData();
+    const {categories,AllproductsData,footerData} = homepageInformation;
 
 
- 
 
-    const [goToTop, setGoToTop] = useState(true);
 
-    // scroll to top 
-    useEffect(() => {
-        let isThrottled = false;
 
-        const handleScroll = () => {
-            if (!isThrottled) {
-                isThrottled = true;
-
-                setTimeout(() => {
-                    const isScrollPositionGreaterThanScreenHeight = window.scrollY > window.innerHeight;
-
-                    if (isScrollPositionGreaterThanScreenHeight && goToTop) {
-
-                        setGoToTop(true)
-                        console.log("User's scrolling position is greater than the screen height");
-
-                    } else {
-                        setGoToTop(false)
-
-                    }
-
-                    isThrottled = false;
-                }, 200); // Throttle the event to execute every 200 milliseconds
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
+    const { screenWidth, showSideNav, hideSideNavbyTouch } = useContext(UtilityContext);
+    const contextvalue = {
+        AllproductsData,
+        categories,
+        footerData
+    }
 
     return (
         <>
-            {
-                screenWidth < 768 ?
-                    <>
-                      <div className='border-b-[1px] max-w-full  sticky top-0 z-[1000] '>
-                            <TopNavbar />
-                        </div>
-                        <div className='flex'>
-                            {
-                                showSideNav &&
-                                <div className=' min-w-[240px] w-60 h-screen  overflow-y-scroll fixed  top-[62px] z-40   pt-4  bg-white flex flex-col ' >
-
-                                    <SideNavbar />
-                                    
-                                </div>
-                            }
-                            <div className="w-full" onTouchStart={hideSideNavbyTouch}>
-
-                                <Outlet ></Outlet>
-                                <Footer />
-
-                                {
-                                    goToTop && <ScrollToTopButton />
-                                }
-
-                            </div>
-                        </div>
-                       
-
-                               
-                               
-
-                         
-                      
-                        <SwipeNavigation showSideNavbySwipe={showSideNavbyTouch} hideSideNavbySwipe={hideSideNavbyTouch} />
-
-                    </>
-                    :
+        <WebpageDataContext.Provider  value={contextvalue}>
+            
+            
+                
                     <>
                         <div className='border-b-[1px] max-w-full  sticky top-0 z-[1000] '>
                             <TopNavbar />
                         </div>
-                        <div className='flex'>
+                        <div className='flex relative'>
                             {
                                 showSideNav &&
-                                <div className=' min-w-[240px] w-60 h-screen  overflow-y-scroll sticky  top-[60px] z-40  pt-4  bg-white flex flex-col ' >
-
+                                <div className={` min-w-[240px] w-60 h-screen  overflow-y-auto  ${screenWidth<768 ? 'fixed' : 'sticky'} top-[64px] z-40   bg-white flex flex-col `} >
                                     <SideNavbar />
-                                    
                                 </div>
                             }
                             <div className="w-full" onTouchStart={hideSideNavbyTouch}>
@@ -109,21 +56,19 @@ const Main = () => {
                                 <Outlet ></Outlet>
                                 <Footer />
 
-                                {
-                                    goToTop && <ScrollToTopButton />
-                                }
-
                             </div>
                         </div>
 
+                        {/* <SwipeNavigation showSideNavbySwipe={showSideNavbyTouch} hideSideNavbySwipe={hideSideNavbyTouch} /> */}
 
                     </>
-            }
+                            </WebpageDataContext.Provider>
+            
 
 
 
 
-           
+
         </>
     );
 };

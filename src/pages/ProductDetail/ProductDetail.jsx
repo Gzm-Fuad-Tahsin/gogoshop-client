@@ -8,6 +8,7 @@ import { fetchJson } from '../../assets/Scripts/utility';
 import { toast } from 'react-hot-toast';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import PageTitleBreadCrumb from '../../components/PageTitleBreadCrumb/PageTitleBreadCrumb';
+import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
 
 
 export async function loader({ params }) {
@@ -16,9 +17,7 @@ export async function loader({ params }) {
 
 }
 const ProductDetail = () => {
-    useEffect(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }, []);
+   
 
     const { cart, updateCart } = useContext(UtilityContext);
 
@@ -107,6 +106,7 @@ const ProductDetail = () => {
 
     return (
         <>
+        <ScrollToTop/>
         <PageTitleBreadCrumb data={['category','subcategory' ]}/>
             <div className='flex justify-center p-2  pt-4  '>
 
