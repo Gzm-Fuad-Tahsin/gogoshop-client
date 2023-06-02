@@ -26,7 +26,15 @@ const UtilityProvider = ({ children }) => {
 // ___________________________cart_____________________________
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/carts`)
+        
+        fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/home`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+            
+            
+            fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/carts`)
             .then(res => res.json())
             .then(data => {
                 setCart(data)

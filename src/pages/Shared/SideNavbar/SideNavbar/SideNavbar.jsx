@@ -23,7 +23,7 @@ const SideNavbar = () => {
 
     return (
 
-        <aside className=" border-r bg-white text-black font-medium">
+        <aside className="borsder-r bg-white text-black font-medium">
 
             <ul className="">
 

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './SideNavBar.module.css';
 import { GoChevronRight } from 'react-icons/go';
 import { Link, NavLink } from 'react-router-dom';
+import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
 
 
 const SideNavbarItem = ({ data }) => {
+    const {hideSideNavbyTouch} = useContext(UtilityContext);
     const [isOpen, setIsOpen] = useState(false);
 
     const { _id, isActive, category_unique_name, img, categoy_name, sub_category, path } = data;
@@ -57,6 +59,7 @@ const SideNavbarItem = ({ data }) => {
                         sub_category.map(item => <NavLink
                             key={item.sub_cat_id}
                             to={`${item.sub_category_unique_name}`}
+                            
                             className={({ isActive, isPending }) =>
                                 isActive
                                     ? "flex items-center pl-1 py-2 text-gray-800 bg-light-200 hover:bg-light-200 rounded "

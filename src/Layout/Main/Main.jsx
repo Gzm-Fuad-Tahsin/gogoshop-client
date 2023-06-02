@@ -4,6 +4,7 @@ import TopNavbar from '../../pages/Shared/TopNavBar/TopNavbar';
 import SideNavbar from '../../pages/Shared/SideNavbar/SideNavbar/SideNavbar';
 import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import Footer from '../../pages/Shared/Footer/Footer';
+
 import { fetchJson } from '../../assets/Scripts/utility';
 
 
@@ -26,11 +27,10 @@ const Main = () => {
 
 
 
-
     const { screenWidth, showSideNav, hideSideNavbyTouch } = useContext(UtilityContext);
     const contextvalue = {
-        AllproductsData,
         categories,
+        AllproductsData,
         footerData
     }
 
@@ -47,8 +47,8 @@ const Main = () => {
                         <div className='flex relative'>
                             {
                                 showSideNav &&
-                                <div className={` min-w-[240px] w-60 h-screen  overflow-y-auto  ${screenWidth<768 ? 'fixed' : 'sticky'} top-[64px] z-40   bg-white flex flex-col `} >
-                                    <SideNavbar />
+                                <div className={`min-w-[240px] w-60 h-screen  overflow-y-auto  ${screenWidth<768 ? 'fixed' : 'sticky'} top-[64px] z-40   bg-white flex flex-col `} >
+                                  <SideNavbar/>
                                 </div>
                             }
                             <div className="w-full" onTouchStart={hideSideNavbyTouch}>

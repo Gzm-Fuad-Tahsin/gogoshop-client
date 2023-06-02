@@ -15,17 +15,19 @@ export async function loader({ params }) {
 const SubCategoryProductView = () => {
   const { AllproductsData } = useContext(WebpageDataContext);  //fetch products from context
   const path_Subcat_Uname = useLoaderData();
-  
+
 
   const [SubcategoryProducts, setSubcategoryProducts] = useState([]);
 
   useEffect(() => {
-    const data =  AllproductsData.find(productData=>productData?.sub_category_Uname ===path_Subcat_Uname)
-    setSubcategoryProducts(data);
-   
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    if (Array.isArray(AllproductsData)) {
 
+      const data = AllproductsData.find(productData => productData?.sub_category_Uname === path_Subcat_Uname)
+      setSubcategoryProducts(data);
+    }
 
-  }, [path_Subcat_Uname,AllproductsData])
+  }, [path_Subcat_Uname, AllproductsData])
 
 
   const { sub_category_Uname, subcategoryname, products } = SubcategoryProducts;
@@ -35,18 +37,24 @@ const SubCategoryProductView = () => {
   return (
     <>
 
-      <ScrollToTop />
-      <PageTitle text={subcategoryname} />
-      <div className="flex flex-wrap justify-evenly">
-        {Array.isArray(products) ?
-          products.map((product) => (
-            <Card key={product.id} product={product}></Card>
-          ))
+      {
+        Array.isArray(products) ?
+          <>
+            <PageTitle text={subcategoryname} />
+            <div className="flex flex-wrap justify-evenly">
+              {
+                products.map((product) => (
+                  <Card key={product.id} product={product}></Card>
+                ))
+
+
+              }
+            </div>
+          </>
           :
           <NotFound />
+      }
 
-        }
-      </div>
 
 
     </>
