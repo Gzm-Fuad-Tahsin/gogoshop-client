@@ -10,7 +10,7 @@ import './SideNavbar.module.css'
 
 
 const SideNavbar = () => {
-    const { screenWidth } = useContext(UtilityContext);
+    const { screenWidth,hideSideNavbyTouch } = useContext(UtilityContext);
     const { user } = useContext(AuthContext);
     const { categories } = useContext(WebpageDataContext);
 
@@ -51,19 +51,19 @@ const SideNavbar = () => {
                             <ul className="menu dropdown-content  p-2 border-0 border-b   bg-base-100  text-gray-700">
 
 
-                                <li>
+                                <li onClick={hideSideNavbyTouch}>
                                     <Link to='/profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Profile</Link>
                                 </li>
-                                <li>
+                                <li onClick={hideSideNavbyTouch}>
                                     <Link to='/updateprofile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Update information</Link>
                                 </li>
-                                <li>
+                                <li onClick={hideSideNavbyTouch}>
                                     <Link to='/orderstatus/8' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">My orders</Link>
                                 </li>
-                                <li>
+                                <li onClick={hideSideNavbyTouch}>
                                     <Link to='/order-history' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Order History</Link>
                                 </li>
-                                <li>
+                                <li onClick={hideSideNavbyTouch}>
                                     <Link className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Sign out</Link>
                                 </li>
                             </ul>

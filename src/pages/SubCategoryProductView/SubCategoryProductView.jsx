@@ -5,6 +5,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import ScrollToTop from "../../components/ScrollToTop/ScrollTotop";
 import NotFound from "../ErrorPages/NotFound/NotFound";
 import { WebpageDataContext } from "../../Layout/Main/Main";
+import { UtilityContext } from "../../Contexts/Utility/UtilityProvider";
 
 
 export async function loader({ params }) {
@@ -13,6 +14,7 @@ export async function loader({ params }) {
 }
 
 const SubCategoryProductView = () => {
+  const {hideSideNavbyTouch} = useContext(UtilityContext);
   const { AllproductsData } = useContext(WebpageDataContext);  //fetch products from context
   const path_Subcat_Uname = useLoaderData();
 
@@ -20,6 +22,7 @@ const SubCategoryProductView = () => {
   const [SubcategoryProducts, setSubcategoryProducts] = useState([]);
 
   useEffect(() => {
+    hideSideNavbyTouch(false);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     if (Array.isArray(AllproductsData)) {
 
