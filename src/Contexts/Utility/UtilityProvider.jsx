@@ -10,6 +10,7 @@ const UtilityProvider = ({ children }) => {
 
 
     //_________________navbar____________________________
+    
     const [showSideNav, setShowSideNav] = useState(true);
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -43,10 +44,11 @@ const UtilityProvider = ({ children }) => {
     
 
     // _____________________________________footer__________________________
+
     const [footerData, setfooterData] = useState(null);
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/footer`)
+        fetch(`${import.meta.env.VITE_SERVER_ADDRESS}footer`)
             .then(res => res.json())
             .then(data => setfooterData(data))
     }, [])
@@ -54,6 +56,7 @@ const UtilityProvider = ({ children }) => {
 
 
     // ____________________________________touch__________________
+    
     const showSideNavbyTouch = () => {
         if(screenWidth<768){
             setShowSideNav(true);

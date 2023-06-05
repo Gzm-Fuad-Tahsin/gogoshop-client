@@ -15,73 +15,80 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 // loader 
-import {loader as subcategoryLoader} from '../../pages/SubCategoryProductView/SubCategoryProductView';
-import {loader as productDetailLoader} from '../../pages/ProductDetail/ProductDetail'
+import { loader as subcategoryLoader } from '../../pages/SubCategoryProductView/SubCategoryProductView';
+import { loader as productDetailLoader } from '../../pages/ProductDetail/ProductDetail';
+import { loader as cartLoader } from "../../pages/CurrentOrder/CurrentOrder";
 
 import Orderhistory from "../../pages/OrderHistory/OrderHistory";
 import ReviewCartsDiv from "../../pages/ReviewCart/ReviewCartsDiv";
+import Cart from "../../pages/CurrentOrder/CurrentOrder";
 
 
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element : <Main/>,
-        children : [
+        element: <Main />,
+        children: [
             {
-                path : '/',
-                element : <Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
-         
+
             {
-                path : '/login',
-                element : <PreventLogin><SignIn/></PreventLogin>
-            },
-            {
-                path : '/sign-up',
-                element : <PreventLogin><SignUp/></PreventLogin>
+                path: '/login',
+                element: <PreventLogin><SignIn /></PreventLogin>
             },
             {
-                path : '/auth-phone',
-                element : <PreventLogin><MobileSignUp/></PreventLogin>
+                path: '/sign-up',
+                element: <PreventLogin><SignUp /></PreventLogin>
             },
             {
-                path : '/forget-password',
-                element : <PreventLogin><ForgotPassword/></PreventLogin>
+                path: '/auth-phone',
+                element: <PreventLogin><MobileSignUp /></PreventLogin>
             },
             {
-                path : '/profile',
-                element : <PrivateRoute><UserProfile/></PrivateRoute>
+                path: '/forget-password',
+                element: <PreventLogin><ForgotPassword /></PreventLogin>
             },
             {
-                path : '/cart',
-                element : <PrivateRoute><ReviewCartsDiv/></PrivateRoute>
+                path: '/profile',
+                element: <PrivateRoute><UserProfile /></PrivateRoute>
             },
             {
-                path : '/proceed-to-pay',
-                element : <PrivateRoute><ReviewCartsDiv/></PrivateRoute>
+                path: '/cart',
+                element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>
             },
             {
-                path : '/orders',
-                element : <PrivateRoute><Orderhistory/></PrivateRoute>
+                path: '/proceed-to-pay',
+                element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>
             },
             {
-                path : '/subcategory',
-                element : <SubCategoryProductView/>,
+                path: '/orders',
+                element: <PrivateRoute><Orderhistory /></PrivateRoute>
+            },
+            {
+                path: '/subcategory',
+                element: <SubCategoryProductView />,
                 loader: subcategoryLoader,
             },
             {
-                path : '/product',
-                element : <ProductDetail/>,  
-                loader :  productDetailLoader,           
+                path: '/product',
+                element: <ProductDetail />,
+                loader: productDetailLoader,
             },
             {
-                path : '*',
-                element : <NotFound/>
+                path: '/orderCart',
+                element: <Cart />,
+                loader: cartLoader,
+            },
+            {
+                path: '*',
+                element: <NotFound />
             }
         ],
 
-       
+
     },
-   
+
 ])

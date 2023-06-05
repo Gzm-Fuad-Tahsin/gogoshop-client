@@ -22,7 +22,7 @@ const OrderStatus = () => {
             {/* Stepper code */}
             <div>
                 
-            <ol className="relative border-l border-gray-300 ml-5 mt-5">                  
+            {/* <ol className="relative border-l border-gray-300 ml-5 mt-5">                  
                 {
                       trackingInfo &&  trackingInfo.map(track => <><li className="mb-10 ml-4">
                             <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border "></div>
@@ -30,7 +30,13 @@ const OrderStatus = () => {
                             <h3 className="text-lg font-semibold text-[#666666]">{track.status}</h3>
                         </li></>)
                 }
-            </ol>
+            </ol> */}
+                <ul className="steps steps-vertical mx-auto w-full mt-4 lg:steps-horizontal">
+                    <li className="step step-primary">Register</li>
+                    <li className="step step-primary">Choose plan</li>
+                    <li className="step">Purchase</li>
+                    <li className="step">Receive Product</li>
+                </ul>
 
             </div>
 
