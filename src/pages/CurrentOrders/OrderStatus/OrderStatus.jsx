@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import OrderAlert from './OrderAlert';
-import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
-import { fetchJson } from '../../assets/Scripts/utility';
+import ScrollToTop from '../../../components/ScrollToTop/ScrollTotop';
+import { fetchJson } from '../../../assets/Scripts/utility';
 import { IoIosArrowBack } from "react-icons/io";
-import PageTitle from '../../components/PageTitle/PageTitle';
+import PageTitle from '../../../components/PageTitle/PageTitle';
 export async function loader({ params }) {
 
     return await fetchJson(`${import.meta.env.VITE_SERVER_ADDRESS}/orderstatus/${params.orderId}`);

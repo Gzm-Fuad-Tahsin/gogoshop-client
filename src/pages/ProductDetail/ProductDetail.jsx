@@ -13,19 +13,15 @@ import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
 
 export async function loader({ params }) {
 
-    return await fetchJson("productDetailData.json");
+    return await fetchJson(`${import.meta.env.VITE_SERVER_ADDRESS}/productDetail/${params.product_slug_name}`);
 
 }
 const ProductDetail = () => {
-   
+    const productData = useLoaderData();
+    const { id, img, name, slug_name, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
+  
 
     const { cart, updateCart } = useContext(UtilityContext);
-
-    const productData = useLoaderData();
-
-    const { id, img, name, u_name, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
-
-
 
     // ________________________________cart item for this item_______________________________
     const [cartItem, setCartItem] = useState({
@@ -34,23 +30,7 @@ const ProductDetail = () => {
         "quantity": 1
     })
 
-    useEffect(() => {
 
-        setQuantity(cartItem.quantity)
-
-    }, [cartItem])
-
-
-
-    //___________________________set the quantity if previously added________________________
-    useEffect(() => {
-        if (cart.length > 0 && productData) {
-
-            setCartItem(cart.find(item => item.id === productData?.id))
-        }
-
-    }, [cart, productData])
-    // _______________________________________________________________________
 
 
     //animation effect
@@ -87,6 +67,8 @@ const ProductDetail = () => {
         setQuantity(parseInt(quantity) + 1);
 
     }
+
+
     const handledecrease = e => {
         event.preventDefault();
 
@@ -197,7 +179,7 @@ const ProductDetail = () => {
                                     </div>
                                 </div>
                                 <div className="col-span-3 md:col-span-6 lg:col-span-12 w-full md:w-64  xl:max-w-sm">
-                                    <button onClick={() => updateCart({ id, u_name, quantity })} className="btn h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
+                                    <button onClick={() => updateCart({ id, slug_name, quantity })} className="btn h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
                                         <CiShoppingCart className='text-2xl' />
                                         <span className="hidden md:block lg:block 2xl:block mx-0 md:mx-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Add to Cart</span>
 

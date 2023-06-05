@@ -38,8 +38,8 @@ const UtilityProvider = ({ children }) => {
 
 
     const updateCart = item => {
-        const {id, u_name, quantity} = item
-        toast.success(`${quantity} ${u_name} added ---${id} `)
+        const {id, slug_name, quantity} = item
+        toast.success(`${quantity} ${slug_name} added ---${id} `)
 
     }
     

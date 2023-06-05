@@ -16,32 +16,32 @@ const SideNavbarItem = ({ data }) => {
         setIsOpen(!isOpen);
     };
 
+    //button 
+    const button =
+        <>
+            <button id={_id}
+                className="w-full flex items-center justify-between p-2  text-gray-700 hover:bg-gray-100"
+                onClick={toggleMenu} >
+                <div className='flex items-center'>
+                    <img src={img} alt={category_unique_name} className='w-6 h-6' />
+                    <span className="ml-2">{categoy_name}</span>
+                </div>
 
 
-    const button = <>
-                      <button id={_id} 
-                      className="w-full flex items-center justify-between p-2  text-gray-700 hover:bg-gray-100"
-                      onClick={toggleMenu}
-        >
-            <div className='flex items-center'>
-                <img src={img} alt={category_unique_name} className='w-6 h-6' />
-                <span className="ml-2">{categoy_name}</span>
-            </div>
+                {
+                    (sub_category && (sub_category.length > 0)) && <GoChevronRight className={`w-5 h-5 transition-transform duration-50000 ${isOpen ? 'transform rotate-90' : ''}`} />
+                }
 
-
-            {
-                (sub_category && (sub_category.length > 0)) && <GoChevronRight className={`w-5 h-5 transition-transform duration-50000 ${isOpen ? 'transform rotate-90' : ''}`} />
-            }
-
-        </button>
-    </>
+            </button>
+        </>
 
     return (
         <div className="relative text-sm">
 
             {
+                //  if the path dont have any child or dropdwon, then it will redirect to path
                 path ?
-                    <Link to={path}>
+                    <Link to={`products/${path}`}>
                         {
                             button
                         }
@@ -56,7 +56,7 @@ const SideNavbarItem = ({ data }) => {
                     {
                         sub_category.map(item => <NavLink
                             key={item.sub_cat_id}
-                            to={`${item.sub_category_unique_name}`}
+                            to={`sub-category/${item.sub_category_unique_name}`}
 
                             className={({ isActive, isPending }) =>
                                 isActive

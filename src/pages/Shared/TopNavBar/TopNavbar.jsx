@@ -195,10 +195,10 @@ const TopNavbar = ({ children }) => {
                                     <Link to='/profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Profile</Link>
                                 </li>
                                 <li>
-                                    <Link to='/updateprofile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Update information</Link>
+                                    <Link to='/update-profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Update information</Link>
                                 </li>
                                 <li>
-                                    <Link to='/orderstatus/8' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">My orders</Link>
+                                    <Link to='/orders' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">My orders</Link>
                                 </li>
                                 <li>
                                     <Link to='/order-history' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Order History</Link>

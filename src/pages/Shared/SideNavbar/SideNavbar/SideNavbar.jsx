@@ -55,10 +55,10 @@ const SideNavbar = () => {
                                     <Link to='/profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Profile</Link>
                                 </li>
                                 <li onClick={hideSideNavbyTouch}>
-                                    <Link to='/updateprofile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Update information</Link>
+                                    <Link to='/update-profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Update information</Link>
                                 </li>
                                 <li onClick={hideSideNavbyTouch}>
-                                    <Link to='/orderstatus/8' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">My orders</Link>
+                                    <Link to='/orders' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">My orders</Link>
                                 </li>
                                 <li onClick={hideSideNavbyTouch}>
                                     <Link to='/order-history' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Order History</Link>
@@ -90,7 +90,7 @@ const SideNavbar = () => {
 
             <ul className="fixed  w-60 bg-white bottom-0  pt-1  pb-1  border-t ">
                 <li>
-                    <Link to='/orderstatus/8' className="hidden md:flex items-center p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
+                    <Link to='/orders' className="hidden md:flex items-center p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
                         <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
                         <span className="ml-4">My Orders</span>
                     </Link>
