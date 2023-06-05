@@ -11,6 +11,7 @@ const UtilityProvider = ({ children }) => {
 
 
     //_________________navbar____________________________
+    
     const [showSideNav, setShowSideNav] = useState(true);
     const [isExpanded, setIsExpanded] = useState(false);  //search bar in small screen
 
@@ -50,6 +51,7 @@ const UtilityProvider = ({ children }) => {
 
 
     // ____________________________________touch__________________
+    
     const showSideNavbyTouch = () => {
         if(screenWidth<768){
             setShowSideNav(true);

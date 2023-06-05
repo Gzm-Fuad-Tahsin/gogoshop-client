@@ -15,12 +15,14 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 // loader 
-import {loader as subcategoryLoader} from '../../pages/SubCategoryProductView/SubCategoryProductView';
-import {loader as productDetailLoader} from '../../pages/ProductDetail/ProductDetail';
+import { loader as subcategoryLoader } from '../../pages/SubCategoryProductView/SubCategoryProductView';
+import { loader as productDetailLoader } from '../../pages/ProductDetail/ProductDetail';
+import { loader as cartLoader } from "../../pages/CurrentOrder/CurrentOrder";;
 import {loader as orderStatusLoader} from '../../pages/OrderStatus/OrderStatus'
 import {loader as HomePageAllDataLoader} from '../../Layout/Main/Main'
 
 import ReviewCartsDiv from "../../pages/ReviewCart/ReviewCartsDiv";
+import Cart from "../../pages/CurrentOrder/CurrentOrder";
 import Orderhistory from "../../pages/OrderHistory/Orderhistory";
 import OrderStatus from "../../pages/OrderStatus/OrderStatus";
 
@@ -29,14 +31,14 @@ import OrderStatus from "../../pages/OrderStatus/OrderStatus";
 export const router = createBrowserRouter([
     {
         path: '/',
-        element : <Main/>,
+        element: <Main />,
         loader : HomePageAllDataLoader,
-        children : [
+        children: [
             {
-                path : '/',
-                element : <Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
-         
+
             {
                 path : '/login',
                 element : <PreventLogin><SignIn/></PreventLogin>
@@ -62,39 +64,44 @@ export const router = createBrowserRouter([
                 element : <PrivateRoute><div>sdkljflskdajfklsd</div></PrivateRoute>
             },
             {
-                path : '/cart',
-                element : <PrivateRoute><ReviewCartsDiv/></PrivateRoute>
+                path: '/cart',
+                element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>
             },
             {
-                path : '/proceed-to-pay',
-                element : <PrivateRoute><ReviewCartsDiv/></PrivateRoute>
+                path: '/proceed-to-pay',
+                element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>
             },
             {
-                path : '/order-history',
+                path: '/orders',
                 element : <PrivateRoute><Orderhistory/></PrivateRoute>
             },
             {
-                path : '/orderstatus/:orderId',
+                path: '/orderstatus/:orderId',
                 element : <PrivateRoute><OrderStatus/></PrivateRoute>,
                 loader: orderStatusLoader
             },
             {
                 path : '/:path_Subcat_Uname',
-                element : <SubCategoryProductView/>,
+                element: <SubCategoryProductView />,
                 loader: subcategoryLoader,
             },
             {
-                path : '/product',
-                element : <ProductDetail/>,  
-                loader :  productDetailLoader,           
+                path: '/product',
+                element: <ProductDetail />,
+                loader: productDetailLoader,
             },
             {
-                path : '*',
-                element : <NotFound/>
+                path: '/orderCart',
+                element: <Cart />,
+                loader: cartLoader,
+            },
+            {
+                path: '*',
+                element: <NotFound />
             }
         ],
 
-       
+
     },
-   
+
 ])

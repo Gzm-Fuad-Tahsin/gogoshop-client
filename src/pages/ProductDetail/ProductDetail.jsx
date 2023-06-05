@@ -111,7 +111,7 @@ const ProductDetail = () => {
             <div className='flex justify-center p-2  pt-4  '>
 
 
-                <div className="w-full  lg:max-w-4xl">
+                <div className="w-full lg:max-w-4xl">
 
                     <div className="grid grid-cols-12 bg-transparent md:bg-light-100   p-2 rounded-sm md:rounded-lg">
 
@@ -177,7 +177,7 @@ const ProductDetail = () => {
                                 <div className="col-span-9 md:col-span-6  lg:col-span-12 w-full  md:w-64  xl:max-w-sm ">
                                     <div className="bg-shadow-100 h-14 rounded-lg grid grid-cols-12 p-2 ">
                                         <div className="col-span-5 m-auto" aria-label='quantity'>
-                                            <p>Qunatity</p>
+                                            <p>Quantity</p>
                                         </div>
                                         <form className="col-span-7 flex justify-around items-center">
                                             <button className="text-2xl text-[#666666] " onClick={handledecrease}>
