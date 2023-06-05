@@ -44,7 +44,7 @@ const SubCategoryProductView = () => {
         Array.isArray(products) ?
           <>
             <PageTitle text={subcategoryname} />
-            <div className="flex flex-wrap justify-evenly">
+            <div className="flex flex-wrap justify-start">
               {
                 products.map((product) => (
                   <Card key={product.id} product={product}></Card>

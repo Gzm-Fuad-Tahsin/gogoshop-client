@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import ScrollToTop from '../../../components/ScrollToTop/ScrollTotop';
+import AllCategories from '../AllCategories/AllCategories';
+import Banner from '../Banner/Banner';
 
 
 
@@ -8,12 +10,14 @@ const Home = () => {
     return (
         <>
             <ScrollToTop />
-            <div className="w-full"></div>
-        
-            {/* <ReviewCarts></ReviewCarts> */}
-            {/* <ReviewCartsDiv></ReviewCartsDiv> */}
-            {/* <Orderhistory></Orderhistory> */}
-         
+
+            <Banner />
+
+            <AllCategories />
+
+
+
+
         </>
     );
 };

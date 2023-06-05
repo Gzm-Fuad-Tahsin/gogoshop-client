@@ -6,7 +6,7 @@ import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
 
 
 const SideNavbarItem = ({ data }) => {
-    const {hideSideNavbyTouch} = useContext(UtilityContext);
+    const { hideSideNavbyTouch } = useContext(UtilityContext);
     const [isOpen, setIsOpen] = useState(false);
 
     const { _id, isActive, category_unique_name, img, categoy_name, sub_category, path } = data;
@@ -17,13 +17,11 @@ const SideNavbarItem = ({ data }) => {
     };
 
 
-      
+
     const button = <>
-        <button id={_id}
-
-
-            className="w-full flex items-center justify-between p-2  text-gray-700 hover:bg-gray-100"
-            onClick={toggleMenu}
+                      <button id={_id} 
+                      className="w-full flex items-center justify-between p-2  text-gray-700 hover:bg-gray-100"
+                      onClick={toggleMenu}
         >
             <div className='flex items-center'>
                 <img src={img} alt={category_unique_name} className='w-6 h-6' />
@@ -59,7 +57,7 @@ const SideNavbarItem = ({ data }) => {
                         sub_category.map(item => <NavLink
                             key={item.sub_cat_id}
                             to={`${item.sub_category_unique_name}`}
-                            
+
                             className={({ isActive, isPending }) =>
                                 isActive
                                     ? "flex items-center pl-1 py-2 text-gray-800 bg-light-200 hover:bg-light-200 rounded "
@@ -67,7 +65,7 @@ const SideNavbarItem = ({ data }) => {
                             }
 
                         >
-          
+
                             <img src={item.img} alt={item.sub_category_unique_name} className='w-6 h-6 bg-transparent' />
                             {
                                 item.sub_category_name
