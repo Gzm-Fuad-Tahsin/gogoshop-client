@@ -6,7 +6,7 @@ const UserProfile = ({setShowUserPage,handlePageLoad}) => {
         <div className='w-full lg:w-[900px] mx-auto px-2 md:px-4'>
             {/* https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg */}
             <div className="mx-auto mt-10 mb-10 md:flex block items-center">
-                <img className='rounded-xl md:mr-8 w-20 mx-auto md:mx-0' src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <img className='rounded-xl md:mr-8 w-20 mx-auto md:mx-0' src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt='profile'/>
                 <div className='text-center md:text-start md:mt-0 mt-6'>
                     <p>Farhan Hasan Nilok</p>
                     <p className='text-sm hover:underline cursor-pointer text-gray-400'>@nilok67</p>
