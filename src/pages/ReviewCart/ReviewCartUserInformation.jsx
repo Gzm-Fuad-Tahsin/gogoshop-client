@@ -6,7 +6,14 @@ const ReviewCartUserInformation = ({ customerInfo }) => {
     customerInfo;
   return (
     <>
-      <div className="text-[#666666] font-medium text-base ">
+      <div className="flex justify-between items-center mb-2">
+        <h3 className="text-xl text-gray-600 font-semibold">Billing information</h3>
+        <Link className="pe-1 md:pe-5 text-blue-700 hover:underline">
+          Edit
+        </Link>
+      </div>
+      <div className="text-[#666666] font-medium text-base px-1 md:px-5">
+
         <div className="flex justify-between items-center">
           <p>Deliver To</p>
           <p>{customerName}</p>
@@ -28,11 +35,7 @@ const ReviewCartUserInformation = ({ customerInfo }) => {
           <p>Email</p>
           <p>{email}</p>
         </div>
-        <div className="flex justify-end items-center">
-          <Link className="ml-auto text- text-blue-700 hover:underline">
-            Edit 
-          </Link>
-        </div>
+
 
 
 

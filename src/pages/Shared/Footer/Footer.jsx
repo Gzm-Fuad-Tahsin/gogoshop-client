@@ -7,15 +7,15 @@ import { Link } from 'react-router-dom';
 import { TfiFacebook } from 'react-icons/tfi';
 import { ImWhatsapp } from 'react-icons/im';
 import { BsInstagram } from 'react-icons/bs';
-import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
 import bkashLogo from '../../../assets/icons/BKash-Logo 1.svg';
 import nagadLogo from '../../../assets/icons/Nagad-Logo 1.svg'
 import mastercardlogo from '../../../assets/icons/Mastercard-Logo.wine.svg'
 import visalogo from '../../../assets/icons/Visa_Inc.-Logo.wine.svg'
+import { WebpageDataContext } from '../../../Layout/Main/Main';
 
 
 const Footer = () => {
-    const { footerData } = useContext(UtilityContext);
+    const { footerData } = useContext(WebpageDataContext);
 
     
 
@@ -55,7 +55,7 @@ const Footer = () => {
 
                             </div>
                             <div className='mt-7 flex flex-col items-center md:items-start'>
-                                <h2 className=" w-11/12 md:w-8/12  mb-6 pb-2 border-b-2 border-[#7BE495] text-[#666666] text-center md:text-left ">Contact Us</h2>
+                                <h2 className=" w-11/12 md:w-8/12  mb-6 pb-2 border-b-2 border-[#7BE495] text-[#666666] text-center md:text-left ">Customer Support</h2>
                                 <ul className="text-[#666666] font-medium">
                                     <li className="mb-6 flex items-center">
                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">

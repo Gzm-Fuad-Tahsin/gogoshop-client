@@ -15,13 +15,20 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 // loader 
+import {loader as HomePageAllDataLoader} from '../../Layout/Main/Main'
 import { loader as subcategoryLoader } from '../../pages/SubCategoryProductView/SubCategoryProductView';
 import { loader as productDetailLoader } from '../../pages/ProductDetail/ProductDetail';
-import { loader as cartLoader } from "../../pages/CurrentOrder/CurrentOrder";
+import { loader as CurrentRunningOrdersLoader } from "../../pages/CurrentOrders/CurrentOrder/CurrentOrder";    
+import {loader as orderStatusLoader} from '../../pages/CurrentOrders/OrderStatus/OrderStatus'
+import {loader as CompletedOrdersLoader} from '../../pages/PreviousOrdersHandle/PreviousOrder/PreviousOrder'         
+import {loader as PreviousOrderStatementLoader} from '../../pages/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement'
 
-import Orderhistory from "../../pages/OrderHistory/OrderHistory";
 import ReviewCartsDiv from "../../pages/ReviewCart/ReviewCartsDiv";
-import Cart from "../../pages/CurrentOrder/CurrentOrder";
+import CurrentOrder from "../../pages/CurrentOrders/CurrentOrder/CurrentOrder";
+import OrderStatus from "../../pages/CurrentOrders/OrderStatus/OrderStatus";
+import PreviousOrder from "../../pages/PreviousOrdersHandle/PreviousOrder/PreviousOrder";
+import UserEditProfile from "../../pages/User/UserEditProfile/UserEditProfile";
+import PreviousOrderStatement from "../../pages/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement";
 
 
 
@@ -29,6 +36,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
+        loader : HomePageAllDataLoader,
         children: [
             {
                 path: '/',
@@ -36,51 +44,66 @@ export const router = createBrowserRouter([
             },
 
             {
-                path: '/login',
-                element: <PreventLogin><SignIn /></PreventLogin>
+                path : '/login',
+                element : <PreventLogin><SignIn/></PreventLogin>
             },
             {
-                path: '/sign-up',
-                element: <PreventLogin><SignUp /></PreventLogin>
+                path : '/sign-up',
+                element : <PreventLogin><SignUp/></PreventLogin>
             },
             {
-                path: '/auth-phone',
-                element: <PreventLogin><MobileSignUp /></PreventLogin>
+                path : '/auth-phone',
+                element : <PreventLogin><MobileSignUp/></PreventLogin>
             },
             {
-                path: '/forget-password',
-                element: <PreventLogin><ForgotPassword /></PreventLogin>
+                path : '/forget-password',
+                element : <PreventLogin><ForgotPassword/></PreventLogin>
             },
             {
-                path: '/profile',
-                element: <PrivateRoute><UserProfile /></PrivateRoute>
+                path : '/profile',
+                element : <PrivateRoute><UserProfile/></PrivateRoute>
+            },
+            {
+                path : '/update-profile',
+                element : <PrivateRoute><UserEditProfile/></PrivateRoute>
             },
             {
                 path: '/cart',
-                element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>
+                element: <PrivateRoute><>dfjkjfjkd</></PrivateRoute>
             },
             {
                 path: '/proceed-to-pay',
                 element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>
             },
             {
-                path: '/orders',
-                element: <PrivateRoute><Orderhistory /></PrivateRoute>
-            },
-            {
-                path: '/subcategory',
+                path : 'sub-category/:path_Subcat_Uname',
                 element: <SubCategoryProductView />,
                 loader: subcategoryLoader,
             },
             {
-                path: '/product',
+                path: '/product/:product_slug_name',
                 element: <ProductDetail />,
                 loader: productDetailLoader,
             },
             {
-                path: '/orderCart',
-                element: <Cart />,
-                loader: cartLoader,
+                path: '/orders',
+                element: <PrivateRoute><CurrentOrder /></PrivateRoute>,
+                loader: CurrentRunningOrdersLoader,
+            },
+            {
+                path: '/orders/:orderId',
+                element : <PrivateRoute><OrderStatus/></PrivateRoute>,
+                loader: orderStatusLoader
+            },
+            {
+                path: '/order-history',
+                element: <PrivateRoute><PreviousOrder /></PrivateRoute>,
+                loader: CompletedOrdersLoader,
+            },
+            {
+                path: '/order-history/:orderId',
+                element : <PrivateRoute><PreviousOrderStatement/></PrivateRoute>,
+                loader : PreviousOrderStatementLoader
             },
             {
                 path: '*',

@@ -1,33 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdOutlineLocationCity, MdCall, MdEmail } from 'react-icons/md';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import ScrollToTop from '../../../components/ScrollToTop/ScrollTotop';
 
-const UserProfile = ({setShowUserPage,handlePageLoad}) => {
+const UserProfile = ({ setShowUserPage, handlePageLoad }) => {
+    const { user } = useContext(AuthContext);
+
     return (
-        <div className='w-full lg:w-[900px] mx-auto px-2 md:px-4'>
-            {/* https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg */}
-            <div className="mx-auto mt-10 mb-10 md:flex block items-center">
-                <img className='rounded-xl md:mr-8 w-20 mx-auto md:mx-0' src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt='profile'/>
-                <div className='text-center md:text-start md:mt-0 mt-6'>
-                    <p>Farhan Hasan Nilok</p>
-                    <p className='text-sm hover:underline cursor-pointer text-gray-400'>@nilok67</p>
+        <>
+            <ScrollToTop />
+            <div className='w-full lg:w-[900px] mx-auto px-2 md:px-4 mb-28 md:mb-40'>
+                {/* https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg */}
+                <div className="mx-auto mt-10 mb-10 md:flex block items-center">
+                    <img className='rounded-xl md:mr-8 w-20 mx-auto md:mx-0' src={user?.imgURL} />
+                    <div className='text-center md:text-start md:mt-0 mt-6'>
+                        <p>{user?.name}</p>
+                        <p className='text-sm hover:underline cursor-pointer text-gray-400'>{user?.id}</p>
+                    </div>
                 </div>
-            </div>
-            <div className=' mt-20'>
-                <div className='flex items-center'>
-                    <MdOutlineLocationCity className='text-[25px] mr-5' />
-                    <p className='text-[18px]'>Address: <span className='text-gray-500'>Jamtola, Narayanganj </span></p>
+                <div className=' mt-12'>
+                    <div className='flex items-center'>
+                        <MdOutlineLocationCity className='text-[25px] pr-2' />
+                        <p className='text-lg'>Address: <span className='text-gray-500'>{user?.address}</span></p>
+                    </div>
+                    <div className='flex items-center mt-6'>
+                        <MdCall className='text-[25px] pr-2' />
+                        <p className='text-lg'>Phone: <span className='text-gray-500'>{user?.phone}</span></p>
+                    </div>
+                    <div className='flex items-center mt-6 '>
+                        <MdEmail className='text-[25px] pr-2' />
+                        <p className='text-lg'>Email: <span className='text-gray-500 text-sm truncate '>{user?.email}</span></p>
+                    </div>
                 </div>
-                <div className='flex items-center mt-6'>
-                    <MdCall className='text-[25px] mr-5' />
-                    <p className='text-[18px]'>Phone: <span className='text-gray-500'>01906913254</span></p>
-                </div>
-            <div className='flex items-center mt-6'>
-                <MdEmail className='text-[25px] mr-5'/> 
-                <p className='text-[18px]'>Email: <span className='text-gray-500'>gogoshop@noreply.com</span></p>
+
             </div>
-            </div>
-            
-        </div>
+        </>
     );
 };
 

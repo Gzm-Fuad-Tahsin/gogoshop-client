@@ -1,29 +1,63 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
-import { fetchJson } from "../../assets/Scripts/utility";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import ScrollToTop from "../../components/ScrollToTop/ScrollTotop";
+import NotFound from "../ErrorPages/NotFound/NotFound";
+import { WebpageDataContext } from "../../Layout/Main/Main";
+import { UtilityContext } from "../../Contexts/Utility/UtilityProvider";
+
+
 export async function loader({ params }) {
 
-  return await fetchJson("products.json");
-
+  return params.path_Subcat_Uname;
 }
 
 const SubCategoryProductView = () => {
-  const productsData = useLoaderData();
+  const {hideSideNavbyTouch} = useContext(UtilityContext);
+  const { AllproductsData } = useContext(WebpageDataContext);  //fetch products from context
+  const path_Subcat_Uname = useLoaderData();
+
+
+  const [SubcategoryProducts, setSubcategoryProducts] = useState([]);
+
   useEffect(() => {
+    hideSideNavbyTouch(false);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  }, []);
+    if (Array.isArray(AllproductsData)) {
+
+      const data = AllproductsData.find(productData => productData?.sub_category_Uname === path_Subcat_Uname)
+      setSubcategoryProducts(data);
+    }
+
+  }, [path_Subcat_Uname, AllproductsData])
+
+
+  const { sub_category_Uname, subcategoryname, products } = SubcategoryProducts;
+
 
 
   return (
     <>
-    <PageTitle text='subcategoryname'/>
-      <div className="flex flex-wrap ">
-        {productsData.map((product) => (
-          <Card key={product.id} product={product}></Card>
-        ))}
-      </div>
+
+      {
+        Array.isArray(products) ?
+          <>
+            <PageTitle text={subcategoryname} />
+            <div className="flex flex-wrap justify-start">
+              {
+                products.map((product) => (
+                  <Card key={product.id} product={product}></Card>
+                ))
+
+
+              }
+            </div>
+          </>
+          :
+          <NotFound />
+      }
+
 
 
     </>

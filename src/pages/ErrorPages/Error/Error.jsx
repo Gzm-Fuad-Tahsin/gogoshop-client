@@ -1,9 +1,10 @@
 import React from 'react';
+import ScrollToTop from '../../../components/ScrollToTop/ScrollTotop';
 
 const Error = () => {
     return (
         <div>
-            error
+            <ScrollToTop/>
         </div>
     );
 };
