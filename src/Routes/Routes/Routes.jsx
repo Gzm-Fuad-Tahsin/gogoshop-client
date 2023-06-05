@@ -17,7 +17,7 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 // loader 
 import { loader as subcategoryLoader } from '../../pages/SubCategoryProductView/SubCategoryProductView';
 import { loader as productDetailLoader } from '../../pages/ProductDetail/ProductDetail';
-import { loader as cartLoader } from "../../pages/CurrentOrder/CurrentOrder";;
+import { loader as cartLoader } from "../../pages/CurrentOrder/CurrentOrder";
 import {loader as orderStatusLoader} from '../../pages/OrderStatus/OrderStatus'
 import {loader as HomePageAllDataLoader} from '../../Layout/Main/Main'
 
