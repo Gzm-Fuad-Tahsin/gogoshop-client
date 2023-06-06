@@ -9,6 +9,7 @@ import { toast } from 'react-hot-toast';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import PageTitleBreadCrumb from '../../components/PageTitleBreadCrumb/PageTitleBreadCrumb';
 import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
+import { Helmet } from 'react-helmet-async';
 
 
 export async function loader({ params }) {
@@ -19,7 +20,7 @@ export async function loader({ params }) {
 const ProductDetail = () => {
     const productData = useLoaderData();
     const { id, img, name, slug_name, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
-  
+
 
     const { cart, updateCart } = useContext(UtilityContext);
 
@@ -88,10 +89,18 @@ const ProductDetail = () => {
 
     return (
         <>
-        <ScrollToTop/>
-        <PageTitleBreadCrumb data={['category','subcategory' ]}/>
-            <div className='flex justify-center p-2  pt-4  '>
+            <Helmet prioritizeSeoTags>
+                {/* <title>{name}</title> */}
+                <meta property="og:title" content={name} />
+                <meta name="whatever" value="notImportant" />
+                <meta property="og:description" content={description} />
+                <meta property="og:image" content={img} />
+                <link rel="notImportant" href="https://www.chipotle.com _____________ei page er path___" />
+            </Helmet>
 
+            <ScrollToTop />
+            <PageTitleBreadCrumb data={['category', 'subcategory']} />
+            <div className='flex justify-center p-2  pt-4  '>
 
                 <div className="w-full lg:max-w-4xl">
 

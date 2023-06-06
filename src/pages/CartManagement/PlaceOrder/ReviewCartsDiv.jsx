@@ -2,20 +2,22 @@ import React, { useContext, useEffect, useState } from "react";
 import { BsFillGiftFill } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
 import ReviewCartUserInformation from "./ReviewCartUserInformation";
-import PageTitle from "../../components/PageTitle/PageTitle";
-import ItemInfoDiv from "../../components/ItemInfoDiv/itemInfoDiv";
-import { UtilityContext } from "../../Contexts/Utility/UtilityProvider";
-import bkashlogo from '../../assets/icons/BKash-Logo 1.svg'
-import rocketlogo from '../../assets/icons/rocket.svg'
-import nagad from '../../assets/icons/Nagad-Logo 1.svg'
-import mastercard from '../../assets/icons/Mastercard-Logo.wine.svg'
-import visa from '../../assets/icons/Visa_Inc.-Logo.wine.svg'
-import ScrollToTop from "../../components/ScrollToTop/ScrollTotop";
+import PageTitle from "../../../components/PageTitle/PageTitle";
+import OrderedItemInformation from "../../../components/OrderedItemInformation/OrderedItemInformation";
+import { UtilityContext } from "../../../Contexts/Utility/UtilityProvider";
+
+import bkashlogo from '../../../assets/icons/BKash-Logo 1.svg'
+import rocketlogo from '../../../assets/icons/rocket.svg'
+import nagad from '../../../assets/icons/Nagad-Logo 1.svg'
+import mastercard from '../../../assets/icons/Mastercard-Logo.wine.svg'
+import visa from '../../../assets/icons/Visa_Inc.-Logo.wine.svg';
+
+import ScrollToTop from "../../../components/ScrollToTop/ScrollTotop";
 
 
 const ReviewCartsDiv = () => {
 
- 
+
 
 
   const { screenWidth } = useContext(UtilityContext);
@@ -48,18 +50,23 @@ const ReviewCartsDiv = () => {
 
   return (
     <>
-    <ScrollToTop/>
+      <ScrollToTop />
       <PageTitle text='Place Order' />
+
+
+
       <div className=" w-full lg:w-[900px] mx-auto px-2 md:px-4 ">
 
-
-
-        {/* Showing Customer Information from ReviewCartDiv.jsx */}
+        {/*_________________Showing Customer Information from ReviewCartDiv.jsx_____________________*/}
         <ReviewCartUserInformation customerInfo={customerInfo}></ReviewCartUserInformation>
 
         <hr className="my-2" />
 
-        {/* Showing Products Information in cart from ItemInfoDiv.jsx  */}
+
+
+
+
+        {/*____________________ Showing Products Information in cart from ItemInfoDiv.jsx___________________  */}
         <div>
           <h3 className="text-gray-600 font-semibold">Products</h3>
           {
@@ -72,12 +79,18 @@ const ReviewCartsDiv = () => {
           }
           <div className="px-2 md:px-5">
             {products.map((product) => (
-              <ItemInfoDiv key={product.id} product={product}></ItemInfoDiv>
+              <OrderedItemInformation key={product.id} product={product}></OrderedItemInformation>
             ))}
           </div>
         </div>
 
-        {/* Showing Shipping Charge, Subtotal and Total Price */}
+
+
+
+
+
+
+        {/* _________________Showing Shipping Charge, Subtotal and Total Price ___________________________*/}
         <div className=" text-[#666666] font-medium text-base ">
 
           <div className="grid grid-cols-12 mt-4 md:mt-6 mx-2 md:mx-5">
@@ -140,7 +153,7 @@ const ReviewCartsDiv = () => {
         </div>
 
         <div className="mt-8 md:mt-16 grid grid-cols-2">
-          {/* Radio Buttons for Payment Method */}
+          {/* _________________________Radio Buttons for Payment Method_____________________ */}
           <div className="font-bold text-sm">
             <div className="flex  mb-3">
               <input

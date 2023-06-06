@@ -7,22 +7,27 @@ import { router } from './Routes/Routes/Routes.jsx'
 import { Toaster } from 'react-hot-toast'
 import AuthProvider from './Contexts/AuthProvider/AuthProvider'
 import UtilityProvider from './Contexts/Utility/UtilityProvider'
+import { HelmetProvider } from 'react-helmet-async'
 
+const helmetContext = {};
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <UtilityProvider>
+    <HelmetProvider context={helmetContext}>
 
-      <AuthProvider>
-        <div className='mx-auto'>
+      <UtilityProvider>
 
-          <RouterProvider router={router}></RouterProvider>
+        <AuthProvider>
+          <div className='mx-auto'>
 
-          <Toaster
-            position="bottom-right"
-            reverseOrder={false} />
+            <RouterProvider router={router}></RouterProvider>
 
-        </div>
-      </AuthProvider>
-    </UtilityProvider>
+            <Toaster
+              position="bottom-right"
+              reverseOrder={false} />
+
+          </div>
+        </AuthProvider>
+      </UtilityProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )

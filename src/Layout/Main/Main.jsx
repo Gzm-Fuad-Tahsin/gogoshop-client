@@ -6,6 +6,7 @@ import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import Footer from '../../pages/Shared/Footer/Footer';
 
 import { fetchJson } from '../../assets/Scripts/utility';
+import { Helmet } from 'react-helmet-async';
 
 
 export const WebpageDataContext = createContext();
@@ -36,6 +37,12 @@ const Main = () => {
 
     return (
         <>
+        <Helmet prioritizeSeoTags>
+                
+                {/* <meta property="og:title" content={name} /> */}
+                {/* <meta property="og:description" content={description} /> */}
+                {/* <meta property="og:image" content={img} /> */}
+            </Helmet>
         <WebpageDataContext.Provider  value={contextvalue}>
             
             

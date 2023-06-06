@@ -39,6 +39,7 @@ const SubCategoryProductView = () => {
 
   return (
     <>
+    <ScrollToTop/>
 
       {
         Array.isArray(products) ?

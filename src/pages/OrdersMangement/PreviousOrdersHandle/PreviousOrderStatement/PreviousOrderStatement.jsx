@@ -3,11 +3,11 @@ import OrderInfo from './OrderInfo';
 import { Link, useLoaderData } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
 import { TbCurrencyTaka } from 'react-icons/tb';
-import ItemInfoDiv from '../../../components/ItemInfoDiv/itemInfoDiv';
-import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
-import PageTitle from '../../../components/PageTitle/PageTitle';
-import ScrollToTop from '../../../components/ScrollToTop/ScrollTotop';
-import { fetchJson } from '../../../assets/Scripts/utility';
+import OrderedItemInformation from '../../../../components/OrderedItemInformation/OrderedItemInformation';
+import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
+import PageTitle from '../../../../components/PageTitle/PageTitle';
+import ScrollToTop from '../../../../components/ScrollToTop/ScrollTotop';
+import { fetchJson } from '../../../../assets/Scripts/utility';
 
 
 export async function loader({ params }) {
@@ -55,7 +55,7 @@ const PreviousOrderStatement = () => {
                     }
                     <div className="px-0 md:px-5">
                         {products.map((product) => (
-                            <ItemInfoDiv key={product.id} product={product}></ItemInfoDiv>
+                            <OrderedItemInformation key={product.id} product={product}></OrderedItemInformation>
                         ))}
                     </div>
                 </div>

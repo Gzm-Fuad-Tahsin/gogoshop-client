@@ -18,17 +18,18 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 import {loader as HomePageAllDataLoader} from '../../Layout/Main/Main'
 import { loader as subcategoryLoader } from '../../pages/SubCategoryProductView/SubCategoryProductView';
 import { loader as productDetailLoader } from '../../pages/ProductDetail/ProductDetail';
-import { loader as CurrentRunningOrdersLoader } from "../../pages/CurrentOrders/CurrentOrder/CurrentOrder";    
-import {loader as orderStatusLoader} from '../../pages/CurrentOrders/OrderStatus/OrderStatus'
-import {loader as CompletedOrdersLoader} from '../../pages/PreviousOrdersHandle/PreviousOrder/PreviousOrder'         
-import {loader as PreviousOrderStatementLoader} from '../../pages/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement'
+import { loader as CurrentRunningOrdersLoader } from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";    
+import {loader as orderStatusLoader} from '../../pages/OrdersMangement/CurrentOrders/OrderStatus/OrderStatus'
+import {loader as CompletedOrdersLoader} from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrder/PreviousOrder'         
+import {loader as PreviousOrderStatementLoader} from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement'
 
-import ReviewCartsDiv from "../../pages/ReviewCart/ReviewCartsDiv";
-import CurrentOrder from "../../pages/CurrentOrders/CurrentOrder/CurrentOrder";
-import OrderStatus from "../../pages/CurrentOrders/OrderStatus/OrderStatus";
-import PreviousOrder from "../../pages/PreviousOrdersHandle/PreviousOrder/PreviousOrder";
+import ReviewCartsDiv from "../../pages/CartManagement/PlaceOrder/ReviewCartsDiv";
+import CurrentOrder from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";
+import OrderStatus from "../../pages/OrdersMangement/CurrentOrders/OrderStatus/OrderStatus";
+import PreviousOrder from "../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrder/PreviousOrder";
 import UserEditProfile from "../../pages/User/UserEditProfile/UserEditProfile";
-import PreviousOrderStatement from "../../pages/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement";
+import PreviousOrderStatement from "../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement";
+import ViewCart from "../../pages/CartManagement/ViewCart/ViewCart";
 
 
 
@@ -69,7 +70,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/cart',
-                element: <PrivateRoute><>dfjkjfjkd</></PrivateRoute>
+                element: <PrivateRoute><ViewCart/></PrivateRoute>
             },
             {
                 path: '/proceed-to-pay',
