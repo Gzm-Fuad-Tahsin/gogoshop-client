@@ -1,7 +1,7 @@
 import React from "react";
 import { TbCurrencyTaka } from "react-icons/tb";
 
-const ItemInfoDiv = ({ product }) => {
+const OrderedItemInformation = ({ product }) => {
   const { name, size, quantity, buyingprice } = product;
   return (
     <>
@@ -22,4 +22,4 @@ const ItemInfoDiv = ({ product }) => {
   );
 };
 
-export default ItemInfoDiv;
+export default OrderedItemInformation;

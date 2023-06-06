@@ -1,8 +1,8 @@
 import React from 'react';
-import { fetchJson } from '../../../assets/Scripts/utility';
+import { fetchJson } from '../../../../assets/Scripts/utility';
 import { useLoaderData } from 'react-router-dom';
-import OrderItem from '../../../components/OrderItem/OrderItem';
-import PageTitle from '../../../components/PageTitle/PageTitle';
+import OrderItem from '../../../../components/OrderItem/OrderItem';
+import PageTitle from '../../../../components/PageTitle/PageTitle';
 
 
 export async function loader({ params }) {
