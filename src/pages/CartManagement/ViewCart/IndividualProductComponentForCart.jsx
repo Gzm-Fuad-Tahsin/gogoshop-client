@@ -5,12 +5,12 @@ import { BsTrash } from 'react-icons/bs';
 import { CiSquareMinus, CiSquarePlus } from 'react-icons/ci';
 
 import { toast } from 'react-hot-toast';
-import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
 
-const IndividualProductBar = ({ product,handleDeleteCartItem }) => {
+
+const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeInCart }) => {
     const { product_id, name, img, size, slug_name, buyingprice, quantity } = product;
     
-    const { ItemQunatityChangeInCart } = useContext(UtilityContext);
+   
     
     const [Updatedquantity, setUpdatedquantity] = useState(quantity);
 

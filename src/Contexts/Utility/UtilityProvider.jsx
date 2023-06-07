@@ -38,7 +38,7 @@ const UtilityProvider = ({ children }) => {
 
 
     // Function to update cart data in the database
-    const updateCartData = (changedItem) => {
+    const updateCartDataInDB = (changedItem) => {
         fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/carts`, {
             method: 'PATCH',
             headers: {
@@ -48,7 +48,7 @@ const UtilityProvider = ({ children }) => {
         })
             .then((response) => response.json())
             .then((responseData) => {
-                console.log(responseData);
+                setCart(responseData);
                 setChangedProduct(false);
             })
             .catch((error) => {
@@ -61,12 +61,18 @@ const UtilityProvider = ({ children }) => {
 
         if (changeedProduct) {
 
-            updateCartData(changeedProduct);
+            updateCartDataInDB(changeedProduct);
         }
     }, [changeedProduct]);
 
 
     //    quantity update in product detail page and card of product
+
+    /*
+
+    update cart --> update the cart in code, and setchanged Prdouct
+    changedProduct is under an use effect, so, it will call updatecartdataIndb() 
+    */
     const updateCart = ({ product_id, quantity }) => {
 
         console.log(product_id, quantity)
@@ -84,7 +90,7 @@ const UtilityProvider = ({ children }) => {
             setChangedProduct(exists);
         }
 
-        setCart(newCart);
+      
 
 
         toast.success(`Added to Cart`)
@@ -94,34 +100,10 @@ const UtilityProvider = ({ children }) => {
 
 
 
-    //   update cart for chanign quanitty in viewcart items page 
-
-    const ItemQunatityChangeInCart = ({ product_id, Updatedquantity }) => {
-
-        // console.log(product_id, Updatedquantity)
-
-        const exists = cart.find(product => product.product_id === product_id);
-        if (exists) {
-            const rest = cart.filter(product => product.product_id !== product_id);
-            exists.quantity = Updatedquantity;
-            setCart([...rest, exists]);
-        }
-
-    }
 
     // function to delete an item of cart 
     const deleteCartItem = responseData => {
-        console.log(responseData);
-
-        let cartTemp = [];
-        
-        responseData.map(item =>{
-            let obj = {"product_id":item.product_id,
-            "quantity":item.quantity};
-            cartTemp.push(obj);
-        })
-        console.log(cartTemp);
-        // setCart(responseData)
+        setCart(responseData)
 
     }
 
@@ -175,7 +157,6 @@ const UtilityProvider = ({ children }) => {
         cart,
         setCart,
         updateCart,
-        ItemQunatityChangeInCart,
         deleteCartItem,
         showSideNav,
         setShowSideNav,
