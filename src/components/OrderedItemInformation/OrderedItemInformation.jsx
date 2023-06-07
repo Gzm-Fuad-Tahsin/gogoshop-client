@@ -16,7 +16,7 @@ const OrderedItemInformation = ({ product }) => {
           {quantity}
         </span>
       </p>
-      <p className="col-span-2 md:col-span-1 flex justify-end items-center"><TbCurrencyTaka />{buyingprice}</p>
+      <p className="col-span-2 md:col-span-1 flex justify-end items-center"><TbCurrencyTaka />{(buyingprice*quantity).toFixed(2)}</p>
     </div>
     </>
   );

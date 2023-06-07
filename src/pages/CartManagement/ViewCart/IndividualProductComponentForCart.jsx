@@ -21,9 +21,6 @@ const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeI
         ItemQunatityChangeInCart({ product_id, Updatedquantity })
     }, [Updatedquantity])
 
-    useEffect(() => {
-        setUpdatedquantity(parseInt(quantity));
-    }, [product, quantity])
 
 
 
@@ -60,9 +57,9 @@ const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeI
                 <div className="pl-1 md:pl-2 flex flex-col justify-center items-start">
                     <p className='text-base font-semibold'> {name}</p>
                     <p className='text-xs text-gray-400'> {size}</p>
-                    <p className='flex justify-center items-center md:hidden text-xs text-gray-400'>
+                    <p className='flex justify-center items-center md:hidden text-sm text-gray-600'>
+                    {(Updatedquantity * buyingprice).toFixed(2)}
                         <TbCurrencyTaka></TbCurrencyTaka>
-                        {Updatedquantity * buyingprice}
                     </p>
                 </div>
             </div>
@@ -93,7 +90,9 @@ const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeI
 
             </div>
 
-            <div className="hidden md:col-span-3 md:flex justify-center items-center">{Updatedquantity * buyingprice}</div>
+            <div className="hidden md:col-span-3 md:flex justify-center items-center">
+            <TbCurrencyTaka></TbCurrencyTaka>
+                {(Updatedquantity * buyingprice).toFixed(2)}</div>
         </div>
     );
 };

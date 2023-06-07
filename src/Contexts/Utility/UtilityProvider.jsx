@@ -6,6 +6,8 @@ const UtilityProvider = ({ children }) => {
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+    const [loadingpage,setLoadingPage] = useState(false);
+
 
 
 
@@ -24,14 +26,17 @@ const UtilityProvider = ({ children }) => {
     }, [screenWidth])
 
 
-    // ___________________________cart_____________________________
+    // ___________________________cart___________________________p__
     const [cart, setCart] = useState([]);
     const [changeedProduct, setChangedProduct] = useState(null);
     useEffect(() => {
+        setLoadingPage(true);
         fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/carts`)
             .then(res => res.json())
             .then(data => {
+                
                 setCart(data)
+                setLoadingPage(false)
             })
     }, [])
 
@@ -66,15 +71,14 @@ const UtilityProvider = ({ children }) => {
     }, [changeedProduct]);
 
 
+
+
     //    quantity update in product detail page and card of product
-
-    /*
-
-    update cart --> update the cart in code, and setchanged Prdouct
-    changedProduct is under an use effect, so, it will call updatecartdataIndb() 
-    */
     const updateCart = ({ product_id, quantity }) => {
-
+        /* STEP : 
+          update cart --> update the cart in code, and setchanged Prdouct
+          changedProduct is under an use effect, so, it will call updatecartdataIndb() 
+          */
         console.log(product_id, quantity)
 
         let newCart = [];
@@ -90,7 +94,7 @@ const UtilityProvider = ({ children }) => {
             setChangedProduct(exists);
         }
 
-      
+
 
 
         toast.success(`Added to Cart`)
@@ -164,6 +168,8 @@ const UtilityProvider = ({ children }) => {
         hideSideNavbyTouch,
         isExpanded,
         setIsExpanded,
+        loadingpage,
+        setLoadingPage
 
     }
     return (

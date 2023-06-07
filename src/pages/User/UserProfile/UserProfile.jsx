@@ -9,7 +9,7 @@ const UserProfile = ({ setShowUserPage, handlePageLoad }) => {
     return (
         <>
             <ScrollToTop />
-            <div className='w-full lg:w-[900px] mx-auto px-2 md:px-4 mb-28 md:mb-40'>
+            <div className='w-screen lg:w-[900px] mx-auto px-2 md:px-4 mb-28 md:mb-40'>
                 {/* https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg */}
                 <div className="mx-auto mt-10 mb-10 md:flex block items-center">
                     <img className='rounded-xl md:mr-8 w-20 mx-auto md:mx-0' src={user?.imgURL} />
@@ -19,15 +19,15 @@ const UserProfile = ({ setShowUserPage, handlePageLoad }) => {
                     </div>
                 </div>
                 <div className=' mt-12'>
-                    <div className='flex items-center'>
+                    <div className='flex items-start'>
                         <MdOutlineLocationCity className='text-[25px] pr-2' />
                         <p className='text-lg'>Address: <span className='text-gray-500'>{user?.address}</span></p>
                     </div>
-                    <div className='flex items-center mt-6'>
+                    <div className='flex items-start mt-6'>
                         <MdCall className='text-[25px] pr-2' />
                         <p className='text-lg'>Phone: <span className='text-gray-500'>{user?.phone}</span></p>
                     </div>
-                    <div className='flex items-center mt-6 '>
+                    <div className='flex items-start mt-6 '>
                         <MdEmail className='text-[25px] pr-2' />
                         <p className='text-lg'>Email: <span className='text-gray-500 text-sm truncate '>{user?.email}</span></p>
                     </div>
