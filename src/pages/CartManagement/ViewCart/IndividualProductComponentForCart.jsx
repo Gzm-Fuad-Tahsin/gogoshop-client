@@ -21,9 +21,6 @@ const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeI
         ItemQunatityChangeInCart({ product_id, Updatedquantity })
     }, [Updatedquantity])
 
-    useEffect(() => {
-        setUpdatedquantity(parseInt(quantity));
-    }, [product, quantity])
 
 
 
