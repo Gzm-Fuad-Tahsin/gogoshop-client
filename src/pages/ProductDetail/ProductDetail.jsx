@@ -10,6 +10,7 @@ import PageTitle from '../../components/PageTitle/PageTitle';
 import PageTitleBreadCrumb from '../../components/PageTitleBreadCrumb/PageTitleBreadCrumb';
 import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
 import { Helmet } from 'react-helmet-async';
+import NotFound from '../ErrorPages/NotFound/NotFound';
 
 
 export async function loader({ params }) {
@@ -19,19 +20,20 @@ export async function loader({ params }) {
 }
 const ProductDetail = () => {
     const productData = useLoaderData();
-    const { id, img, name, slug_name, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
+    const { product_id, img, name, slug_name, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
 
 
     const { cart, updateCart } = useContext(UtilityContext);
 
-    // ________________________________cart item for this item_______________________________
-    const [cartItem, setCartItem] = useState({
-        "id": null,
-        "u_name": null,
-        "quantity": 1
-    })
+    const [alreadyAdded, setAlreadyAdded] = useState(false);
 
+    useEffect(() => {
 
+        if (cart.find(item => item.product_id === product_id)) {
+            setAlreadyAdded(true);
+        }
+
+    }, [cart, product_id])
 
 
     //animation effect
@@ -69,7 +71,6 @@ const ProductDetail = () => {
 
     }
 
-
     const handledecrease = e => {
         event.preventDefault();
 
@@ -89,137 +90,156 @@ const ProductDetail = () => {
 
     return (
         <>
-            <Helmet prioritizeSeoTags>
-                {/* <title>{name}</title> */}
-                <meta property="og:title" content={name} />
-                <meta name="whatever" value="notImportant" />
-                <meta property="og:description" content={description} />
-                <meta property="og:image" content={img} />
-                <link rel="notImportant" href="https://www.chipotle.com _____________ei page er path___" />
-            </Helmet>
+            {
+                productData ?
+                    <>
+                        <Helmet prioritizeSeoTags>
+                            {/* <title>{name}</title> */}
+                            <meta property="og:title" content={name} />
+                            <meta name="whatever" value="notImportant" />
+                            <meta property="og:description" content={description} />
+                            <meta property="og:image" content={img} />
+                            <link rel="notImportant" href="https://www.chipotle.com _____________ei page er path___" />
+                        </Helmet>
 
-            <ScrollToTop />
-            <PageTitleBreadCrumb data={['category', 'subcategory']} />
-            <div className='flex justify-center p-2  pt-4  '>
+                        <ScrollToTop />
+                        <PageTitleBreadCrumb data={['category', 'subcategory']} />
+                        <div className='flex justify-center p-2  pt-4  '>
 
-                <div className="w-full lg:max-w-4xl">
+                            <div className="w-full lg:max-w-4xl">
 
-                    <div className="grid grid-cols-12 bg-transparent md:bg-light-100   p-2 rounded-sm md:rounded-lg">
+                                <div className="grid grid-cols-12 bg-transparent md:bg-light-100   p-2 rounded-sm md:rounded-lg">
 
 
-                        <div className="col-span-12 lg:col-span-2  order-2 lg:order-1 flex lg:flex-col justify-center items-center mt-0 md:mt-4 lg:mt-0" aria-label='all-images'>
-                            {
-                                images && images.map((imgPath, _idx) =>
-                                    <div className="avatar mx-3 my-0 lg:my-3 md:mx-0 cursor-pointer"
-                                        key={_idx}
-                                        onClick={() => {
+                                    <div className="col-span-12 lg:col-span-2  order-2 lg:order-1 flex lg:flex-col justify-center items-center mt-0 md:mt-4 lg:mt-0" aria-label='all-images'>
+                                        {
+                                            images && images.map((imgPath, _idx) =>
+                                                <div className="avatar mx-3 my-0 lg:my-3 md:mx-0 cursor-pointer"
+                                                    key={_idx}
+                                                    onClick={() => {
 
-                                            (largeImage !== imgPath) && setFadeEffect(true);
-                                            setLargeImage(imgPath);
-                                        }}>
-                                        <div className="p-1 w-20 lg:w-24 rounded-full ">
-                                            <img src={imgPath} />
+                                                        (largeImage !== imgPath) && setFadeEffect(true);
+                                                        setLargeImage(imgPath);
+                                                    }}>
+                                                    <div className="p-1 w-20 lg:w-24 rounded-full ">
+                                                        <img src={imgPath} />
+                                                    </div>
+                                                </div>
+
+
+                                            )
+                                        }
+
+                                    </div>
+
+
+                                    <div className="col-span-12 lg:col-span-5 order-1 lg:order-2  flex items-center justify-center " aria-label='image full view'>
+                                        <div className={`avatar  transition-opacity  ease-in-out rounded-lg  ${fadeEffect ? 'opacity-0' : 'opacity-100'
+                                            }`}>
+                                            <div className="w-full px-3 md:px-1 h-56 lg:h-80 max-h-80 rounded-2xl">
+                                                {
+                                                    !fadeEffect && <img src={largeImage} />
+                                                }
+
+                                            </div>
                                         </div>
                                     </div>
 
 
-                                )
-                            }
-
-                        </div>
-
-
-                        <div className="col-span-12 lg:col-span-5 order-1 lg:order-2  flex items-center justify-center " aria-label='image full view'>
-                            <div className={`avatar  transition-opacity  ease-in-out rounded-lg  ${fadeEffect ? 'opacity-0' : 'opacity-100'
-                                }`}>
-                                <div className="w-full px-3 md:px-1 h-56 lg:h-80 max-h-80 rounded-2xl">
-                                    {
-                                        !fadeEffect && <img src={largeImage} />
-                                    }
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div className="col-span-12 lg:col-span-5  order-3 my-5 px-3 flex flex-col justify-around" aria-label='product info'>
+                                    <div className="col-span-12 lg:col-span-5  order-3 my-5 px-3 flex flex-col justify-around" aria-label='product info'>
 
 
 
 
-                            <h2 className="card-title text-2xl font-medium">{name}</h2>
-                            <p className="text-sm   text-[#A9A9A9]">{size}</p>
+                                        <h2 className="card-title text-2xl font-medium">{name}</h2>
+                                        <p className="text-sm   text-[#A9A9A9]">{size}</p>
 
 
 
-                            <p className="my-3 flex text-lg text-[#807F7F]">
-                                <TbCurrencyTaka></TbCurrencyTaka>
-                                {finalPrice}
-                                {mainPrice && (
-                                    <s className="flex text-base ml-3 text-[#878080]">
-                                        <TbCurrencyTaka></TbCurrencyTaka>
-                                        {mainPrice}
-                                    </s>
-                                )}
-                            </p>
+                                        <p className="my-3 flex items-center text-lg text-[#807F7F]">
+                                            <TbCurrencyTaka></TbCurrencyTaka>
+                                            {finalPrice}
+                                            {mainPrice && (
+                                                <s className="flex items-center text-base ml-3 text-[#878080]">
+                                                    <TbCurrencyTaka></TbCurrencyTaka>
+                                                    {mainPrice}
+                                                </s>
+                                            )}
+                                        </p>
 
 
-                            <div className="grid grid-cols-12 gap-3" >
-                                <div className="col-span-9 md:col-span-6  lg:col-span-12 w-full  md:w-64  xl:max-w-sm ">
-                                    <div className="bg-shadow-100 h-14 rounded-lg grid grid-cols-12 p-2 ">
-                                        <div className="col-span-5 m-auto" aria-label='quantity'>
-                                            <p>Quantity</p>
-                                        </div>
-                                        <form className="col-span-7 flex justify-around items-center">
-                                            <button className="text-2xl text-[#666666] " onClick={handledecrease}>
-                                                <BsFillCaretLeftFill />
-                                            </button>
-                                            <div className="text-xl">
+                                        <div className="grid grid-cols-12 gap-3" >
+                                            <div className="col-span-9 md:col-span-6  lg:col-span-12 w-full  md:w-64  xl:max-w-sm ">
+                                                <div className="bg-shadow-100 h-14 rounded-lg grid grid-cols-12 p-2 ">
+                                                    <div className="col-span-5 m-auto" aria-label='quantity'>
+                                                        <p>Quantity</p>
+                                                    </div>
+                                                    <form className="col-span-7 flex justify-around items-center">
+                                                        <button className="text-2xl text-[#666666] " onClick={handledecrease}>
+                                                            <BsFillCaretLeftFill />
+                                                        </button>
+                                                        <div className="text-xl">
+                                                            {
+                                                                quantity
+
+                                                            }
+                                                        </div>
+                                                        <button className="text-2xl text-[#666666] " onClick={handleIncrease}>
+                                                            <BsFillCaretRightFill />
+                                                        </button>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div className="col-span-3 md:col-span-6 lg:col-span-12 w-full md:w-64  xl:max-w-sm">
                                                 {
-                                                    quantity
+                                                    alreadyAdded ?
+                                                       
+                                                        <button onClick={() => toast.error('Already added')} className="btn h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
+                                                            <CiShoppingCart className='text-2xl ' />
+                                                            <span className="hidden md:block lg:block 2xl:block mx-0 md:mx-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Added</span>
 
+                                                        </button>
+                                                        :
+                                                         <button onClick={() => updateCart({ product_id, quantity })} className="btn h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
+                                                         <CiShoppingCart className='text-2xl ' />
+                                                         <span className="hidden md:block lg:block 2xl:block mx-0 md:mx-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Add to Cart</span>
+
+                                                     </button>
+                                                     
                                                 }
                                             </div>
-                                            <button className="text-2xl text-[#666666] " onClick={handleIncrease}>
-                                                <BsFillCaretRightFill />
-                                            </button>
-
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-span-3 md:col-span-6 lg:col-span-12 w-full md:w-64  xl:max-w-sm">
-                                    <button onClick={() => updateCart({ id, slug_name, quantity })} className="btn h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
-                                        <CiShoppingCart className='text-2xl' />
-                                        <span className="hidden md:block lg:block 2xl:block mx-0 md:mx-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Add to Cart</span>
 
-                                    </button></div>
-                            </div>
-                        </div>
-
-                        <div className="col-span-12 order-4 pt-9 px-1 lg:px-5">
-                            {
-                                description &&
-                                <>
-                                    <h2 className='font-semibold text-lg mb-2'>Description</h2>
-                                    <p className='font-normal text-base leading-7'>
+                                    <div className="col-span-12 order-4 pt-9 px-1 lg:px-5">
                                         {
-                                            description
+                                            description &&
+                                            <>
+                                                <h2 className='font-semibold text-lg mb-2'>Description</h2>
+                                                <p className='font-normal text-base leading-7'>
+                                                    {
+                                                        description
 
+                                                    }
+                                                </p>
+                                            </>
                                         }
-                                    </p>
-                                </>
-                            }
+
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
 
                         </div>
-
-
-
-
-
-                    </div>
-                </div>
-
-            </div>
+                    </>
+                    :
+                    <NotFound />
+            }
         </>
     );
 };

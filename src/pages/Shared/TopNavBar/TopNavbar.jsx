@@ -154,7 +154,7 @@ const TopNavbar = ({ children }) => {
                             </svg>
                         </div>
                         <span className='hidden md:block'>Cart</span>
-                        <span className="badge text-xs m-0 p-1 border-0 absolute -top-5 md:-top-4 -right-1 bg-[#F2B8B5] text-[#601410] rounded-lg ">{cart ? cart.length : ''}</span>
+                        <span className="badge text-xs m-0 p-1 border-0 absolute -top-5 md:-top-4 -right-1 bg-[#F2B8B5] text-[#601410] rounded-lg ">{cart ? cart.length : '0'}</span>
                     </Link>
 
 

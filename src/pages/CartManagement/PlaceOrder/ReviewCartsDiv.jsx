@@ -58,9 +58,9 @@ const ReviewCartsDiv = () => {
       <div className=" w-full lg:w-[900px] mx-auto px-2 md:px-4 ">
 
         {/*_________________Showing Customer Information from ReviewCartDiv.jsx_____________________*/}
-        <ReviewCartUserInformation customerInfo={customerInfo}></ReviewCartUserInformation>
+        <ReviewCartUserInformation ></ReviewCartUserInformation>
 
-        <hr className="my-2" />
+        <hr className="my-5" />
 
 
 
@@ -78,8 +78,8 @@ const ReviewCartsDiv = () => {
             </div>
           }
           <div className="px-2 md:px-5">
-            {products.map((product) => (
-              <OrderedItemInformation key={product.id} product={product}></OrderedItemInformation>
+            {products.map((product,_idx) => (
+              <OrderedItemInformation key={_idx} product={product}></OrderedItemInformation>
             ))}
           </div>
         </div>
