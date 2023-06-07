@@ -21,7 +21,8 @@ import { loader as productDetailLoader } from '../../pages/ProductDetail/Product
 import { loader as CurrentRunningOrdersLoader } from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";    
 import {loader as orderStatusLoader} from '../../pages/OrdersMangement/CurrentOrders/OrderStatus/OrderStatus'
 import {loader as CompletedOrdersLoader} from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrder/PreviousOrder'         
-import {loader as PreviousOrderStatementLoader} from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement'
+import {loader as PreviousOrderStatementLoader} from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement';
+import {loader as CartDataLoader} from '../../pages/CartManagement/ViewCart/ViewCart'
 
 import ReviewCartsDiv from "../../pages/CartManagement/PlaceOrder/ReviewCartsDiv";
 import CurrentOrder from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";
@@ -70,14 +71,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/cart',
-                element: <PrivateRoute><ViewCart/></PrivateRoute>
+                element: <PrivateRoute><ViewCart/></PrivateRoute>,
+                loader: CartDataLoader,
             },
             {
                 path: '/proceed-to-pay',
                 element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>
             },
             {
-                path : 'sub-category/:path_Subcat_Uname',
+                path : 'sub-category/:subcategory_slug',
                 element: <SubCategoryProductView />,
                 loader: subcategoryLoader,
             },

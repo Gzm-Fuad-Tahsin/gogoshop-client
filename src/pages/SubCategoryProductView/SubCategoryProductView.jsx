@@ -6,40 +6,23 @@ import ScrollToTop from "../../components/ScrollToTop/ScrollTotop";
 import NotFound from "../ErrorPages/NotFound/NotFound";
 import { WebpageDataContext } from "../../Layout/Main/Main";
 import { UtilityContext } from "../../Contexts/Utility/UtilityProvider";
+import { fetchJson } from "../../assets/Scripts/utility";
 
 
 export async function loader({ params }) {
 
-  return params.path_Subcat_Uname;
+  return await fetchJson(`${import.meta.env.VITE_SERVER_ADDRESS}/sub-category/${params.subcategory_slug}`);
 }
 
 const SubCategoryProductView = () => {
-  const {hideSideNavbyTouch} = useContext(UtilityContext);
-  const { AllproductsData } = useContext(WebpageDataContext);  //fetch products from context
-  const path_Subcat_Uname = useLoaderData();
-
-
-  const [SubcategoryProducts, setSubcategoryProducts] = useState([]);
-
-  useEffect(() => {
-    hideSideNavbyTouch(false);
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    if (Array.isArray(AllproductsData)) {
-
-      const data = AllproductsData.find(productData => productData?.sub_category_Uname === path_Subcat_Uname)
-      setSubcategoryProducts(data);
-    }
-
-  }, [path_Subcat_Uname, AllproductsData])
-
-
-  const { sub_category_Uname, subcategoryname, products } = SubcategoryProducts;
+  const { hideSideNavbyTouch } = useContext(UtilityContext);
+  const { subcategory_slug, subcategoryname, products } = useLoaderData();
 
 
 
   return (
     <>
-    <ScrollToTop/>
+      <ScrollToTop />
 
       {
         Array.isArray(products) ?
@@ -47,8 +30,8 @@ const SubCategoryProductView = () => {
             <PageTitle text={subcategoryname} />
             <div className="flex flex-wrap justify-start">
               {
-                products.map((product) => (
-                  <Card key={product.id} product={product}></Card>
+                products.map((product, _idx) => (
+                  <Card key={_idx} product={product}></Card>
                 ))
 
 

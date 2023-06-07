@@ -1,3 +1,5 @@
+import NotFound from "../../pages/ErrorPages/NotFound/NotFound";
+
 const validateMobileNumber = (number) => {
     const regex = /^(?:\+88)?01[3-9][0-9]{8}$/;
 
@@ -23,12 +25,12 @@ const fetchJson = async (path) =>{
           return data;
         } else {
           // If the response is not successful, return an empty array
-          return [];
+          return false;
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        // console.error('Error fetching data:', error);
         // Return an empty array in case of an error
-        return [];
+        return false;
       }
 
 }
