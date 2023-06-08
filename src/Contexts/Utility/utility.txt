@@ -6,7 +6,7 @@ const UtilityProvider = ({ children }) => {
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-    const [loadingpage, setLoadingPage] = useState(false);
+    const [loadingpage,setLoadingPage] = useState(false);
 
 
 
@@ -14,12 +14,13 @@ const UtilityProvider = ({ children }) => {
     //_________________navbar____________________________
 
     const [showSideNav, setShowSideNav] = useState(true);
-
+    const [isExpanded, setIsExpanded] = useState(false);  //search bar in small screen
 
     useEffect(() => {
-
-        if (screenWidth >= 768) {
-            setShowSideNav(true);
+        setIsExpanded(false)
+        setShowSideNav(true);
+        if (screenWidth < 768) {
+            setShowSideNav(false);
 
         }
     }, [screenWidth])
@@ -33,7 +34,7 @@ const UtilityProvider = ({ children }) => {
         fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/carts`)
             .then(res => res.json())
             .then(data => {
-
+                
                 setCart(data)
                 setLoadingPage(false)
             })
@@ -118,6 +119,21 @@ const UtilityProvider = ({ children }) => {
 
 
 
+    // ____________________________________touch__________________
+
+    const showSideNavbyTouch = () => {
+        if (screenWidth < 768) {
+            setShowSideNav(true);
+
+        }
+    };
+
+    const hideSideNavbyTouch = () => {
+        if (screenWidth < 768) {
+
+            setShowSideNav(false);
+        }
+    };
 
 
 
@@ -140,25 +156,27 @@ const UtilityProvider = ({ children }) => {
 
 
 
+    const value = {
+        screenWidth,
+        cart,
+        setCart,
+        updateCart,
+        deleteCartItem,
+        showSideNav,
+        setShowSideNav,
+        showSideNavbyTouch,
+        hideSideNavbyTouch,
+        isExpanded,
+        setIsExpanded,
+        loadingpage,
+        setLoadingPage
 
-
-const value = {
-    screenWidth,
-    cart,
-    setCart,
-    updateCart,
-    deleteCartItem,
-    showSideNav,
-    setShowSideNav,
-    loadingpage,
-    setLoadingPage
-
-}
-return (
-    <UtilityContext.Provider value={value}>
-        {children}
-    </UtilityContext.Provider>
-);
+    }
+    return (
+        <UtilityContext.Provider value={value}>
+            {children}
+        </UtilityContext.Provider>
+    );
 };
 
 export default UtilityProvider;

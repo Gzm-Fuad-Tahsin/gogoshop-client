@@ -1,14 +1,15 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 import { Outlet, useLoaderData } from 'react-router-dom';
+import { BsFillClipboard2CheckFill } from 'react-icons/bs';
 import TopNavbar from '../../pages/Shared/TopNavBar/TopNavbar';
 import SideNavbar from '../../pages/Shared/SideNavbar/SideNavbar/SideNavbar';
 import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import Footer from '../../pages/Shared/Footer/Footer';
 
 import { fetchJson } from '../../assets/Scripts/utility';
-import { Helmet } from 'react-helmet-async';
 import TopNav from '../../pages/Shared/TopNavBar/TopNav';
 import BottomBar from '../../pages/Shared/BottomBar/BottomBar';
+import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
 
 
 export const WebpageDataContext = createContext();
@@ -23,6 +24,8 @@ const Main = () => {
 
 
 
+
+
     //load the all products, category and footer data;
     const homepageInformation = useLoaderData();
     const { categories, AllproductsData, footerData } = homepageInformation;
@@ -30,49 +33,22 @@ const Main = () => {
 
 
 
-    const { screenWidth, showSideNav, hideSideNavbyTouch } = useContext(UtilityContext);
+    const { screenWidth, showSideNav } = useContext(UtilityContext);
     const contextvalue = {
         categories,
         AllproductsData,
         footerData
     }
 
+
     return (
         <>
 
+
             <WebpageDataContext.Provider value={contextvalue}>
-                {
-                    screenWidth < 768 ?
-                        <>
-                            <div className="drawer">
-                                <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-                                <div className="drawer-content flex flex-col">
-                                    {/* Navbar */}
-                                    <div className="w-full navbar bg-base-300">
-                                        <div className="flex-none lg:hidden">
-                                            <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                                            </label>
-                                        </div>
-                                       
-                                    </div>
-                                    {/* Page content here */}
-                                    <Outlet ></Outlet>
-                                    <Footer />
-                                </div>
-                                <div className="drawer-side">
-                                    <label htmlFor="my-drawer-3" className="drawer-overlay "></label>
-
-                                    <SideNavbar />
+          
 
 
-                                </div>
-                            </div>
-                        </>
-                        :
-
-
-                        <>
                             <div className='w-screen border-b-[1px] max-w-full  sticky top-0 z-[1000] '>
                                 {/* <TopNavbar /> */}
                                 <TopNav />
@@ -80,11 +56,11 @@ const Main = () => {
                             <div className='flex relative'>
                                 {
                                     showSideNav &&
-                                    <div className={`min-w-[240px] w-60 h-screen  overflow-y-auto  ${screenWidth < 768 ? 'fixed' : 'sticky'} top-[64px] z-40   bg-white flex flex-col `} >
+                                    <div className={`min-w-[240px]  h-screen  overflow-y-auto  ${screenWidth < 768 ? 'fixed' : 'sticky'} top-[64px] z-40   bg-white flex flex-col `} >
                                         <SideNavbar />
                                     </div>
                                 }
-                                <div className="w-full" onTouchStart={hideSideNavbyTouch}>
+                                <div className="w-full" >
 
                                     <Outlet ></Outlet>
                                     <Footer />
@@ -98,10 +74,8 @@ const Main = () => {
 
                             </div>
 
-                            {/* <SwipeNavigation showSideNavbySwipe={showSideNavbyTouch} hideSideNavbySwipe={hideSideNavbyTouch} /> */}
 
-                        </>
-                }
+                
             </WebpageDataContext.Provider>
 
 
@@ -114,3 +88,36 @@ const Main = () => {
 };
 
 export default Main;
+
+
+// <div className="">
+// <header>
+//     <div className="relative z-20 border-b bg-white">
+        
+
+//             <input type="checkbox" name="hamburger" id="hamburger" className="peer" hidden />
+
+//             <div className='w-screen border-b-[1px] max-w-full  sticky top-0 z-[1000] '>
+               
+//                 <TopNav />
+//             </div>
+
+//             <div className="peer-checked:translate-x-0 fixed top-0 inset-0 w-screen translate-x-[-100%]    border-r  shadow-xl transition duration-300 flex flex-nowrap">
+//                 <div className="w-60 border bg-white  h-screen  overflow-y-auto  z-40   ">
+//                     <SideNavbar />
+//                 </div>
+//                 <div className="flex-grow bg-gray-500 ">
+
+//                     <label htmlFor="hamburger" className="peer-checked:hamburger w-full h-screen ">
+//                         <div className="w-full h-full"></div>
+//                     </label>
+//                 </div>
+//             </div>
+
+//     </div>
+// </header>
+// <div className='w-full'>
+//     <Outlet ></Outlet>
+//     <Footer />
+// </div>
+// </div>

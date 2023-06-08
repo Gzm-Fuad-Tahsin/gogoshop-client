@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { fetchJson } from '../../../../assets/Scripts/utility';
 import PageTitle from '../../../../components/PageTitle/PageTitle';
 import OrderItem from '../../../../components/OrderItem/OrderItem';
+import ScrollToTop from '../../../../components/ScrollToTop/ScrollTotop';
 
 
 export async function loader({ params }) {
@@ -14,10 +15,11 @@ const PreviousOrder = () => {
     const CurrentOrderData = useLoaderData();
     return (
         <div>
+            <ScrollToTop />
             <PageTitle text={"Order History"} />
             <div className='flex flex-col items-center xl:w-[900px]'>
                 {
-                    CurrentOrderData.map((CurrentOrder,_idx) => <OrderItem key={_idx} orderData={CurrentOrder} redirectTo={`/order-history/${CurrentOrder.id}`} />)
+                    CurrentOrderData.map((CurrentOrder, _idx) => <OrderItem key={_idx} orderData={CurrentOrder} redirectTo={`/order-history/${CurrentOrder.id}`} />)
                 }
             </div>
         </div>

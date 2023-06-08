@@ -1,11 +1,14 @@
 import React, { useContext, useEffect } from 'react';
-import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import { useLocation } from 'react-router-dom';
+
 
 function ScrollToTop() {
-  // const {loading,setLoading} = useContext(AuthContext); 
-  useEffect(() => {
+  const path = useLocation();
+  useEffect(()=>{
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  }, []);
+
+  },[path])
+  
 
   return null;
 }

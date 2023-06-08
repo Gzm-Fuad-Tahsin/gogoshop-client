@@ -7,16 +7,10 @@ import { RxCross2 } from 'react-icons/rx';
 import { BsThreeDotsVertical } from 'react-icons/bs'
 const TopNav = ({ children }) => {
     const { user } = useContext(AuthContext);
-    const { cart, screenWidth, showSideNav, setShowSideNav, isExpanded, setIsExpanded } = useContext(UtilityContext);
+    const { cart, screenWidth, showSideNav, setShowSideNav } = useContext(UtilityContext);
 
 
 
-
-    //smaller screen search
-    const toogleSearchIcon = () => {
-        setShowSideNav(false)
-        setIsExpanded(!isExpanded);
-    };
 
 
 
@@ -26,10 +20,13 @@ const TopNav = ({ children }) => {
         <>
 
 
-            <div className="navbar w-screen bg-light-100 md:bg-base-100 px-1  relative border-b-[1px] h-[64px]">
+            <div className="navbar  bg-light-100 md:bg-base-100 px-1  relative border-b-[1px] h-[64px]">
 
+
+                {/* toggle button  */}
                 <div className="navbar-start w-fit pl-2 md:pl-3 ">
-                    <button className='text-slate-100 hover:text-slate-200 ' onClick={() => { setIsExpanded(false); setShowSideNav(!showSideNav); }}>
+                    <button className='text-slate-100 hover:text-slate-200 ' onClick={() => { setShowSideNav(!showSideNav); }}>
+
                         {
                             (showSideNav && screenWidth < 768) ?
 
@@ -50,9 +47,11 @@ const TopNav = ({ children }) => {
 
 
                         }
-
-
                     </button>
+
+
+
+                    {/* logo  */}
                     <div className="hidden md:block ml-0 md:ml-2">
                         <Link to='/' className="indicator flex items-center  w-28 pl-3">
                             <img src={logoFull} alt='gogoshop logo ' className='w-full' />
@@ -63,6 +62,8 @@ const TopNav = ({ children }) => {
 
 
 
+
+                {/* search bar  */}
                 <div className="navbar-center grow pl-4   justify-center">
                     <form className='w-full  2xl:w-[55rem] relative'>
 
@@ -80,6 +81,9 @@ const TopNav = ({ children }) => {
                     </form>
                 </div>
 
+
+
+
                 <div className="navbar-end w-fit ">
 
                     {
@@ -89,6 +93,8 @@ const TopNav = ({ children }) => {
                                 <div className="mx-3 dropdown dropdown-bottom dropdown-end">
                                     <label tabIndex={0} className="text-2xl"><BsThreeDotsVertical /></label>
                                     <ul tabIndex={0} className="dropdown-content mt-3 menu p-2  shadow bg-gray-100 rounded-lg w-40">
+
+
                                         <li>
                                             <Link to='/cart' className='flex items-center relative px-4 py-2 text-sm  hover:bg-gray-200'>
                                                 <div >
@@ -106,6 +112,9 @@ const TopNav = ({ children }) => {
                                                 }
                                             </Link>
                                         </li>
+
+
+
                                         <li>
                                             <Link to='/cart' className='flex items-center relative px-4 py-2 text-sm  hover:bg-gray-200 '>
                                                 <div >
@@ -123,6 +132,8 @@ const TopNav = ({ children }) => {
                             </>
                             :
                             <>
+
+                              {/* screen greater than md will show all the button at top  */}
                                 <div className="hidden md:flex">
                                     {
                                         !user &&
@@ -169,7 +180,11 @@ const TopNav = ({ children }) => {
                                 </Link>
 
 
+
+
+
                                 {
+                                    // user profile 
                                     user &&
                                     <div className='px-2 hidden md:flex border-[#D9D9D9]  border-l-2  w-[3.7rem] dropdown dropdown-end' aria-label='user-profile'>
 
