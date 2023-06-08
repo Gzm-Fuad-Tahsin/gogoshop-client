@@ -68,7 +68,7 @@ const OrderStatus = () => {
 
                     </div>
                     <Link className='flex justify-end mt-8 text-[#205072] hover:underline'>Cancel Order</Link>
-                    <Link to="/" className='flex items-center gap-1 hover:underline my-16 text-[#666666] font-medium text-[8px] md:text-base'><IoIosArrowBack></IoIosArrowBack>Go back to<span className='text-blue-700'>Home</span></Link>
+                    <Link to="/" className='flex items-center gap-1 hover:underline my-16 text-[#666666] font-medium text-base '><IoIosArrowBack></IoIosArrowBack>Go back to<span className='text-blue-700'>Home</span></Link>
 
                     <OrderAlert />
                 </div>

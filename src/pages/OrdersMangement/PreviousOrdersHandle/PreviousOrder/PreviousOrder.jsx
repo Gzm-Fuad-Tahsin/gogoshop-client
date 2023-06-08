@@ -14,7 +14,7 @@ const PreviousOrder = () => {
     const CurrentOrderData = useLoaderData();
     return (
         <div>
-            <PageTitle text={"My Orders"} />
+            <PageTitle text={"Order History"} />
             <div className='flex flex-col items-center xl:w-[900px]'>
                 {
                     CurrentOrderData.map((CurrentOrder,_idx) => <OrderItem key={_idx} orderData={CurrentOrder} redirectTo={`/order-history/${CurrentOrder.id}`} />)

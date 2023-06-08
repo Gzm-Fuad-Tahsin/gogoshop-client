@@ -38,7 +38,7 @@ const ReviewCartsDiv = () => {
       totalammount += (parseFloat(cartItem?.buyingprice) * cartItem.quantity)
     }
     setTotal(totalammount)
-  }, [])
+  }, [products])
 
 
   return (
@@ -96,7 +96,7 @@ const ReviewCartsDiv = () => {
 
           </div>
 
-          <hr className="my-2" />
+          <hr className="my-4 md:my-2" />
 
           {/* sub total show ___________________________________________ */}
           <div className="grid grid-cols-12 mt-2 md:mt-5 mx-2 md:mx-5" aria-label="subtotal">
@@ -104,7 +104,7 @@ const ReviewCartsDiv = () => {
               <p className="text-black mr-3">Subtotal</p>
             </div>
             <div className="col-span-4 md:col-span-5 ">
-              <p className="flex justify-end items-center" ><TbCurrencyTaka />{total.toFixed(2)}</p>
+              <p className="flex justify-end items-center" ><TbCurrencyTaka />{(total + shippingCharge).toFixed(2)}</p>
             </div>
           </div>
 

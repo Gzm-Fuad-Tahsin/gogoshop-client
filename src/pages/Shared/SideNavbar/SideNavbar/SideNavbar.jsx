@@ -10,7 +10,7 @@ import './SideNavbar.module.css'
 
 
 const SideNavbar = () => {
-    const { screenWidth,hideSideNavbyTouch } = useContext(UtilityContext);
+    const { screenWidth, hideSideNavbyTouch } = useContext(UtilityContext);
     const { user } = useContext(AuthContext);
     const { categories } = useContext(WebpageDataContext);
 
@@ -23,53 +23,73 @@ const SideNavbar = () => {
 
     return (
 
-        <aside className="borsder-r bg-white text-black font-medium">
+        <aside className="w-60 border-r bg-white text-black font-medium">
 
             <ul className="">
 
 
                 {
                     screenWidth < 768 &&
-
-                    <div className='relative'>
-
-                        <button
-                            onClick={toggleMenu}
-                            className="p-2 border-b w-full flex justify-between items-center">
-                            <div className='flex justify-between items-center'>
-
-                                <img className='rounded-xl  w-12  ' src={user?.imgURL} />
-                                <div className='pl-3 flex flex-col items-start '>
-                                    <p>{user?.name}</p>
-                                    <p className='text-sm hover:underline cursor-pointer text-gray-400'>{user?.id}</p>
-                                </div>
-                            </div>
-                            <GoChevronRight className={`w-5 h-5 transition-transform duration-50000 ${isOpen ? 'transform rotate-90' : ''}`} />
-                        </button>
+                    <>
                         {
-                            isOpen &&
-                            <ul className="menu dropdown-content  p-2 border-0 border-b   bg-base-100  text-gray-700">
+                            user ?
+                                <>
+                                    <div className='relative'>
+
+                                        <button
+                                            onClick={toggleMenu}
+                                            className="p-2 border-b w-full flex justify-between items-center">
+                                            <div className='flex justify-between items-center'>
+                                             
+                                                <img className='rounded-xl  w-12  ' src={user?.imgURL} />
+                                                <div className='pl-3 flex flex-col items-start '>
+                                                    <p>{user?.name}</p>
+                                                    <p className='text-sm hover:underline cursor-pointer text-gray-400'>{user?.id}</p>
+                                                </div>
+                                            </div>
+                                            <GoChevronRight className={`w-5 h-5 transition-transform duration-50000 ${isOpen ? 'transform rotate-90' : ''}`} />
+                                        </button>
+                                        {
+                                            isOpen &&
+                                            <ul className="menu dropdown-content  p-2 border-0 border-b   bg-base-100  text-gray-700">
 
 
-                                <li onClick={hideSideNavbyTouch}>
-                                    <Link to='/profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Profile</Link>
-                                </li>
-                                <li onClick={hideSideNavbyTouch}>
-                                    <Link to='/update-profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Update information</Link>
-                                </li>
-                                <li onClick={hideSideNavbyTouch}>
-                                    <Link to='/orders' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">My orders</Link>
-                                </li>
-                                <li onClick={hideSideNavbyTouch}>
-                                    <Link to='/order-history' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Order History</Link>
-                                </li>
-                                <li onClick={hideSideNavbyTouch}>
-                                    <Link className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Sign out</Link>
-                                </li>
-                            </ul>
+                                                <li onClick={hideSideNavbyTouch}>
+                                                    <Link to='/profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Profile</Link>
+                                                </li>
+                                                <li onClick={hideSideNavbyTouch}>
+                                                    <Link to='/update-profile' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Update information</Link>
+                                                </li>
+                                                <li onClick={hideSideNavbyTouch}>
+                                                    <Link to='/orders' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">My orders</Link>
+                                                </li>
+                                                <li onClick={hideSideNavbyTouch}>
+                                                    <Link to='/order-history' className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Order History</Link>
+                                                </li>
+                                                <li onClick={hideSideNavbyTouch}>
+                                                    <Link className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Sign out</Link>
+                                                </li>
+                                            </ul>
+                                        }
+
+                                    </div>
+
+                                </>
+                                :
+                                <>
+                                    <Link to='/login' className="p-2 border-b w-full flex flex-col items-center ">
+
+                                        <div className="mb-1 relative w-8 h-8 overflow-hidden bg-gray-100 rounded-xl dark:bg-gray-600">
+                                            <svg className="absolute w-10 h-10 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
+                                        </div>
+                                        <p>Sign In</p>
+
+
+                                    </Link>
+                                </>
                         }
+                    </>
 
-                    </div>
 
                 }
 
@@ -77,6 +97,7 @@ const SideNavbar = () => {
 
 
                 {
+                 
                     categories.map(item => <li key={item?._id} >
                         <SideNavbarItem data={item} />
                     </li>
@@ -88,7 +109,7 @@ const SideNavbar = () => {
             </ul>
 
 
-            <ul className="fixed  w-60 bg-white bottom-0  pt-1  pb-1  border-t ">
+            <ul className="fixed w-60 bg-white bottom-0  pt-1  pb-1  border-t ">
                 <li>
                     <Link to='/orders' className="hidden md:flex items-center p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
                         <BsFillClipboard2CheckFill className='text-root-100 text-lg' />
@@ -106,7 +127,7 @@ const SideNavbar = () => {
 
 
             </ul>
-        </aside>
+        </aside >
 
 
 
