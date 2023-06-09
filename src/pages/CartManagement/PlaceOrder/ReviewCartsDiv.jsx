@@ -176,10 +176,10 @@ const ReviewCartsDiv = () => {
               <input
                 type="radio"
                 name="radio-1"
-                id="nagad"
+                id="card"
                 className="radio radio-xs md:radio-sm mr-2 md:mr-4"
               />
-              <label htmlFor="nagad">Pay with Cards</label>
+              <label htmlFor="card">Pay with Cards</label>
               <img src={mastercard} alt="" className="w-6" />
               <img src={visa} alt="" className="w-6" />
             </div>

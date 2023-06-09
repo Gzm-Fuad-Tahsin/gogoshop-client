@@ -64,8 +64,8 @@ const TopNav = ({ children }) => {
 
 
                 {/* search bar  */}
-                <div className="navbar-center grow pl-4   justify-center">
-                    <form className='w-full  2xl:w-[55rem] relative'>
+                <div className="navbar-center grow pl-4  pr-2 justify-center">
+                    <form className='w-full  xl:w-[55rem] relative'>
 
 
 

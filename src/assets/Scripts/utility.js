@@ -1,6 +1,7 @@
 import NotFound from "../../pages/ErrorPages/NotFound/NotFound";
 
 const validateMobileNumber = (number) => {
+
     const regex = /^(?:\+88)?01[3-9][0-9]{8}$/;
 
     // Remove "+88" if it exists
@@ -35,9 +36,27 @@ const fetchJson = async (path) =>{
 
 }
 
+const validateImage = (file) => {
+  if (file && file[0]) {
+    const supportedFormats = ['image/jpeg', 'image/png', 'image/gif'];
+    const { type, size } = file[0];
+
+    if (!supportedFormats.includes(type)) {
+      return 'Only JPEG, PNG, and GIF images are allowed.';
+    }
+
+    if (size > 3 * 1024 * 1024) {
+      return 'Image size should not exceed 3MB.';
+    }
+  }
+
+  return true;
+};
+
 
 export {
     validateMobileNumber,
     validateEmail,
-    fetchJson
+    fetchJson,
+    validateImage
 }

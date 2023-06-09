@@ -30,6 +30,8 @@ const UtilityProvider = ({ children }) => {
     // ___________________________cart___________________________p__
     const [cart, setCart] = useState([]);
     const [changeedProduct, setChangedProduct] = useState(null);
+
+    
     useEffect(() => {
         setLoadingPage(true);
         fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/carts`)
