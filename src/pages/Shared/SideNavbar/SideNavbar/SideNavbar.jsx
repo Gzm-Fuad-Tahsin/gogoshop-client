@@ -96,7 +96,9 @@ const SideNavbar = () => {
             <ul>
 
                 {
-                    categories.map(item => <li key={item?._id} >
+
+                    Array.isArray(categories) &&
+                    categories.map((item,_idx) => <li key={_idx} >
                         <SideNavbarItem data={item} />
                     </li>
                     )
@@ -108,7 +110,7 @@ const SideNavbar = () => {
 
 
             <ul className="fixed  w-60 bg-white bottom-0 ">
-                <hr className= 'invisible md:visible' />
+                <hr className='invisible md:visible' />
                 <li>
                     <Link to='/orders' className="hidden md:flex  items-center mt-1 p-2  text-gray-900 transition duration-75 rounded-lg hover:bg-light-200 ">
                         <BsFillClipboard2CheckFill className='text-root-100 text-lg' />

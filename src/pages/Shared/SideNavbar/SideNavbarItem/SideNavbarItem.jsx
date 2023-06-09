@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react';
 import './SideNavBar.module.css';
 import { GoChevronRight } from 'react-icons/go';
 import { Link, NavLink } from 'react-router-dom';
-import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
+
 
 
 const SideNavbarItem = ({ data }) => {
   
     const [isOpen, setIsOpen] = useState(false);
 
-    const { _id, isActive, category_unique_name, img, categoy_name, sub_category, path } = data;
+    const { _id, isActive, category_unique_name, img, category_name, sub_category, path } = data;
 
 
     const toggleMenu = () => {
@@ -24,7 +24,7 @@ const SideNavbarItem = ({ data }) => {
                 onClick={toggleMenu} >
                 <div className='flex items-center'>
                     <img src={img} alt={category_unique_name} className='w-6 h-6' />
-                    <span className="ml-2">{categoy_name}</span>
+                    <span className="ml-2">{category_name}</span>
                 </div>
 
 

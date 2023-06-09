@@ -1,10 +1,17 @@
 import React from 'react';
-
-const ImageOverlayText = ({data}) => {
+import './ImageOverlayTex.css'
+const ImageOverlayText = ({ data }) => {
     console.log(data)
+    const { category_unique_name, category_name, img } = data
     return (
-        <div className='card border-2 w-36 h-10 md:w-48 hover:shadow-lg m-2'>
-            Lorem ipsum dolor sit amet, consectetur 
+        <div className=' w-40 md:w-52 h-20 md:h-24 rounded-md hover:shadow-lg m-2  re'>
+            
+
+                <img src='https://source.unsplash.com/HkTMcmlMOUQ' className=' w-40 md:w-52 h-20 md:h-24 rounded-md' alt="" />
+           
+            <div className="boya">
+                <h2>dfslkfjsdj</h2>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,12 @@
+.overlay-image{
+
+    background: linear-gradient(to right, #f30505 10%,rgba(21, 21, 21, 0) 100%); /* W3C */
+  }
+  
+  .img-gradient img{
+    display:block;
+  }
+
+  .boya{
+    color: yellow;
+  }
