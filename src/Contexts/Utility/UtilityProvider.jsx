@@ -17,10 +17,12 @@ const UtilityProvider = ({ children }) => {
 
 
     useEffect(() => {
+        
+        if (screenWidth < 768) {
+            setShowSideNav(false);
 
-        if (screenWidth >= 768) {
+        }else{
             setShowSideNav(true);
-
         }
     }, [screenWidth])
 
@@ -142,23 +144,23 @@ const UtilityProvider = ({ children }) => {
 
 
 
-const value = {
-    screenWidth,
-    cart,
-    setCart,
-    updateCart,
-    deleteCartItem,
-    showSideNav,
-    setShowSideNav,
-    loadingpage,
-    setLoadingPage
+    const value = {
+        screenWidth,
+        cart,
+        setCart,
+        updateCart,
+        deleteCartItem,
+        showSideNav,
+        setShowSideNav,
+        loadingpage,
+        setLoadingPage
 
-}
-return (
-    <UtilityContext.Provider value={value}>
-        {children}
-    </UtilityContext.Provider>
-);
+    }
+    return (
+        <UtilityContext.Provider value={value}>
+            {children}
+        </UtilityContext.Provider>
+    );
 };
 
 export default UtilityProvider;
