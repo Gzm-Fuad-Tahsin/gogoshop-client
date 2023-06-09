@@ -15,13 +15,14 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 // loader 
-import {loader as HomePageAllDataLoader} from '../../Layout/Main/Main'
+import { loader as HomePageAllDataLoader } from '../../Layout/Main/Main'
 import { loader as subcategoryLoader } from '../../pages/SubCategoryProductView/SubCategoryProductView';
 import { loader as productDetailLoader } from '../../pages/ProductDetail/ProductDetail';
-import { loader as CurrentRunningOrdersLoader } from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";    
-import {loader as orderStatusLoader} from '../../pages/OrdersMangement/CurrentOrders/OrderStatus/OrderStatus'
-import {loader as CompletedOrdersLoader} from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrder/PreviousOrder'         
-import {loader as PreviousOrderStatementLoader} from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement';
+import { loader as CurrentRunningOrdersLoader } from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";
+import { loader as orderStatusLoader } from '../../pages/OrdersMangement/CurrentOrders/OrderStatus/OrderStatus'
+import { loader as CompletedOrdersLoader } from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrder/PreviousOrder'
+import { loader as PreviousOrderStatementLoader } from '../../pages/OrdersMangement/PreviousOrdersHandle/PreviousOrderStatement/PreviousOrderStatement';
+import { loader as orderItemLoader } from "../../pages/CartManagement/PlaceOrder/ReviewCartsDiv";
 
 import ReviewCartsDiv from "../../pages/CartManagement/PlaceOrder/ReviewCartsDiv";
 import CurrentOrder from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";
@@ -37,7 +38,7 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
-        loader : HomePageAllDataLoader,
+        loader: HomePageAllDataLoader,
         children: [
             {
                 path: '/',
@@ -45,40 +46,41 @@ export const router = createBrowserRouter([
             },
 
             {
-                path : '/login',
-                element : <PreventLogin><SignIn/></PreventLogin>
+                path: '/login',
+                element: <PreventLogin><SignIn /></PreventLogin>
             },
             {
-                path : '/sign-up',
-                element : <PreventLogin><SignUp/></PreventLogin>
+                path: '/sign-up',
+                element: <PreventLogin><SignUp /></PreventLogin>
             },
             {
-                path : '/auth-phone',
-                element : <PreventLogin><MobileSignUp/></PreventLogin>
+                path: '/auth-phone',
+                element: <PreventLogin><MobileSignUp /></PreventLogin>
             },
             {
-                path : '/forget-password',
-                element : <PreventLogin><ForgotPassword/></PreventLogin>
+                path: '/forget-password',
+                element: <PreventLogin><ForgotPassword /></PreventLogin>
             },
             {
-                path : '/profile',
-                element : <PrivateRoute><UserProfile/></PrivateRoute>
+                path: '/profile',
+                element: <PrivateRoute><UserProfile /></PrivateRoute>
             },
             {
-                path : '/update-profile',
-                element : <PrivateRoute><UserEditProfile/></PrivateRoute>
+                path: '/update-profile',
+                element: <PrivateRoute><UserEditProfile /></PrivateRoute>
             },
             {
                 path: '/cart',
-                element: <PrivateRoute><ViewCart/></PrivateRoute>,
-                
+                element: <PrivateRoute><ViewCart /></PrivateRoute>,
+
             },
             {
                 path: '/proceed-to-pay',
-                element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>
+                element: <PrivateRoute><ReviewCartsDiv /></PrivateRoute>,
+                loader: orderItemLoader
             },
             {
-                path : 'sub-category/:subcategory_slug',
+                path: 'sub-category/:subcategory_slug',
                 element: <SubCategoryProductView />,
                 loader: subcategoryLoader,
             },
@@ -94,7 +96,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/orders/:orderId',
-                element : <PrivateRoute><OrderStatus/></PrivateRoute>,
+                element: <PrivateRoute><OrderStatus /></PrivateRoute>,
                 loader: orderStatusLoader
             },
             {
@@ -104,8 +106,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/order-history/:orderId',
-                element : <PrivateRoute><PreviousOrderStatement/></PrivateRoute>,
-                loader : PreviousOrderStatementLoader
+                element: <PrivateRoute><PreviousOrderStatement /></PrivateRoute>,
+                loader: PreviousOrderStatementLoader
             },
             {
                 path: '*',

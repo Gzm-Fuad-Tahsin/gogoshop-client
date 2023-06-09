@@ -4,6 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .hamburger div:first-child {
+    @apply rotate-45 translate-y-1.5;
+  }
+  .hamburger div:nth-child(2) {
+     @apply -rotate-45 -translate-y-1;
+  }
+  .hamburger div:last-child {
+     @apply hidden;
+  
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }

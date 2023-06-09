@@ -15,7 +15,7 @@ export async function loader({ params }) {
 }
 
 const SubCategoryProductView = () => {
-  const { hideSideNavbyTouch } = useContext(UtilityContext);
+ 
   const { subcategory_slug, subcategoryname, products } = useLoaderData();
 
 

@@ -7,7 +7,11 @@ const OrderedItemInformation = ({ product }) => {
     <>
     <div className="grid grid-cols-8 md:grid-cols-3 text-[#666666] font-medium text-base my-2">
       <p className="col-span-4 md:col-span-1">
-        {name}({size})
+        {name}
+        <span className="pl-1 text-xs text-gray-500">
+          {size}
+        </span>
+       
       </p>
       <p className="col-span-2 md:col-span-1 text-center  font-thin text-sm">
         <span className="hidden md:inline">Quantity{" "}</span>
@@ -16,7 +20,7 @@ const OrderedItemInformation = ({ product }) => {
           {quantity}
         </span>
       </p>
-      <p className="col-span-2 md:col-span-1 flex justify-end items-center"><TbCurrencyTaka />{buyingprice}</p>
+      <p className="col-span-2 md:col-span-1 flex justify-end items-center"><TbCurrencyTaka />{(buyingprice*quantity).toFixed(2)}</p>
     </div>
     </>
   );
