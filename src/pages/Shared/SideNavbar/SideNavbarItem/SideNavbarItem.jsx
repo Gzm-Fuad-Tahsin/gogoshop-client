@@ -6,7 +6,7 @@ import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
 
 
 const SideNavbarItem = ({ data }) => {
-    const { hideSideNavbyTouch } = useContext(UtilityContext);
+  
     const [isOpen, setIsOpen] = useState(false);
 
     const { _id, isActive, category_unique_name, img, categoy_name, sub_category, path } = data;
