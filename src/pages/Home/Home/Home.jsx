@@ -14,9 +14,9 @@ const Home = () => {
 
             <Banner />
 
-            <AllCategories />
+            {/* <AllCategories /> */}
 
-            <SecondBanner />
+            {/* <SecondBanner /> */}
 
 
         </>

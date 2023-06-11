@@ -17,13 +17,15 @@ const UtilityProvider = ({ children }) => {
 
 
     useEffect(() => {
+        console.log(screenWidth)
+        setShowSideNav(true);
+        
         
         if (screenWidth < 768) {
             setShowSideNav(false);
 
-        }else{
-            setShowSideNav(true);
         }
+        
     }, [screenWidth])
 
 
