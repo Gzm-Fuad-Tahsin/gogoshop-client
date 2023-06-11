@@ -30,14 +30,14 @@ body {
 }
 
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input-field::-webkit-outer-spin-button,
+input-field::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
+input-field[type=number] {
   -moz-appearance: textfield;
 }
 
@@ -69,25 +69,25 @@ input[type=number] {
 
 
 /* --------- */
-.card-d {
+.img-card {
   position: relative;
   display: flex;
   flex-direction: column;
   border-radius: var(--rounded-box, 1rem);
 }
-.card-d:focus {
+.img-card:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-.card-d figure {
+.img-card figure {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.card-d.image-full {
+.img-card.image-full {
   display: grid;
 }
-.card-d.image-full:before {
+.img-card.image-full:before {
   position: relative;
   content: "";
   z-index: 10;
@@ -96,55 +96,100 @@ input[type=number] {
   opacity: 0.75;
   border-radius: var(--rounded-box, 1rem);
 }
-.card-d.image-full:before,
-  .card-d.image-full > * {
+.img-card.image-full:before,
+  .img-card.image-full > * {
   grid-column-start: 1;
   grid-row-start: 1;
 }
-.card-d.image-full:before,
-  .card-d.image-full > * {
+.img-card.image-full:before,
+  .img-card.image-full > * {
   grid-column-start: 1;
   grid-row-start: 1;
 }
-.card-d.image-full > figure img {
+.img-card.image-full > figure img {
   height: 100%;
   object-fit: cover;
 }
-.card-d.image-full > .card-d-body {
+.img-card.image-full > .img-card-body {
   position: relative;
   z-index: 20;
   --tw-text-opacity: 1;
   color: hsl(var(--nc) / var(--tw-text-opacity));
 }
-.card-d :where(figure:first-child) {
+.img-card :where(figure:first-child) {
   overflow: hidden;
   border-start-start-radius: inherit;
   border-start-end-radius: inherit;
   border-end-start-radius: unset;
   border-end-end-radius: unset;
 }
-.card-d :where(figure:last-child) {
+.img-card :where(figure:last-child) {
   overflow: hidden;
   border-start-start-radius: unset;
   border-start-end-radius: unset;
   border-end-start-radius: inherit;
   border-end-end-radius: inherit;
 }
-.card-d:focus-visible {
+.img-card:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
-.card-d.bordered {
+.img-card.bordered {
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
 }
-.card-d.compact .card-d-body {
+.img-card.compact .img-card-body {
   padding: 1rem/* 16px */;
   font-size: 0.875rem/* 14px */;
   line-height: 1.25rem/* 20px */;
 }
-.card-d.image-full :where(figure) {
+.img-card.image-full :where(figure) {
   overflow: hidden;
   border-radius: inherit;
 }
+
+
+
+
+/* input-field field  */
+
+.input-field {
+  flex-shrink: 1;
+  height: 3rem/* 48px */;
+
+  
+}
+.input-field-group > .input-field {
+  isolation: isolate;
+}
+.input-field-group > *,
+.input-field-group > .input-field,
+.input-field-group > .textarea,
+.input-field-group > .select {
+  border-radius: 0px;
+}
+.input-field[list]::-webkit-calendar-picker-indicator {
+  line-height: 1em;
+}
+.input-field:focus {
+  outline: 2px solid hsla(var(--bc) / 0.2);
+  outline-offset: 2px;
+}
+.input-field-disabled,
+.input-field[disabled] {
+  cursor: not-allowed;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
+  --tw-text-opacity: 0.2;
+}
+.input-field-disabled::placeholder,
+.input-field[disabled]::placeholder {
+  color: hsl(var(--bc) / var(--tw-placeholder-opacity));
+  --tw-placeholder-opacity: 0.2;
+}
+
+
+

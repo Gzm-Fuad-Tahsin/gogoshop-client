@@ -76,7 +76,7 @@ const TopNav = ({ children }) => {
                             </svg>
                             <span className="sr-only">Search icon</span>
                         </div>
-                        <input type="search" id="search-navbar" name='search' className="block w-full h-10 p-2 pl-10 text-base   input bg-base-100  md:bg-light-100" placeholder="Search..." />
+                        <input type="search" id="search-navbar" name='search' className="input-field block w-full h-10 p-2 pl-10 text-base  rounded-md    bg-base-100  md:bg-light-100" placeholder="Search..." />
 
                     </form>
                 </div>
