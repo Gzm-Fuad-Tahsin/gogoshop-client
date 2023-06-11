@@ -9,7 +9,7 @@ const UserProfile = ({ setShowUserPage, handlePageLoad }) => {
     return (
         <>
             <ScrollToTop />
-            <div className='w-screen lg:w-[900px] mx-auto px-2 md:px-4 mb-28 md:mb-40'>
+            <div className=' w-full md:w-[520px] lg:w-[780px] xl:w-[950px] 2xl:w-[1200px] 3xl:w-[1380px] 4xl:w-[1600px] 5xl:w-[1850px] mx-auto  px-2 md:px-4 mb-28 md:mb-40'>
                 {/* https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg */}
                 <div className="mx-auto mt-10 mb-10 md:flex block items-center">
                     <img className='rounded-xl md:mr-8 w-20 mx-auto md:mx-0' src={user?.imgURL} />

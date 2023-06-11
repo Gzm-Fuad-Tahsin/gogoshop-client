@@ -21,6 +21,12 @@ export default {
       width : {
         '478' : '29.87rem',
         '30' : '7.5rem',
+      },
+      screens:{
+        '3xl' : '1680px',
+        '4xl' :'1920px',
+        '5xl' :'2560px',
+        '6xl' :'3440px',
       }
     },
   },
