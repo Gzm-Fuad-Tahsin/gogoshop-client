@@ -56,7 +56,7 @@ const Main = () => {
                             <div className='flex relative'>
                                 {
                                     showSideNav &&
-                                    <div className={`min-w-[240px]  h-screen  overflow-y-auto  ${screenWidth < 768 ? 'fixed' : 'sticky'} top-[64px] z-40   bg-white flex flex-col `} >
+                                    <div className={`min-w-[240px]  w-60 h-screen  overflow-y-auto  ${screenWidth < 768 ? 'fixed' : 'sticky'} top-[64px] z-40   bg-white flex flex-col `} >
                                         <SideNavbar />
                                     </div>
                                 }
