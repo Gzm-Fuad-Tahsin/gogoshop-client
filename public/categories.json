@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "category_name": "Fruits & Vegetables",
+        "img": "https://i.ibb.co/WxRJSwV/Getty-1051355600-Resize-DH-RD-Most-Popular-Grocery-Item-removebg-preview.png"
+      },
+      {
+        "id": 2,
+        "category_name": "Meat & Fish",
+        "img": "https://i.ibb.co/WxRJSwV/Getty-1051355600-Resize-DH-RD-Most-Popular-Grocery-Item-removebg-preview.png"
+      },
+      {
+        "id": 3,
+        "category_name": "Cooking Essentials",
+        "img": "https://i.ibb.co/WxRJSwV/Getty-1051355600-Resize-DH-RD-Most-Popular-Grocery-Item-removebg-preview.png"
+      },
+      {
+        "id": 4,
+        "category_name": "Home & Cleaning",
+        "img": "https://i.ibb.co/WxRJSwV/Getty-1051355600-Resize-DH-RD-Most-Popular-Grocery-Item-removebg-preview.png"
+      },
+      {
+        "id": 5,
+        "category_name": "Skincare & Makeup",
+        "img": "https://i.ibb.co/WxRJSwV/Getty-1051355600-Resize-DH-RD-Most-Popular-Grocery-Item-removebg-preview.png"
+      }
+]
