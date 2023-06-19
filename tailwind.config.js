@@ -24,6 +24,8 @@ export default {
         '30' : '7.5rem',
       },
       screens:{
+        'xmd' : '650px',
+        
         '3xl' : '1680px',
         '4xl' :'1920px',
         '5xl' :'2560px',
