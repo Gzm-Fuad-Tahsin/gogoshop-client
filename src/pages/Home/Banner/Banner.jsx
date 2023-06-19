@@ -15,7 +15,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 const Banner = () => {
   return (
     <>
-      <div className=" mt-3 flex justify-center  md:px-0 w-full  md:w-[500px] lg:w-[780px] xl:w-[1000px] 2xl:w-[1270px] 3xl:w-[1420px] 4xl:w-[1650px] 5xl:w-[1900px] mx-auto">
+      <div className=" mt-3 flex justify-center  md:px-0 w-full xmd:w-[500px]   md:w-[525px] lg:w-[780px] xl:w-[1120px] 2xl:w-[1270px] 3xl:w-[1420px] 4xl:w-[1650px] 5xl:w-[1900px] mx-auto">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
