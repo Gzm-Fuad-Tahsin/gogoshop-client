@@ -53,12 +53,12 @@ const Card = ({ product }) => {
         </Link>
         {
           alreadyAdded ?
-            <button  onClick={() => toast.error('Already Added')} className="btn btn-sm btn-circle bg-root-100 hover:bg-root-200 md:w-[190px] md:h-[38px] lg:w-[208px]  border-0 rounded-xl md:font-medium md:text-xl normal-case absolute bottom-1 right-1 md:bottom-1 md:left-1 md:gap-2">
+            <button  onClick={() => toast.error('Already Added')} className="btn btn-sm btn-circle text-white bg-root-100 hover:bg-root-200 md:w-[190px] md:h-[38px] lg:w-[208px]  border-0 rounded-xl md:font-medium md:text-xl normal-case absolute bottom-1 right-1 md:bottom-1 md:left-1 md:gap-2">
               <AiOutlineShoppingCart></AiOutlineShoppingCart>
               <span className="hidden md:block">Added</span>
             </button>
             :
-            <button onClick={() => updateCart({ product_id, quantity: 1 })} className="btn btn-sm btn-circle bg-root-100 hover:bg-root-200 md:w-[190px] md:h-[38px] lg:w-[208px]  border-0 rounded-xl md:font-medium md:text-xl normal-case absolute bottom-1 right-1 md:bottom-1 md:left-1 md:gap-2">
+            <button onClick={() => updateCart({ product_id, quantity: 1 })} className="btn btn-sm btn-circle bg-root-100 text-white hover:bg-root-200 md:w-[190px] md:h-[38px] lg:w-[208px]  border-0 rounded-xl md:font-medium md:text-xl normal-case absolute bottom-1 right-1 md:bottom-1 md:left-1 md:gap-2">
               <AiOutlineShoppingCart></AiOutlineShoppingCart>
               <span className="hidden md:block">Add to Cart</span>
             </button>

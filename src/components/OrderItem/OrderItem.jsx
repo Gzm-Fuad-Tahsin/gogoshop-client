@@ -5,7 +5,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 const OrderItem = ({ orderData, redirectTo }) => {
     const { id, cart_img, item_name, time, price } = orderData;
     return (
-        <Link to={redirectTo} className='flex justify-between items-center my-2.5 p-3 w-[300px] sm:w-[500px] md:w-[500px]  border border-gray-300 rounded-xl cursor-pointer'>
+        <Link to={redirectTo} className='flex justify-between items-center my-2.5 p-3 w-full sm:w-[550px] md:w-[550px]  border border-gray-300 rounded-xl cursor-pointer'>
             <div className='flex justify-center items-center'>
                 <img className='w-24 rounded-xl mr-5' src={cart_img} alt="" />
                 <div>

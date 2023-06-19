@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import logo from '../../../assets/icons/logo-full.png';
-import AboutUs from './AboutUs';
+
 import { Link } from 'react-router-dom';
 
 

@@ -10,7 +10,7 @@ const BottomBar = () => {
 
 
 
-        <div className="fixed bottom-0 w-screen bg-base-100  ">
+        <div className="fixed bottom-0 w-screen bg-white  ">
             <ul className="flex items-center justify-between px-10 py-3 shadow-inner">
 
 

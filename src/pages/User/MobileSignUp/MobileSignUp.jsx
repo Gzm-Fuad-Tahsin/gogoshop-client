@@ -24,11 +24,11 @@ const MobileSignUp = () => {
         setNumberCorrect(true);
 
         let numberBeforeCrop = e.target.phone.value;
-      
+
 
         //validation
         const isValid = await validateMobileNumber(numberBeforeCrop);
-      
+
 
         if (isValid) {
 
@@ -73,16 +73,18 @@ const MobileSignUp = () => {
 
                             <div className="form-control mb-7">
                                 <input
-                                    type="number"
+                                    type="text"
                                     name='otp'
-                                    placeholder="Enter OTP" className="input bg-light-100" required />
-                                <label className="label text-sm text-root-100 mx-auto" aria-label='forgot passsword'>
+                                    placeholder="Enter OTP"
+                                    className="block input-field w-full xl:max-w-lg p-2 pl-4 text-gray-900  rounded-lg bg-light-100"
+                                    required />
+                                <label className="label text-sm text-root-100 w-full mx-auto " aria-label='forgot passsword'>
                                     Provide the OTP Sent to your phone
                                 </label>
                             </div>
 
-                            <div className="form-control mx-auto md:w-40  ">
-                                <input type="submit" value="Enter" className="cursor-pointer btn border-0 bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
+                            <div className="form-control mx-auto md:w-40  px-3 md:px-0">
+                                <input type="submit" value="Enter"  className=" p-2 px-10 lg:px-16 cursor-pointer text-base font-normal text-white border-0 bg-root-100 hover:bg-root-200 rounded-2xl" />
                             </div>
                         </form>
 
@@ -99,19 +101,21 @@ const MobileSignUp = () => {
 
                             <div className="form-control mb-7">
                                 <input
-                                    type="text"
+                                    type="tel"
 
                                     onChange={handleInputChange}
                                     name='phone'
-                                    placeholder="Enter mobile number" className="input bg-light-100" required />
+                                    placeholder="Enter mobile number"
+                                    className="block input-field w-full xl:max-w-lg p-2 pl-4 text-gray-900  rounded-lg bg-light-100"
+                                    required />
                                 <label className="label text-sm text-red-500" >
                                     {
                                         !numberCorrect && `* Invalid mobile number`
                                     }
                                 </label>
                             </div>
-                            <div className="form-control mx-auto md:w-40  ">
-                                <input type="submit" value="Get OTP" className="cursor-pointer h-10 w-full border-0 bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
+                            <div className="form-control mx-auto md:w-40  px-3 md:px-0">
+                                <input type="submit" value="Get OTP"  className=" p-2  cursor-pointer text-base font-normal text-white border-0 bg-root-100 hover:bg-root-200 rounded-2xl" />
                             </div>
                         </form>
 
@@ -127,7 +131,7 @@ const MobileSignUp = () => {
                 <Link to='/login' >
                     <button
                         aria-label='sign-in'
-                        className="cursor-pointer w-full h-16 border-0 text-base-100 bg-root-100 hover:bg-root-200  text-base font-light rounded-2xl flex justify-center items-center">
+                        className="cursor-pointer w-full h-16 border-0 text-white bg-root-100 hover:bg-root-200  text-base font-light rounded-2xl flex justify-center items-center">
                         Sign in with E-mail
                     </button>
                 </Link>
