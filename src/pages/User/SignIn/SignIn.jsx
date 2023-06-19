@@ -39,10 +39,16 @@ const SignIn = () => {
 
             <form onSubmit={handleSubmit} className='mt-7 w-full md:w-96 px-2 md:px-0'>
                 <div className="form-control mb-7">
-                    <input type="email" placeholder="Email" id='email' name='email' className="input bg-light-100" required />
+                    <input type="email" placeholder="Email" id='email' name='email' className="block input-field w-full xl:max-w-lg p-2 pl-4 text-gray-900  rounded-lg bg-light-100" required />
                 </div>
                 <div className="form-control mb-7 relative">
-                    <input type={showPass ? 'text' : 'password'} placeholder="Password" id='password' name='password' className="input bg-light-100 " required />
+                    <input
+                        type={showPass ? 'text' : 'password'}
+                        placeholder="Password"
+                        id='password'
+                        name='password'
+                        className="block input-field w-full xl:max-w-lg p-2 pl-4 text-gray-900  rounded-lg bg-light-100"
+                        required />
 
                     <div onClick={() => setShowPass(!showPass)} className='cursor-pointer absolute right-3 top-3'>
                         {
@@ -55,15 +61,15 @@ const SignIn = () => {
                     </Link>
                 </div>
 
-                <div className="form-control mt-7 mx-auto md:w-40  ">
-                    <input type="submit" value="Login" className="btn border-0 bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
+                <div className="form-control mt-7 mx-auto md:w-40  px-5 md:px-0">
+                    <input type="submit" value="Login" className=" p-2 px-10 lg:px-16 cursor-pointer text-base font-normal text-white border-0 bg-root-100 hover:bg-root-200 rounded-2xl" />
                 </div>
             </form>
 
             <label className="mt-9 label text-base " aria-label='Register '>
                 Don&#8217;t have an account?
                 <Link to='/sign-up'>
-                    <span className='mx-1 hover:underline  text-root-100 hover:cursor-pointer'> Register</span>
+                    <span className='px-1 hover:underline  text-root-100 hover:cursor-pointer'> Register</span>
                 </Link>
             </label>
 

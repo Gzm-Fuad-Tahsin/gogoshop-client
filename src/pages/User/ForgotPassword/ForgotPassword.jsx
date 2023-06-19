@@ -32,7 +32,9 @@ const ForgotPassword = () => {
                             onChange={handlechange}
                             type="email"
                             name='email'
-                            placeholder="alex@example.com" className="input bg-light-100" required />
+                            placeholder="alex@example.com" 
+                            className="block input-field w-full xl:max-w-lg p-2 pl-5 text-gray-900  rounded-lg bg-light-100 text-base " 
+                            required />
                         <label className="label text-sm text-red-500" >
                             {
                                 error && `* Invalid E-mail`

@@ -17,7 +17,7 @@ const PreviousOrder = () => {
         <div>
             <ScrollToTop />
             <PageTitle text={"Order History"} />
-            <div className='flex flex-col items-center xl:w-[900px]'>
+            <div className='flex flex-col items-center px-3 xl:w-[900px]'>
                 {
                     CurrentOrderData.map((CurrentOrder, _idx) => <OrderItem key={_idx} orderData={CurrentOrder} redirectTo={`/order-history/${CurrentOrder.id}`} />)
                 }
