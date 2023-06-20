@@ -2,13 +2,10 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsFillClipboard2CheckFill } from 'react-icons/bs';
 import { GoChevronRight } from 'react-icons/go';
-
-
-import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
 import { WebpageDataContext } from '../../../../Layout/Main/Main';
-
 import Mobile_SideNavItem from '../SideNavbarItem/Mobile_SideNavItem';
+import { Avatar } from '@mui/material';
 
 
 const profileItemsStyles = {
@@ -19,8 +16,7 @@ const profileItemsStyles = {
 const MobileSideNav = ({ setsideNavstate }) => {
 
 
-  const { screenWidth } = useContext(UtilityContext);
-  const { user } = useContext(AuthContext);
+  const { user,userSignOut } = useContext(AuthContext);
   const { categories } = useContext(WebpageDataContext);
 
   const [open, setOpen] = useState(false);
@@ -29,6 +25,14 @@ const MobileSideNav = ({ setsideNavstate }) => {
     setOpen(!open);
 
   };
+
+
+  // handle sign out 
+  const handleSignOut = ()=>{
+    setsideNavstate(null);
+    userSignOut()
+
+}
 
   return (
     <aside style={{ backgroundColor: 'white', color: 'black' }}>
@@ -53,11 +57,16 @@ const MobileSideNav = ({ setsideNavstate }) => {
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 
-                  <img style={{ borderRadius: '0.5rem', width: '3rem' }} src={user?.imgURL} alt="User Image" />
+                 
 
+                  {user?.imgURL ?
+                    <img style={{ borderRadius: '0.5rem', width: '3rem' }} src={user?.imgURL} alt="User" />
+                    :
 
+                    <Avatar>U</Avatar>
+                }
                   <div style={{ paddingLeft: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                    <p>{user?.name}</p>
+                    <p>{user?.name ?  (user?.name.length<20 ? user?.name : `${user?.name.slice(0,17)}..`): (user?.email ? `${user?.email.slice(0,8)}..` : user?.phone)}</p>
                     <p style={{ fontSize: '0.875rem', color: '#9CA3AF', cursor: 'pointer', ':hover': { textDecoration: 'underline' } }}>{user?.id}</p>
                   </div>
 
@@ -87,7 +96,7 @@ const MobileSideNav = ({ setsideNavstate }) => {
                   <li onKeyDown={() => { setsideNavstate(false) }} onClick={() => { setsideNavstate(false) }}>
                     <Link to='/order-history' style={profileItemsStyles} role="menuitem">Order History</Link>
                   </li>
-                  <li onKeyDown={() => { setsideNavstate(false) }} onClick={() => { setsideNavstate(false) }}>
+                  <li onKeyDown={() => { setsideNavstate(false) }} onClick={handleSignOut}>
                     <Link style={profileItemsStyles} role="menuitem">Sign out</Link>
                   </li>
                 </ul>

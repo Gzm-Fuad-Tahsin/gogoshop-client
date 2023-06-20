@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logoFull from '../../../assets/icons/logo-full.png'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
-import { RxCross2 } from 'react-icons/rx';
-
 import TopNavUserProfileButton from './TopNavUserProfileButton';
-import TopNavCollapsableMenu from './TopNavCollapsableMenu';
 import TopNavSearchField from './TopNavSearchField';
 const TopNav = () => {
     const { user } = useContext(AuthContext);
@@ -97,7 +94,7 @@ const TopNav = () => {
                         </div>
                         <span className='hidden md:block'>Cart</span>
                         {
-                            cart.length > 0 && <span className="badge text-xs m-0 p-1 border-0 absolute -top-4  right-1 bg-[#F2B8B5] text-[#601410] rounded-full ">{cart.length}</span>
+                            cart.length > 0 && <span className="badge text-xs m-0 px-1 border-0 absolute -top-3.5  right-1 bg-[#F2B8B5] text-[#601410] rounded-full ">{cart.length}</span>
 
                         }
                     </Link>

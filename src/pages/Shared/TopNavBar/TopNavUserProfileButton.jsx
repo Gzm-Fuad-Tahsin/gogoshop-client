@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{ useContext, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -46,8 +46,9 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function TopNavUserProfileButton() {
-    const { user } = React.useContext(AuthContext);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const { user, userSignOut} = useContext(AuthContext);
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -55,6 +56,12 @@ export default function TopNavUserProfileButton() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleSignOut = ()=>{
+        setAnchorEl(null);
+        userSignOut()
+
+    }
 
     return (
         <>
@@ -111,7 +118,7 @@ export default function TopNavUserProfileButton() {
                     </MenuItem>
                 </Link>
                 
-                <MenuItem onClick={handleClose} disableRipple>
+                <MenuItem onClick={handleSignOut} disableRipple>
                     <Link className="block px-4 py-2 text-sm  hover:bg-gray-100 " role="menuitem">Sign out</Link>
                 </MenuItem>
 
