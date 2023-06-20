@@ -7,7 +7,6 @@ import Footer from "../../pages/Shared/Footer/Footer";
 
 import { fetchJson } from "../../assets/Scripts/utility";
 import TopNav from "../../pages/Shared/TopNavBar/TopNav";
-import BottomBar from "../../pages/Shared/BottomBar/BottomBar";
 import Mobile from "../Mobile/Mobile";
 
 export const WebpageDataContext = createContext();
@@ -27,6 +26,9 @@ const Main = () => {
         footerData,
     };
 
+
+    // const {setShowSideNav} = useContext(UtilityContext);
+    // useEffect(()=>{setShowSideNav(true)},[]);
     return (
         <>
             <WebpageDataContext.Provider value={contextvalue}>
@@ -67,34 +69,3 @@ const Main = () => {
 };
 
 export default Main;
-
-// <div className="">
-// <header>
-//     <div className="relative z-20 border-b bg-white">
-
-//             <input type="checkbox" name="hamburger" id="hamburger" className="peer" hidden />
-
-//             <div className='w-screen border-b-[1px] max-w-full  sticky top-0 z-[1000] '>
-
-//                 <TopNav />
-//             </div>
-
-//             <div className="peer-checked:translate-x-0 fixed top-0 inset-0 w-screen translate-x-[-100%]    border-r  shadow-xl transition duration-300 flex flex-nowrap">
-//                 <div className="w-60 border bg-white  h-screen  overflow-y-auto  z-40   ">
-//                     <SideNavbar />
-//                 </div>
-//                 <div className="flex-grow bg-gray-500 ">
-
-//                     <label htmlFor="hamburger" className="peer-checked:hamburger w-full h-screen ">
-//                         <div className="w-full h-full"></div>
-//                     </label>
-//                 </div>
-//             </div>
-
-//     </div>
-// </header>
-// <div className='w-full'>
-//     <Outlet ></Outlet>
-//     <Footer />
-// </div>
-// </div>

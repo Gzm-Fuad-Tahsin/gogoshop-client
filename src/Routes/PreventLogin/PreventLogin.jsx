@@ -1,14 +1,13 @@
-import React, { Children, useContext } from 'react';
+import React, {  useContext, useEffect } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-import ProfileLoadingPage from '../../pages/ErrorPages/ProfileLoadingPage/ProfileLoadingPage';
 import { Navigate } from 'react-router-dom';
+import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 
 const PreventLogin = ({children}) => {
-    const {user,loading} = useContext(AuthContext);
-    if(loading){
-        return <ProfileLoadingPage/>
-    }
-    
+    const {user} = useContext(AuthContext);
+    const {setShowSideNav} = useContext(UtilityContext);
+    useEffect(()=>{setShowSideNav(false)},[]);
+
     if(!user){
         return children
     }

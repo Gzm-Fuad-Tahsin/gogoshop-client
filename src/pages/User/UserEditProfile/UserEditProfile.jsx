@@ -3,17 +3,16 @@ import { MdCall, MdEmail, MdOutlineDriveFileRenameOutline, MdCameraAlt, MdPeople
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BsXLg } from 'react-icons/bs'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-import { Link } from 'react-router-dom';
 import AddressUpdateForm from './AddressUpdateForm/AddressUpdateForm';
 import { useForm } from 'react-hook-form';
-import { validateEmail, validateImage, validateMobileNumber } from '../../../assets/Scripts/utility';
+import { validateEmail, validateMobileNumber } from '../../../assets/Scripts/utility';
 
 import ScrollToTop from '../../../components/ScrollToTop/ScrollTotop';
 
 const UserEditProfile = () => {
   const [imgUpload, setImageUpload] = useState();
 
-  const { register, getValues, formState: { errors }, handleSubmit } = useForm({ mode: "onChange" });
+  const { register, formState: { errors }, handleSubmit } = useForm({ mode: "onChange" });
 
   const { user } = useContext(AuthContext);
   const { name, phone, email, address, imgURL, gender } = user;
