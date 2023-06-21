@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { TbCurrencyTaka } from "react-icons/tb";
-import { BsFillCaretRightFill, BsFillCaretLeftFill } from 'react-icons/bs';
+
 import { CiShoppingCart } from "react-icons/ci";
 import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import { fetchJson } from '../../assets/Scripts/utility';
 import { toast } from 'react-hot-toast';
-import PageTitle from '../../components/PageTitle/PageTitle';
+
 import PageTitleBreadCrumb from '../../components/PageTitleBreadCrumb/PageTitleBreadCrumb';
 import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
 import { Helmet } from 'react-helmet-async';
@@ -38,52 +38,8 @@ const ProductDetail = () => {
 
     //animation effect
     const [largeImage, setLargeImage] = useState(img);
-    const [fadeEffect, setFadeEffect] = useState(false);
-    const [quantity, setQuantity] = useState(1);
 
-    useEffect(() => {
-
-        const timer = setTimeout(() => {
-            setFadeEffect(false);
-        }, 200); // Adjust the duration of the fade effect here
-
-        return () => clearTimeout(timer);
-    }, [largeImage]);
-
-    // ____________________________________________________________________
-
-
-
-
-
-
-    ///_______________________increase and Decrease___________________
-    const handleIncrease = e => {
-        event.preventDefault();
-
-        // 20 will be replaced by "available product ammount"
-
-        if (parseInt(quantity) >= 20) {
-            toast.error('Maximum product Added');
-            return;
-        }
-        setQuantity(parseInt(quantity) + 1);
-
-    }
-
-    const handledecrease = e => {
-        event.preventDefault();
-
-        if (parseInt(quantity) <= 1) {
-            toast.error('Product less than 1');
-            return;
-        }
-        setQuantity(parseInt(quantity) - 1);
-    }
-    // _____________________________________________________________
-
-
-
+ 
 
 
 
@@ -103,7 +59,7 @@ const ProductDetail = () => {
                         </Helmet>
 
                         <ScrollToTop />
-                        <PageTitleBreadCrumb data={['category', 'subcategory']} />
+                        <PageTitleBreadCrumb data={[category, subcategory]} />
                         <div className='flex justify-center p-2  pt-4  '>
 
                             <div className="w-full lg:max-w-4xl">
@@ -111,14 +67,14 @@ const ProductDetail = () => {
                                 <div className="grid grid-cols-12 bg-transparent md:bg-light-100   p-2 rounded-sm md:rounded-lg">
 
 
-                                    <div className="col-span-12 lg:col-span-2  order-2 lg:order-1 flex lg:flex-col justify-center items-center mt-0 md:mt-4 lg:mt-0" aria-label='all-images'>
+                                    <div className="col-span-12 lg:col-span-2  order-2 lg:order-1 flex flex-wrap lg:flex-col justify-center items-center mt-0 md:mt-4 lg:mt-0" aria-label='all-images'>
                                         {
-                                            images && images.map((imgPath, _idx) =>
-                                                <div className="avatar mx-3 my-0 lg:my-3 md:mx-0 cursor-pointer"
+                                            images && [...images,largeImage].map((imgPath, _idx) =>
+                                                <div className="avatar px-3 my-0 lg:my-3 md:px-3 cursor-pointer"
                                                     key={_idx}
                                                     onClick={() => {
 
-                                                        (largeImage !== imgPath) && setFadeEffect(true);
+                                                      
                                                         setLargeImage(imgPath);
                                                     }}>
                                                     <div className="p-1 w-20 lg:w-24 rounded-full ">
@@ -134,11 +90,11 @@ const ProductDetail = () => {
 
 
                                     <div className="col-span-12 lg:col-span-5 order-1 lg:order-2  flex items-center justify-center " aria-label='image full view'>
-                                        <div className={`avatar  transition-opacity  ease-in-out rounded-lg  ${fadeEffect ? 'opacity-0' : 'opacity-100'
-                                            }`}>
+                                      
+                                            <div className={`avatar  transition-opacity  ease-in-out rounded-lg  `}>
                                             <div className="w-full px-3 md:px-1 h-56 lg:h-80 max-h-80 rounded-2xl">
                                                 {
-                                                    !fadeEffect && <img src={largeImage} />
+                                                   <img src={largeImage} />
                                                 }
 
                                             </div>
@@ -146,7 +102,7 @@ const ProductDetail = () => {
                                     </div>
 
 
-                                    <div className="col-span-12 lg:col-span-5  order-3 my-5 px-3 flex flex-col justify-around" aria-label='product info'>
+                                    <div className="col-span-12 lg:col-span-5  order-3 my-5 px-3 flex flex-col justify-center " aria-label='product info'>
 
 
 
@@ -168,42 +124,21 @@ const ProductDetail = () => {
                                         </p>
 
 
-                                        <div className="grid grid-cols-12 gap-3" >
-                                            <div className="col-span-9 md:col-span-6  lg:col-span-12 w-full  md:w-64  xl:max-w-sm ">
-                                                <div className="bg-shadow-100 h-14 rounded-lg grid grid-cols-12 p-2 ">
-                                                    <div className="col-span-5 m-auto" aria-label='quantity'>
-                                                        <p>Quantity</p>
-                                                    </div>
-                                                    <form className="col-span-7 flex justify-around items-center">
-                                                        <button className="text-2xl text-[#666666] " onClick={handledecrease}>
-                                                            <BsFillCaretLeftFill />
-                                                        </button>
-                                                        <div className="text-xl">
-                                                            {
-                                                                quantity
-
-                                                            }
-                                                        </div>
-                                                        <button className="text-2xl text-[#666666] " onClick={handleIncrease}>
-                                                            <BsFillCaretRightFill />
-                                                        </button>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            <div className="col-span-3 md:col-span-6 lg:col-span-12 w-full md:w-64  xl:max-w-sm">
+                                        <div className="flex justify-center lg:justify-start items-center my-3 md:my-5" >
+                                            
+                                            <div className=" w-full md:w-64  xl:max-w-sm">
                                                 {
                                                     alreadyAdded ?
                                                        
-                                                        <button onClick={() => toast.error('Already added')} className="btn h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
+                                                        <button onClick={() => toast.error('Already added')} className="btn text-white h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   flex">
                                                             <CiShoppingCart className='text-2xl ' />
-                                                            <span className="hidden md:block lg:block 2xl:block mx-0 md:mx-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Added</span>
+                                                            <span className=" px-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Added</span>
 
                                                         </button>
                                                         :
-                                                         <button onClick={() => updateCart({ product_id, quantity })} className="btn h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
+                                                         <button onClick={() => updateCart({ product_id, quantity: 1 })} className="btn text-white h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
                                                          <CiShoppingCart className='text-2xl ' />
-                                                         <span className="hidden md:block lg:block 2xl:block mx-0 md:mx-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Add to Cart</span>
+                                                         <span className="px-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Add to Cart</span>
 
                                                      </button>
                                                      

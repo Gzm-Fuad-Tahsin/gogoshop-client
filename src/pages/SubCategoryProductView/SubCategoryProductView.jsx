@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import Card from "../../components/Card/Card";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import ScrollToTop from "../../components/ScrollToTop/ScrollTotop";
 import NotFound from "../ErrorPages/NotFound/NotFound";
-import { WebpageDataContext } from "../../Layout/Main/Main";
-import { UtilityContext } from "../../Contexts/Utility/UtilityProvider";
+
 import { fetchJson } from "../../assets/Scripts/utility";
 
 

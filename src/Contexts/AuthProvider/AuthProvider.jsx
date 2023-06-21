@@ -1,22 +1,87 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import app from '../../firebase/firebase.config';
 
 export const AuthContext = createContext();
 
+const auth = getAuth(app);
+const googleAuthProvider = new GoogleAuthProvider();
+
 
 const AuthProvider = ({ children }) => {
-    //user
+
+    // firebase user 
+    const [signedInUser, setsignedInUser] = useState(null);
+
+
+    //user __for my website
+
     const [user, setUser] = useState({
-        id:32984,
-        name:'Hossain Ahamed',
-        phone:'01868726172',
-        email:'hossainahamed6872@gmail.com',
-        address:'29/1,Road 21, New Chasara,jamtola,Narayanganj',
-        gender : 'Male',
-        imgURL:'https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/314023616_1627051114363680_2926308787731583629_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=174925&_nc_eui2=AeGUNmQzwi0BGZWuIFiFn1Qt4odC2zHAYuzih0LbMcBi7FRh7-saF1RdxjZdfj8DE-TmXGteOERxLKHrfCI-MeHG&_nc_ohc=3Opx3huQ7t8AX_efnLp&_nc_ht=scontent.fdac11-2.fna&oh=00_AfCpnv0YDRLN_8oAZBMmkJpPIqyrI7-3TM7qcNUuc72xfw&oe=6482F923'})
-    
-        // const [user, setUser] = useState();
+        id: 32984,
+        name: 'Hossain Ahamed',
+        phone: '01868726172',
+        // email:'hossainahamed6872@gmail.com',
+        address: '29/1,Road 21, New Chasara,jamtola,Narayanganj',
+        gender: 'Male',
+        imgURL: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&w=1000&q=80'
+    })
+
+    // const [user, setUser] = useState(null);
+
+
     //laoding
     const [loading, setLoading] = useState(false);
+
+
+    const createUserByEmailPass = (email, password) => {
+
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    const loginUserByEmailPass = (email, password) => {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    const signInbyGoogle = () => {
+
+        return signInWithPopup(auth, googleAuthProvider);
+    }
+
+
+    const passwordResetEmail=(email)=>{
+        return sendPasswordResetEmail(auth,email);
+    }
+    //logout
+    const userSignOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    }
+
+
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            console.log(currentUser);
+
+            if (currentUser) {
+                setsignedInUser(currentUser);//firebase user
+                setUser(currentUser); // user set for my website ___ sent from server
+
+            }
+
+
+
+
+
+            setLoading(false);
+        });
+
+        return () => unsubscribe();
+    }, [])
+
+
+
 
 
 
@@ -26,6 +91,11 @@ const AuthProvider = ({ children }) => {
         user,
         loading,
         setLoading,
+        createUserByEmailPass,
+        loginUserByEmailPass,
+        passwordResetEmail,
+        signInbyGoogle,
+        userSignOut
 
 
     }
@@ -34,7 +104,7 @@ const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={authInfo}>
             {children}
         </AuthContext.Provider>
-);
+    );
 };
 
 export default AuthProvider;

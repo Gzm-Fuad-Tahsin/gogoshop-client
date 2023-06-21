@@ -17,7 +17,7 @@ const UtilityProvider = ({ children }) => {
 
 
     useEffect(() => {
-        console.log(screenWidth)
+        // console.log(screenWidth)
         setShowSideNav(true);
         
         

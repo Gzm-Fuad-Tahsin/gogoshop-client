@@ -109,7 +109,7 @@ const ViewCart = () => {
         <h2 className='font-medium'>Cart</h2>
         <div className="pr-0 sm:pr-6 md:pr-10 lg:pr-20 xl:pr-36">
           <button
-            className="px-3 py-1 bg-root-100 hover:bg-root-200 text-base-100 rounded-xl flex items-center"
+            className="px-3 py-1 bg-root-100 hover:bg-root-200 text-white rounded-xl flex items-center"
             onClick={() => storeDataToDatabase('/')}
           >
             <CiShoppingBasket className='text-2xl pr-1' />
@@ -153,7 +153,7 @@ const ViewCart = () => {
 
                     <div className="mt-8 flex justify-center">
                       <button
-                        className="px-6 py-1 text-lg bg-root-100 hover:bg-root-200 text-base-100 rounded-xl flex items-center "
+                        className="px-6 py-1 text-lg bg-root-100 hover:bg-root-200 text-white rounded-xl flex items-center "
                         onClick={() => storeDataToDatabase('/proceed-to-pay')}
                       >
                         <CiShoppingBasket className='text-2xl pr-1' />

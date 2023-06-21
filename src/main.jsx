@@ -8,26 +8,33 @@ import { Toaster } from 'react-hot-toast'
 import AuthProvider from './Contexts/AuthProvider/AuthProvider'
 import UtilityProvider from './Contexts/Utility/UtilityProvider'
 import { HelmetProvider } from 'react-helmet-async'
+import { StyledEngineProvider } from '@mui/material'
+
 
 const helmetContext = {};
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HelmetProvider context={helmetContext}>
+    
+    <StyledEngineProvider injectFirst>
+      
 
-      <UtilityProvider>
+      <HelmetProvider context={helmetContext}>
 
-        <AuthProvider>
-          <div className='mx-auto'>
+        <UtilityProvider>
 
-            <RouterProvider router={router}></RouterProvider>
+          <AuthProvider>
+            <div className='mx-auto'>
 
-            <Toaster
-              position="bottom-right"
-              reverseOrder={false} />
+              <RouterProvider router={router}></RouterProvider>
 
-          </div>
-        </AuthProvider>
-      </UtilityProvider>
-    </HelmetProvider>
+              <Toaster
+                position="bottom-right"
+                reverseOrder={false} />
+
+            </div>
+          </AuthProvider>
+        </UtilityProvider>
+      </HelmetProvider>
+    </StyledEngineProvider>
   </React.StrictMode>,
 )

@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { validateEmail } from '../../../assets/Scripts/utility';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const ForgotPassword = () => {
-    const [error, setError] = useState(false);
-    const handlechange = e => {
-        setError(false);
-    }
-    const handleSubmit = event => {
-        setError(false);
-        event.preventDefault();
-        const email = event.target.email.value;
-        if (!email || validateEmail(email)) {
-            toast.error('Provide an correct email');
-            setError(true);
+    const { register, formState: { errors }, handleSubmit } = useForm({ mode: "onChange" });
 
-        }
+    const {passwordResetEmail} = useContext(AuthContext);
+
+    const [message,setMessage] = useState('');
+     
+    const onSubmit = data => {
+        console.log(data);
+       
+        passwordResetEmail(data?.email)
+        .then(() => {
+            setMessage(`E-mail sent to '${data?.email}'`)
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setMessage(error.message)
+          });
+        
+
     }
     return (
         <div>
@@ -25,22 +34,28 @@ const ForgotPassword = () => {
                     <h2 className='text-2xl font-light text-[#000000] '>Provide Your E-mail address</h2>
                 </div>
 
-                <form onSubmit={handleSubmit} className='mt-4 w-full md:w-96 px-2 md:px-0'>
+                <form onSubmit={handleSubmit(onSubmit)} className='mt-4 w-full md:w-96 px-2 md:px-0'>
 
                     <div className="form-control mb-7">
                         <input
-                            onChange={handlechange}
                             type="email"
-                            name='email'
-                            placeholder="alex@example.com" className="input bg-light-100" required />
-                        <label className="label text-sm text-red-500" >
-                            {
-                                error && `* Invalid E-mail`
-                            }
-                        </label>
+                            placeholder="Type here"
+                            className="block input-field w-full md:max-w-xs p-2 text-gray-900  rounded-lg border border-gray-300 text-base  read-only:bg-gray-100 read-only:border-0 read-only:cursor-not-allowed"
+                            {...register("email", {
+                                validate: {
+                                    notemail: (value) => validateEmail(value)
+                                },
+                            })} />
+                        {errors.email && errors.email.type === "notemail" && <p className='p-1 text-xs text-red-600'>*Invalid</p>}
+                        {errors.email && <p className='p-1 text-xs text-red-600'>{errors.email.message}</p>}
+
                     </div>
+                    {
+                        message && <p>{message}</p>
+                    }
+
                     <div className="form-control mx-auto md:w-40  ">
-                        <input type="submit" value="Submit" className="h-10 w-full border-0 bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
+                        <input type="submit" value="Submit" className="h-10 w-full border-0 cursor-pointer bg-root-100 hover:bg-root-200 text-base-100 rounded-2xl" />
                     </div>
                 </form>
 

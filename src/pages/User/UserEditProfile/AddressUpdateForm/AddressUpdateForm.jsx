@@ -6,21 +6,27 @@ const AddressUpdateForm = () => {
         register,
         formState: { errors },
         handleSubmit
-    } = useForm({mode: "onChange"});
+    } = useForm({ mode: "onChange" });
 
 
     const onSubmit = (data) => {
         console.log(data);
 
+        // to update  realod dibo jno off hoy
+        window.location.reload() 
+        
+
     };
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} >
+            
             <div className='grid grid-cols-2 gap-2 my-4'>
                 <div >
                     <input
+                        autoComplete='off'
                         type="text"
                         placeholder="Floor No"
-                        className="input input-bordered w-full "
+                        className="block border border-gray-200 input-field w-full mx-auto p-2 pl-4 text-gray-900  rounded-lg bg-gray-50"
                         {...register("floorNo", {
                             required: "*Floor No required",
                             maxLength: {
@@ -32,9 +38,10 @@ const AddressUpdateForm = () => {
                 </div>
                 <div>
                     <input
+                        autoComplete='off'
                         type="text"
                         placeholder="Apartment No"
-                        className="input input-bordered w-full"
+                        className="block border border-gray-200 input-field w-full mx-auto p-2 pl-4 text-gray-900  rounded-lg bg-gray-50"
                         {...register("apartmentNo", {
                             required: "*Apartment No required",
                             maxLength: {
@@ -48,9 +55,11 @@ const AddressUpdateForm = () => {
             </div>
             <div className='my-4'>
                 <input
+                    autoComplete='off'
                     type="text"
+
                     placeholder="Area"
-                    className="input input-bordered w-full mx-auto"
+                    className="block border border-gray-200 input-field w-full mx-auto p-2 pl-4 text-gray-900  rounded-lg bg-gray-50"
                     {...register("area", {
                         required: "*Area required",
                         maxLength: {
@@ -67,7 +76,8 @@ const AddressUpdateForm = () => {
             <div>
                 <textarea
                     rows="3"
-                    className="text-a block p-2.5 w-full text-base text-gray-900  rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 "
+                    className="input-area border border-gray-200 block   w-full text-base text-gray-900  rounded-lg mx-auto p-2 pl-4  bg-gray-50 "
+
                     placeholder="Address"
 
                     {...register("address", {
@@ -81,8 +91,8 @@ const AddressUpdateForm = () => {
             </div>
 
 
-            <div className='mb-3 mx-auto w-fit py-4'>
-                <input type="submit" className='pt-4 pr-10 pb-4 pl-10 bg-root-100 hover:bg-root-200 text-white rounded-xl' value='Add Address' />
+            <div className='mb-3 mx-auto w-fit py-4'  >
+                <input type="submit" htmlFor='address-update-modal' className='cursor-pointer pt-4 pr-10 pb-4 pl-10 bg-root-100 hover:bg-root-200 text-white rounded-xl' value='Add Address' />
             </div>
         </form>
     );
