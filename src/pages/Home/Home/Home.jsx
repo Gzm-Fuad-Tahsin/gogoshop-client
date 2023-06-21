@@ -4,7 +4,6 @@ import AllCategories from '../AllCategories/AllCategories';
 import Banner from '../Banner/Banner';
 import SecondBanner from '../Banner/SecondBanner';
 import ShowBestDeals from '../BestDeals/ShowBestDeals';
-import BestDeals from '../BestDeals/BestDeals';
 
 
 
@@ -18,7 +17,7 @@ const Home = () => {
 
             <AllCategories />
 
-           {/* <BestDeals></BestDeals> */}
+           <ShowBestDeals></ShowBestDeals>
 
             <SecondBanner />
 
