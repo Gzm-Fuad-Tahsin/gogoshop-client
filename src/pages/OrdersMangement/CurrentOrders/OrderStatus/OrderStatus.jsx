@@ -5,6 +5,15 @@ import ScrollToTop from '../../../../components/ScrollToTop/ScrollTotop';
 import { fetchJson } from '../../../../assets/Scripts/utility';
 import { IoIosArrowBack } from "react-icons/io";
 import PageTitle from '../../../../components/PageTitle/PageTitle';
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+const steps = [
+    'Select master blaster campaign settings',
+    'Create an ad group',
+    'Create an ad',
+];
 
 export async function loader({ params }) {
 
@@ -13,6 +22,8 @@ export async function loader({ params }) {
 }
 
 const OrderStatus = () => {
+
+    const steps = ["Processing", "Shipping", "Delivered"]
 
     const orderData = useLoaderData();
 
@@ -26,8 +37,7 @@ const OrderStatus = () => {
             <PageTitle text={'Order Status'}/>
 
             <div className='w-full lg:w-[900px] mx-auto px-2 md:px-4'>
-              
-                {/* Stepper code */}
+                
                 <div>
 
                     {/* <ol className="relative border-l border-gray-300 ml-5 mt-5">                  
@@ -39,9 +49,17 @@ const OrderStatus = () => {
                         </li></>)
                 }
             </ol> */}
-
-
-
+                    
+                    {/* Stepper code */}
+                    <Box sx={{ width: '100%' }}>
+                        <Stepper activeStep={0} alternativeLabel className='custom-font'>
+                            {steps.map((label) => (
+                                <Step key={label}>
+                                    <StepLabel>{label}</StepLabel>
+                                </Step>
+                            ))}
+                        </Stepper>
+                    </Box>
 
                     {/* Table code */}
                     <div className='mt-10 px-1 lg:px-3 mb-4 '>
@@ -64,8 +82,6 @@ const OrderStatus = () => {
                     </div>
                     <Link className='flex justify-end mt-8 text-[#205072] hover:underline'>Cancel Order</Link>
                     <Link to="/" className='flex items-center gap-1 hover:underline my-16 text-[#666666] font-medium text-base '><IoIosArrowBack></IoIosArrowBack>Go back to<span className='text-blue-700'>Home</span></Link>
-
-                    <OrderAlert />
                 </div>
             </div>
         </>
