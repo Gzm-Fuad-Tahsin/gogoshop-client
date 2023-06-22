@@ -9,7 +9,7 @@ const SideNavbarItem = ({ data }) => {
   
     const [isOpen, setIsOpen] = useState(false);
 
-    const { _id, isActive, category_unique_name, img, category_name, sub_category, path } = data;
+    const { _id, isActive, category_slug, img, category_name, sub_category, path } = data;
 
 
     const toggleMenu = () => {
@@ -23,7 +23,7 @@ const SideNavbarItem = ({ data }) => {
                 className="w-full flex items-center justify-between p-2  text-gray-700 hover:bg-gray-100"
                 onClick={toggleMenu} >
                 <div className='flex items-center'>
-                    <img src={img} alt={category_unique_name} className='w-6 h-6' />
+                    <img src={img} alt={category_slug} className='w-6 h-6' />
                     <span className="ml-2">{category_name}</span>
                 </div>
 
@@ -56,9 +56,9 @@ const SideNavbarItem = ({ data }) => {
                     {
                         sub_category.map(item => <NavLink
                             key={item.sub_cat_id}
-                            to={`sub-category/${item.sub_category_unique_name}`}
+                            to={`sub-category/${item.sub_category_slug}`}
 
-                            className={({ isActive, isPending }) =>
+                            className={({ isActive }) =>
                                 isActive
                                     ? "flex items-center pl-1 py-2 text-gray-800 bg-light-200 hover:bg-light-200 rounded "
                                     : "flex items-center pl-1 py-2 text-gray-800 bg-white hover:bg-gray-100 rounded "
@@ -66,10 +66,8 @@ const SideNavbarItem = ({ data }) => {
 
                         >
 
-                            <img src={item.img} alt={item.sub_category_unique_name} className='w-6 h-6 bg-transparent' />
-                            {
-                                item.sub_category_name
-                            }
+                            <img src={item.img} alt={item.sub_category_slug } className='w-6 h-6 bg-transparent' />
+                            <p className='ml-2'>{item.sub_category_name}</p>
                         </NavLink>
                         )
                     }
