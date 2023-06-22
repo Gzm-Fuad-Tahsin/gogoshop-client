@@ -9,7 +9,7 @@ const AllCategories = () => {
             <h2 className='text-center text-2xl md:text-3xl '>Our Categories</h2>
            <div className="flex  flex-wrap justify-center mt-4">
             {
-                categories.map(category=><ImageOverlayText key={category?._id} data={category} />)
+                categories.map((category,_idx)=><ImageOverlayText key={_idx} data={category} />)
             }
             
            </div>

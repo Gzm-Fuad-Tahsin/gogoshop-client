@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Mobile_SideNavItem = ({ data ,setsideNavstate}) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const { _id, isActive, category_unique_name, img, category_name, sub_category, path } = data;
+    const { _id, isActive, category_slug, img, category_name, sub_category, path } = data;
 
 
 
@@ -70,7 +70,7 @@ const Mobile_SideNavItem = ({ data ,setsideNavstate}) => {
             onKeyDown={()=>{setsideNavstate(false)}}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <img src={img} alt={category_unique_name} style={imageStyle} />
+                    <img src={img} alt={category_slug} style={imageStyle} />
                     <span style={{ fontWeight: 'lighter', fontSize: '0.9rem' }}>{category_name}</span>
                 </div>
 
@@ -88,11 +88,11 @@ const Mobile_SideNavItem = ({ data ,setsideNavstate}) => {
                     {sub_category.map((item) => (
                         <NavLink
                             key={item.sub_cat_id}
-                            to={`sub-category/${item.sub_category_unique_name}`}
+                            to={`sub-category/${item.sub_category_slug}`}
                             style={subCategoryLinkStyle}
                             onKeyDown={()=>{setsideNavstate(false)}} onClick={()=>{setsideNavstate(false)}}
                         >
-                            <img src={item.img} alt={item.sub_category_unique_name} style={imageStyle} />
+                            <img src={item.img} alt={item.sub_category_slug} style={imageStyle} />
 
                             <span style={{ fontWeight: 'lighter', fontSize: '0.9rem' }}>{item.sub_category_name}</span>
                         </NavLink>
