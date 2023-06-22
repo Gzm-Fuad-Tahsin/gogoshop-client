@@ -1,8 +1,9 @@
 import React from 'react';
 
 const LoadingIcon = () => {
+  console.log('loading')
   return (
-    <div className="fixed inset-0">
+    <div className="fixed inset-0 bg-slate-200/10">
       <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div role="status">
           <svg

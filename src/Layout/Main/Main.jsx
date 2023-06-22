@@ -14,15 +14,17 @@ export const WebpageDataContext = createContext();
 export async function loader({ params }) {
     return await fetchJson(`${import.meta.env.VITE_SERVER_ADDRESS}/home`);
 }
+
 const Main = () => {
     //load the all products, category and footer data;
     const homepageInformation = useLoaderData();
-    const { categories, AllproductsData, footerData } = homepageInformation;
+    const { categories, topBanner,bottomBanner, footerData } = homepageInformation;
 
     const { screenWidth, showSideNav } = useContext(UtilityContext);
     const contextvalue = {
         categories,
-        AllproductsData,
+        topBanner,
+        bottomBanner,
         footerData,
     };
 
