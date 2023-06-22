@@ -15,6 +15,7 @@ const Upload_Topbanner = () => {
             axios.get(`${import.meta.env.VITE_SERVER_ADDRESS}/admin/top-banner`)
                 .then(data => {
                     if (data.status === 200) {
+                        console.log(data)
                         setBanners(data.data);
                         setStaus(data.status);
                     }
