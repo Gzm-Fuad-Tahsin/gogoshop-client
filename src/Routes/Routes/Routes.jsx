@@ -210,7 +210,6 @@ export const router = createBrowserRouter([
             {
                 path: 'place-order',
                 element: <Admin_CustomOrder />,
-                loader: admin_customOrderLoader
             },
             {
                 path: 'upload-top-banner',
