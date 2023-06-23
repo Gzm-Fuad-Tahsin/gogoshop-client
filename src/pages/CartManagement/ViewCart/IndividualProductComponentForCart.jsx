@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 
 
 const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeInCart }) => {
-    const { product_id, name, img, size, product_slug, buyingprice, quantity } = product;
+    const { _id, name, img, size, sellingPrice, quantity } = product;
     
    
     
@@ -18,7 +18,7 @@ const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeI
 
 
     useEffect(() => {
-        ItemQunatityChangeInCart({ product_id, Updatedquantity })
+        ItemQunatityChangeInCart({ _id, Updatedquantity })
     }, [Updatedquantity])
 
 
@@ -58,7 +58,7 @@ const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeI
                     <p className='text-base font-semibold'> {name}</p>
                     <p className='text-xs text-gray-400'> {size}</p>
                     <p className='flex justify-center items-center md:hidden text-sm text-gray-600'>
-                    {(Updatedquantity * buyingprice).toFixed(2)}
+                    {(Updatedquantity * sellingPrice).toFixed(2)}
                         <TbCurrencyTaka></TbCurrencyTaka>
                     </p>
                 </div>
@@ -66,7 +66,7 @@ const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeI
 
             {/* quantity button and delete _____________ */}
             <div className="pr-2 col-span-5 md:col-span-4 grid grid-cols-12 items-center">
-                <div className="col-span-2 md:col-span-2 cursor-pointer" onClick={() => handleDeleteCartItem({product_id})}>
+                <div className="col-span-2 md:col-span-2 cursor-pointer" onClick={() => handleDeleteCartItem({_id})}>
                     <BsTrash className='text-root-100' />
                 </div>
 
@@ -92,7 +92,7 @@ const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeI
 
             <div className="hidden md:col-span-3 md:flex justify-center items-center">
             <TbCurrencyTaka></TbCurrencyTaka>
-                {(Updatedquantity * buyingprice).toFixed(2)}</div>
+                {(Updatedquantity * sellingPrice).toFixed(2)}</div>
         </div>
     );
 };

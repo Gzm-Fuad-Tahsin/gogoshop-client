@@ -56,6 +56,7 @@ import Admin_categoryUpload from "../../pages_Admin/Category/Admin_categoryUploa
 import Admin_categoryEdit from "../../pages_Admin/Category/Admin_categoryEdit/Admin_categoryEdit";
 import Admin_subcategoryUpload from "../../pages_Admin/SubCategory/Admin_subcategoryUpload/Admin_subcategoryUpload";
 import Admin_subcategoryEdit from "../../pages_Admin/SubCategory/Admin_subcategoryEdit/Admin_subcategoryEdit";
+import Admin_ProductUpload from "../../pages_Admin/ProductList/Admin_ProductUpload/Admin_ProductUpload";
 
 
 
@@ -184,6 +185,11 @@ export const router = createBrowserRouter([
             {
                 path: 'products-list',
                 element: <ProductList />,
+               
+            },
+            {
+                path: 'products-list/upload-product',
+                element: <Admin_ProductUpload />,
                
             },
             {

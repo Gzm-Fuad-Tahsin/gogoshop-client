@@ -26,7 +26,7 @@ const ViewCart = () => {
     let tempcart = [];
     cart.map(item => {
       let obj = {
-        "product_id": item.product_id,
+        "_id": item._id,
         "quantity": item.quantity
       }
       tempcart.push(obj);
@@ -50,13 +50,13 @@ const ViewCart = () => {
 
 
   // function to delete an item of cart  
-  const handleDeleteCartItem = product_id => {
+  const handleDeleteCartItem = _id => {
     fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/carts`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(product_id),
+      body: JSON.stringify(_id),
     })
       .then((response) => response.json())
       .then((responseData) => {
@@ -71,11 +71,11 @@ const ViewCart = () => {
 
 
   //   update cart for chanign quanitty in viewcart items page 
-  const ItemQunatityChangeInCart = ({ product_id, Updatedquantity }) => {
+  const ItemQunatityChangeInCart = ({ _id, Updatedquantity }) => {
 
     setCart(prevCart => {
       const updatedCart = prevCart.map(product => {
-        if (product.product_id === product_id) {
+        if (product._id === _id) {
           return { ...product, quantity: Updatedquantity };
         }
         return product;
@@ -93,7 +93,7 @@ const ViewCart = () => {
     let totalammount = 0;
     // since cart is updated inside the code, i am loop through this 
     for (const cartItem of cart) {
-      totalammount += (parseFloat(cartItem?.buyingprice) * cartItem.quantity)
+      totalammount += (parseFloat(cartItem?.sellingPrice) * cartItem.quantity)
     }
     setTotal(totalammount)
   }, [cart])
@@ -130,7 +130,7 @@ const ViewCart = () => {
                   <>
                     {
                       cart.map((product) => <IndividualProductBar
-                        key={product?.product_id}
+                        key={product?._id}
                         product={product}
                         handleDeleteCartItem={handleDeleteCartItem}
                         ItemQunatityChangeInCart={ItemQunatityChangeInCart}

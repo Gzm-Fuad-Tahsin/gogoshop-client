@@ -54,8 +54,8 @@ const PreviousOrderStatement = () => {
                         </div>
                     }
                     <div className="px-0 md:px-5">
-                        {products.map((product) => (
-                            <OrderedItemInformation key={product.id} product={product}></OrderedItemInformation>
+                        {products.map((product,_idx) => (
+                            <OrderedItemInformation key={_idx} product={product}></OrderedItemInformation>
                         ))}
                     </div>
                 </div>
