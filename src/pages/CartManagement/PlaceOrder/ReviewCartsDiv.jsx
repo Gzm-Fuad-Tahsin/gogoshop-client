@@ -35,7 +35,7 @@ const ReviewCartsDiv = () => {
     let totalammount = 0;
     // since cart is updated inside the code, i am loop through this 
     for (const cartItem of products) {
-      totalammount += (parseFloat(cartItem?.buyingprice) * cartItem.quantity)
+      totalammount += (parseFloat(cartItem?.sellingPrice) * cartItem.quantity)
     }
     setTotal(totalammount)
   }, [products])
