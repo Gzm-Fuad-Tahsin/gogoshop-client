@@ -8,7 +8,7 @@ const Admin = () => {
         <>
             <div className="w-screen border-b-[1px] max-w-full  sticky top-0 z-[1000] ">
                 {/* <TopNavbar /> */}
-                <TopNav />
+                {/* <TopNav /> */}
             </div>
             <div className="flex relative">
                 <div className="w-full">
