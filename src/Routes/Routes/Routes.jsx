@@ -27,7 +27,6 @@ import { loader as orderItemLoader } from "../../pages/CartManagement/PlaceOrder
 // admin 
 import { loader as admin_DashboardLoader } from '../../pages_Admin/Dashboard/Dashboard';
 import { loader as admin_footerDataLoader } from '../../pages_Admin/BuyerSite_manipulation/Upload_footerData/Upload_footerData';
-import { loader as admin_stocksDataLoader } from '../../pages_Admin/Stock/StockList';
 import { loader as admin_customOrderLoader } from '../../pages_Admin/HandleOrders/Admin_CustomOrder/Admin_CustomOrder';
 import { loader as admin_allOrdersLoader } from '../../pages_Admin/HandleOrders/AllOrders/Admin_All_OrderList';
 import { loader as admin_orderDetailViewLoader } from '../../pages_Admin/HandleOrders/Admin_OrderDetailView/Admin_OrderDetailView';
@@ -44,7 +43,7 @@ import Dashboard from "../../pages_Admin/Dashboard/Dashboard";
 import AdminLogin from "../../pages_Admin/Admin/AdminLogin/AdminLogin";
 import Category from "../../pages_Admin/Category/Admin_Category";
 import ProductList from "../../pages_Admin/ProductList/Admin_ProductList";
-import StockList from "../../pages_Admin/Stock/StockList";
+import StockList from "../../pages_Admin/Stock/Admin_StockList";
 import AllOrders from "../../pages_Admin/HandleOrders/AllOrders/Admin_All_OrderList";
 import Admin_OrderDetailView from "../../pages_Admin/HandleOrders/Admin_OrderDetailView/Admin_OrderDetailView";
 import Admin_CustomOrder from "../../pages_Admin/HandleOrders/Admin_CustomOrder/Admin_CustomOrder";
@@ -57,6 +56,7 @@ import Admin_categoryEdit from "../../pages_Admin/Category/Admin_categoryEdit/Ad
 import Admin_subcategoryUpload from "../../pages_Admin/SubCategory/Admin_subcategoryUpload/Admin_subcategoryUpload";
 import Admin_subcategoryEdit from "../../pages_Admin/SubCategory/Admin_subcategoryEdit/Admin_subcategoryEdit";
 import Admin_ProductUpload from "../../pages_Admin/ProductList/Admin_ProductUpload/Admin_ProductUpload";
+import Admin_stockItem_Add from "../../pages_Admin/Stock/Admin_stockItem_Add/Admin_stockItem_Add";
 
 
 
@@ -193,9 +193,14 @@ export const router = createBrowserRouter([
                
             },
             {
-                path: 'inventroy',
+                path: 'inventory',
                 element: <StockList />,
-                loader: admin_stocksDataLoader
+                
+            },
+            {
+                path: 'inventory/:product_slug/add',
+                element: <Admin_stockItem_Add />,
+                
             },
             {
                 path: 'orders-list',

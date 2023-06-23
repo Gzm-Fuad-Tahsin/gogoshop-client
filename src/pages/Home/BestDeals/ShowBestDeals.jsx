@@ -33,7 +33,7 @@ const ShowBestDeals = () => {
     return (
       
         <>
-        <h1 className='text-center text-xl font-extralight my-5'>Today's Best Deals</h1>
+        <h1 className='text-center text-xl font-extralight my-5'>Today&#39;s Best Deals</h1>
         <div className='w-[300px] h-[169px] md:w-[430px] md:h-[200px] lg:w-[800px] lg:h-[300px] bg-[#ECFAEE] mx-auto flex items-center rounded-[20px]'>
         <Swiper
         slidesPerView={1}

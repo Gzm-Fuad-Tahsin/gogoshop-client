@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
+
 import { useParams } from 'react-router-dom';
 import LoadingIcon from '../../../pages/ErrorPages/LoadingIcon/LoadingIcon';
 import { useForm } from 'react-hook-form';
@@ -36,7 +36,7 @@ const Admin_categoryEdit = () => {
 
     useEffect(()=>{
         if(category){
-            console.log(category);
+           
             setSelectedImage(category?.img);
         }
 
