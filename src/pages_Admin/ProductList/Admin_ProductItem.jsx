@@ -14,7 +14,7 @@ const Admin_ProductItem = ({ count, product, handleStatusChange, handleProductDe
 
     }
     return (
-        <div className="w-[700px] lg:w-[800px] xl:w-[1000px] 2xl:w-[1150px] 3xl:w-[1300px] mx-auto grid grid-cols-10 text-[#434343] bg-white hover:bg-slate-100 text-base py-2 border-b">
+        <div className="w-[1000px] 2xl:w-[1150px] 3xl:w-[1300px] mx-auto grid grid-cols-10 text-[#434343] bg-white hover:bg-slate-100 text-base py-2 border-b">
             <div className="col-span-1 grid grid-cols-5 justify-center items-center  text-center">
                 <div className="col flex justify-center">{count}</div>
                 <div className="col-span-4 flex justify-center items-center">
