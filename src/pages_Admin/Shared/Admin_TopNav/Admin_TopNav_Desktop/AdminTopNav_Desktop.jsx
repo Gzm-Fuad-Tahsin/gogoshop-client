@@ -1,10 +1,12 @@
-import Reac from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import logoFull from '../../../assets/icons/logo-full.png';
-import TopNavSearchField from '../../../pages/Shared/TopNavBar/TopNavSearchField';
+import logoFull from '../../../../assets/icons/logo-full.png';
+import { FiLogOut } from 'react-icons/fi';
+import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
 
 const AdminTopNav = () => {
- 
+    const { showSideNav, setShowSideNav } = useContext(UtilityContext);
+
 
 
 
@@ -21,8 +23,8 @@ const AdminTopNav = () => {
 
 
                 {/* toggle button  */}
-                <div className="navbar-start w-fit pl-2 md:pl-3 ">
-                    <button className='text-slate-100 hover:text-slate-200 '>
+                <div className="navbar-start grow w-fit pl-2 md:pl-3 ">
+                    <button className='text-slate-100 hover:text-slate-200 ' onClick={() => setShowSideNav(!showSideNav)}>
 
 
                         <svg width="24" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,40 +38,27 @@ const AdminTopNav = () => {
 
 
                     {/* logo  */}
-                    <div className="hidden md:block ml-0 md:ml-2">
+                    <div className="ml-0 md:ml-2">
                         <Link to='/' className="indicator flex items-center  w-28 pl-3">
                             <img src={logoFull} alt='gogoshop logo' className='w-full' />
-
                         </Link>
                     </div>
                 </div>
 
-
-
-
-                {/* search bar  */}
-                <div className="navbar-center grow pl-3  pr-2 justify-center">
-                   <TopNavSearchField/>
-                </div>
-
-
-
-
+                {/* Logout admin */}
                 <div className="navbar-end w-fit ">
-
-
-
-
-
                     {
-                        
-                        <div className='flex pr-1 md:pr-4 lg:pr-8 xl:pr-16' aria-label='admin-profile'>
-                           admin
+
+                        <div className='flex justify-center items-center pr-1 md:pr-4 lg:pr-8 xl:pr-16' aria-label='admin-profile'>
+                            <div className="relative w-7 h-7 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-500">
+                                <svg className="absolute w-9 h-9 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" ></path></svg>
+                            </div>
+                            <button className='pl-2 flex justify-center  items-center' onClick={() => console.log('admin log out')}>
+                                <FiLogOut className='mr-1' />
+                                Log out
+                            </button>
                         </div>
                     }
-
-
-
                 </div>
             </div>
 

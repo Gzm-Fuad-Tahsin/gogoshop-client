@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { GoChevronRight } from 'react-icons/go';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Mobile_SideNavItem = ({ data ,setsideNavstate}) => {
+const Mobile_SideNavItem = ({ data, setsideNavstate }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const { _id, isActive, category_slug, img, category_name, sub_category, path } = data;
@@ -63,11 +63,10 @@ const Mobile_SideNavItem = ({ data ,setsideNavstate}) => {
     return (
         <div className="text-sm">
 
-            <button 
-            id={_id} 
-            style={buttonStyle} 
-            onClick={toggleMenu}
-            onKeyDown={()=>{setsideNavstate(false)}}>
+            <button
+                style={buttonStyle}
+                onClick={toggleMenu}
+                onKeyDown={() => { setsideNavstate(false) }}>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <img src={img} alt={category_slug} style={imageStyle} />
@@ -85,12 +84,12 @@ const Mobile_SideNavItem = ({ data ,setsideNavstate}) => {
                 <div
                     style={subCategoryContainerStyle}
                 >
-                    {sub_category.map((item) => (
+                    {sub_category.map((item, _idx) => (
                         <NavLink
-                            key={item.sub_cat_id}
+                            key={_idx}
                             to={`sub-category/${item.sub_category_slug}`}
                             style={subCategoryLinkStyle}
-                            onKeyDown={()=>{setsideNavstate(false)}} onClick={()=>{setsideNavstate(false)}}
+                            onKeyDown={() => { setsideNavstate(false) }} onClick={() => { setsideNavstate(false) }}
                         >
                             <img src={item.img} alt={item.sub_category_slug} style={imageStyle} />
 

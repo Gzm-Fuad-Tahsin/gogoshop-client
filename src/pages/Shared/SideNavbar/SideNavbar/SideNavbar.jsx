@@ -4,7 +4,7 @@ import { BsFillClipboard2CheckFill } from 'react-icons/bs';
 import { GoChevronRight } from 'react-icons/go'
 import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
-import { WebpageDataContext } from '../../../../Layout/Main/Main';
+import { WebpageDataContext } from '../../../../Layout/User/Main';
 import SideNavbarItem from '../SideNavbarItem/SideNavbarItem';
 import './SideNavbar.module.css'
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { WebpageDataContext } from '../../../Layout/Main/Main';
+import { WebpageDataContext } from '../../../Layout/User/Main';
 import ImageOverlayText from '../../../components/ImageOverlayText/ImageOverlayText';
 
 const AllCategories = () => {

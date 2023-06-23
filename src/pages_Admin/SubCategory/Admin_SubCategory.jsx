@@ -53,9 +53,9 @@ const SubCategory = () => {
                     <>
                         <div className='px-3 md:px-10 mt-5 md:mt-9 mx-auto'>
                             <div className=" w-full flex justify-between items-center" aria-label='title-bar'>
-                                <p aria-label='title' className='text-xl'>Sub Categories</p>
+                                <p aria-label='title' className='text-xl'>Subcategories</p>
 
-                                <Link to='upload-subcategory' className='text-white bg-root-100 hover:bg-root-200 text-lg py-1  px-3 lg:px-5 rounded-3xl text-center'>Add New Subcategory</Link>
+                                <Link to='upload-subcategory' className='text-white bg-root-100 hover:bg-root-200 text-lg py-1  px-5 rounded-3xl text-center'>Add Subcategory</Link>
 
                             </div>
 

@@ -11,7 +11,7 @@ import "../Banner/style.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
-import { WebpageDataContext } from "../../../Layout/Main/Main";
+import { WebpageDataContext } from "../../../Layout/User/Main";
 
 const SecondBanner = () => {
   const { bottomBanner } = useContext(WebpageDataContext);

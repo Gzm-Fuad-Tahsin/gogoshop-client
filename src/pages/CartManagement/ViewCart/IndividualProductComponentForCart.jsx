@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 
 
 const IndividualProductBar = ({ product,handleDeleteCartItem,ItemQunatityChangeInCart }) => {
-    const { product_id, name, img, size, slug_name, buyingprice, quantity } = product;
+    const { product_id, name, img, size, product_slug, buyingprice, quantity } = product;
     
    
     
