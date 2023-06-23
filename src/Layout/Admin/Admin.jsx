@@ -141,7 +141,7 @@ const Admin = () => {
         <>
             <AdminDataContext.Provider value={contextvalue}>
                 {
-                    screenWidth < 768 ?
+                    screenWidth < 1300 ?
                         <>
                             <AdminLayout_Mobile>
                                 <Outlet></Outlet>
