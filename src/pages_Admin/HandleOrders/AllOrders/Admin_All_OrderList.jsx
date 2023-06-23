@@ -4,12 +4,12 @@ export async function loader() {
     return {};
 }
 
-const ProductList = () => {
+const Admin_All_OrderList = () => {
     return (
         <div>
-            ProductList
+            AllOrders
         </div>
     );
 };
 
-export default ProductList;
+export default Admin_All_OrderList;

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../../Layout/Main/Main";
+import Main from "../../Layout/User/Main";
 import Home from "../../pages/Home/Home/Home";
 
 import NotFound from "../../pages/ErrorPages/NotFound/NotFound";
@@ -15,7 +15,7 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 // loader 
-import { loader as HomePageAllDataLoader } from '../../Layout/Main/Main'
+import { loader as HomePageAllDataLoader } from '../../Layout/User/Main'
 import { loader as subcategoryLoader } from '../../pages/SubCategoryProductView/SubCategoryProductView';
 import { loader as productDetailLoader } from '../../pages/ProductDetail/ProductDetail';
 import { loader as CurrentRunningOrdersLoader } from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";
@@ -27,10 +27,9 @@ import { loader as orderItemLoader } from "../../pages/CartManagement/PlaceOrder
 // admin 
 import { loader as admin_DashboardLoader } from '../../pages_Admin/Dashboard/Dashboard';
 import { loader as admin_footerDataLoader } from '../../pages_Admin/BuyerSite_manipulation/Upload_footerData/Upload_footerData';
-import { loader as admin_allProductsLoader } from '../../pages_Admin/ProductList/ProductList';
 import { loader as admin_stocksDataLoader } from '../../pages_Admin/Stock/StockList';
 import { loader as admin_customOrderLoader } from '../../pages_Admin/HandleOrders/Admin_CustomOrder/Admin_CustomOrder';
-import { loader as admin_allOrdersLoader } from '../../pages_Admin/HandleOrders/AllOrders/AllOrders';
+import { loader as admin_allOrdersLoader } from '../../pages_Admin/HandleOrders/AllOrders/Admin_All_OrderList';
 import { loader as admin_orderDetailViewLoader } from '../../pages_Admin/HandleOrders/Admin_OrderDetailView/Admin_OrderDetailView';
 
 import ReviewCartsDiv from "../../pages/CartManagement/PlaceOrder/ReviewCartsDiv";
@@ -44,9 +43,9 @@ import Admin from "../../Layout/Admin/Admin";
 import Dashboard from "../../pages_Admin/Dashboard/Dashboard";
 import AdminLogin from "../../pages_Admin/Admin/AdminLogin/AdminLogin";
 import Category from "../../pages_Admin/Category/Admin_Category";
-import ProductList from "../../pages_Admin/ProductList/ProductList";
+import ProductList from "../../pages_Admin/ProductList/Admin_ProductList";
 import StockList from "../../pages_Admin/Stock/StockList";
-import AllOrders from "../../pages_Admin/HandleOrders/AllOrders/AllOrders";
+import AllOrders from "../../pages_Admin/HandleOrders/AllOrders/Admin_All_OrderList";
 import Admin_OrderDetailView from "../../pages_Admin/HandleOrders/Admin_OrderDetailView/Admin_OrderDetailView";
 import Admin_CustomOrder from "../../pages_Admin/HandleOrders/Admin_CustomOrder/Admin_CustomOrder";
 import Upload_Topbanner from "../../pages_Admin/BuyerSite_manipulation/Upload_Topbanner/Upload_Topbanner";
@@ -144,7 +143,7 @@ export const router = createBrowserRouter([
         element: <Admin />,
         children: [
             {
-                path: 'admin',
+                path: '/admin',
                 element: <AdminLogin />,
 
             },
@@ -185,7 +184,7 @@ export const router = createBrowserRouter([
             {
                 path: 'products-list',
                 element: <ProductList />,
-                loader: admin_allProductsLoader
+               
             },
             {
                 path: 'inventroy',

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 
-import SideNavbar from '../../pages/Shared/SideNavbar/SideNavbar/SideNavbar';
-import Footer from '../../pages/Shared/Footer/Footer';
-import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
-import BottomBar from '../../pages/Shared/BottomBar/BottomBar';
-import MobileTopNav from '../../pages/Shared/TopNavBar/Mobile_TopNav';
+import SideNavbar from '../../../pages/Shared/SideNavbar/SideNavbar/SideNavbar';
+import Footer from '../../../pages/Shared/Footer/Footer';
+import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
+import BottomBar from '../../../pages/Shared/BottomBar/BottomBar';
+import MobileTopNav from '../../../pages/Shared/TopNavBar/Mobile_TopNav';
 
 const Mobile = ({ children }) => {
     
