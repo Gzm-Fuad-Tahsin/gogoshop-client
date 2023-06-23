@@ -18,7 +18,7 @@ const Admin_subcategoryItem = ({ subcategory, count,handleStatusChange,handleSub
 
     return (
 
-        <div className="w-[700px] lg:w-[800px] xl:w-[1000px] 2xl:w-[1150px] 3xl:w-[1300px] mx-auto grid grid-cols-11 text-[#434343] bg-white hover:bg-slate-100 text-base py-2 border-b">
+        <div className="w-[700px]  xl:w-[1000px] 2xl:w-[1150px] 3xl:w-[1300px] mx-auto grid grid-cols-11 text-[#434343] bg-white hover:bg-slate-100 text-base py-2 border-b">
             <div className="col-span-2 grid grid-cols-5 justify-center items-center  text-center">
                 <div className="col flex justify-center">{count}</div>
                 <div className="col-span-4 flex justify-center items-center">

@@ -62,7 +62,7 @@ const Category = () => {
                             <div className='mt-5 md:mt-9 mx-auto  overflow-x-scroll '>
 
                                 {/* table header */}
-                                <div className="w-[700px] lg:w-[800px] xl:w-[1000px] 2xl:w-[1150px] 3xl:w-[1300px] mx-auto grid grid-cols-11 text-[#A3A3A3] text-lg mb-2">
+                                <div className="w-[700px]  xl:w-[1000px] 2xl:w-[1150px] 3xl:w-[1300px] mx-auto grid grid-cols-11 text-[#A3A3A3] text-lg mb-2">
                                     <div className="col-span-3 grid grid-cols-5 justify-center">
                                         <div className="col flex justify-center">#</div>
                                         <div className="col-span-4 flex justify-center">Thumbnail</div>

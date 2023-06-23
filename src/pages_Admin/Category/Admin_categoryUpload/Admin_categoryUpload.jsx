@@ -68,7 +68,7 @@ const Admin_categoryUpload = () => {
                                 <div className="absolute inset-0 flex flex-col items-center justify-center">
 
                                     <p className="text-gray-500">440 x 440</p>
-                                    <p className="text-gray-500">place an image</p>
+                                    <p className="text-gray-500">place an .png image</p>
                                 </div>
                             </>
                         )}
