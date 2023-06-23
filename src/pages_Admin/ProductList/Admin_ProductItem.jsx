@@ -3,14 +3,14 @@ import { MdToggleOff, MdToggleOn } from 'react-icons/md';
 import Admin_ProductItem_action from './Admin_ProductItem_action';
 const Admin_ProductItem = ({ count, product, handleStatusChange, handleProductDelete }) => {
 
-    const { isActive, img, name, size, product_slug, subcategory, category,stock,buyingPrice, mainPrice, finalPrice } = product;
+    const { isActive, img, name, size, slug_name, subcategory,stock,buyingPrice, MRP, sellingPrice } = product;
 
     const [toggleSwitchState, setToggleSwitchState] = useState(isActive);
 
 
     const handleToggleSwitchStatusChange =status=>{
         setToggleSwitchState(status);
-        handleStatusChange(product_slug,status);
+        handleStatusChange(slug_name,status);
 
     }
     return (
@@ -22,16 +22,15 @@ const Admin_ProductItem = ({ count, product, handleStatusChange, handleProductDe
                 </div>
 
             </div>
-            <div className="col-span-1 flex flex-col justify-center items-center text-center">
+            <div className="col-span-2 flex flex-col justify-center items-center text-center">
                 <p>{name}</p>
                 <p className='text-sm'>{size}</p>
             </div>
-            <div className="col-span-1 flex justify-center items-center text-center">{category}</div>
             <div className="col-span-1 flex justify-center items-center text-center">{subcategory}</div>
             <div className="col-span-1 flex justify-center items-center text-center">{stock}</div>
             <div className="col-span-1 flex justify-center items-center text-center">{buyingPrice}</div>
-            <div className="col-span-1 flex justify-center items-center text-center text-lg">{mainPrice}</div>
-            <div className="col-span-1 flex justify-center items-center text-center">{finalPrice}</div>
+            <div className="col-span-1 flex justify-center items-center text-center text-lg">{MRP}</div>
+            <div className="col-span-1 flex justify-center items-center text-center">{sellingPrice}</div>
 
             {/* toggle switch  */}
             <div className="col-span-1 flex justify-center items-center">
@@ -47,7 +46,7 @@ const Admin_ProductItem = ({ count, product, handleStatusChange, handleProductDe
             </div>
              {/* action button  */}
              <div className="col-span-1 flex justify-center  items-center cursor-pointer">
-                <Admin_ProductItem_action product_slug={product_slug} handleProductDelete={handleProductDelete}/>
+                <Admin_ProductItem_action slug_name={slug_name} handleProductDelete={handleProductDelete}/>
                 {/* Action <BsChevronDown className='ml-1 text-[#494949] text-base' /> */}
                 </div>
 

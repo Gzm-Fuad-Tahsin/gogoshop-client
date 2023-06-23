@@ -79,21 +79,21 @@ const UtilityProvider = ({ children }) => {
 
 
     //    quantity update in product detail page and card of product
-    const updateCart = ({ product_id, quantity }) => {
+    const updateCart = ({ _id, quantity }) => {
         /* STEP : 
           update cart --> update the cart in code, and setchanged Prdouct
           changedProduct is under an use effect, so, it will call updatecartdataIndb() 
           */
-        console.log(product_id, quantity)
+        console.log(_id, quantity)
 
         let newCart = [];
-        const exists = cart.find(product => product.product_id === product_id);
+        const exists = cart.find(product => product._id === _id);
         if (!exists) {
-            setChangedProduct({ product_id, quantity });
-            newCart = [...cart, { product_id, quantity }];
+            setChangedProduct({ _id, quantity });
+            newCart = [...cart, { _id, quantity }];
         }
         else {
-            const rest = cart.filter(product => product.product_id !== product_id);
+            const rest = cart.filter(product => product._id !== _id);
             exists.quantity = parseInt(exists.quantity) + quantity;
             newCart = [...rest, exists];
             setChangedProduct(exists);

@@ -47,6 +47,9 @@ const Admin_ProductUpload = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+
+      
+        
     };
  
     return (
@@ -204,11 +207,14 @@ const Admin_ProductUpload = () => {
                                         </div>
                                     </div>
 
-                                    {/* product Name */}
+                            
+
+
+                                    {/* product name */}
                                     <div className='grid grid-cols-1 justify-center gap-6 mb-3'>
                                         <div className=''>
                                             <div className='flex items-center'>
-                                                <label htmlFor="subcategory_name" className="block my-1 pl-2 text-md font-medium">Product Name</label>
+                                                <label htmlFor="name" className="block my-1 pl-2 text-md font-medium">Product name</label>
                                             </div>
                                             <div>
                                                 <input
@@ -218,7 +224,7 @@ const Admin_ProductUpload = () => {
                                                     placeholder="Type here"
                                                     className="block input-field w-full p-2 text-gray-900 rounded-lg border border-gray-300 text-base"
                                                     {...register("name", {
-                                                        required: "* product name is required",
+                                                        required: "*name is required",
                                                         maxLength: {
                                                             value: 50,
                                                             message: "Max length is 50"
@@ -231,8 +237,6 @@ const Admin_ProductUpload = () => {
                                             </div>
                                         </div>
                                     </div>
-
-
                                     {/* product Size */}
                                     <div className='grid grid-cols-1 justify-center gap-6 mb-3'>
                                         <div className=''>
@@ -254,7 +258,7 @@ const Admin_ProductUpload = () => {
                                                         }
                                                     })}
                                                 />
-                                                {errors.name && (
+                                                {errors.size && (
                                                     <p className='p-1 text-xs text-red-600'>{errors.size.message}</p>
                                                 )}
                                             </div>
@@ -385,25 +389,25 @@ const Admin_ProductUpload = () => {
                                     <div className='grid grid-cols-1 justify-center gap-6 mb-4'>
                                         <div className=''>
                                             <div className='flex items-center'>
-                                                <label htmlFor="subcategory_name" className="block my-1 pl-2 text-md font-medium">MRP <small className='text-[10px]'>&#40;w&#47;offer&#41;</small></label>
+                                                <label htmlFor="MRP" className="block my-1 pl-2 text-md font-medium">MRP <small className='text-[10px]'>&#40;w&#47;offer&#41;</small></label>
                                             </div>
                                             <div>
                                                 <input
                                                     autoComplete='off'
                                                     type="text"
-                                                    id="name"
+                                                    id="MRP"
                                                     placeholder="Type here"
                                                     className="block input-field w-full p-2 text-gray-900 rounded-lg border border-gray-300 text-base"
-                                                    {...register("name", {
-                                                        required: "* product name is required",
+                                                    {...register("MRP", {
+                                                        required: "* MRP is required",
                                                         maxLength: {
                                                             value: 50,
                                                             message: "Max length is 50"
                                                         }
                                                     })}
                                                 />
-                                                {errors.name && (
-                                                    <p className='p-1 text-xs text-red-600'>{errors.name.message}</p>
+                                                {errors.MRP && (
+                                                    <p className='p-1 text-xs text-red-600'>{errors.MRP.message}</p>
                                                 )}
                                             </div>
                                         </div>

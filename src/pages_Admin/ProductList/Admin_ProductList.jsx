@@ -63,13 +63,13 @@ const Admin_ProductList = () => {
 
                                 {/* table header */}
                                 <div className="w-[1000px] 2xl:w-[1150px] 3xl:w-[1300px] mx-auto grid grid-cols-10 text-[#A3A3A3] text-base lg:text-lg">
-                                    <div className="col-span-1 grid grid-cols-5 justify-center">
+                                    <div className="col-span-2 grid grid-cols-5 justify-center">
                                         <div className="col flex justify-center">#</div>
                                         <div className="col-span-4 flex justify-center">Thumbnail</div>
 
                                     </div>
                                     <div className="col-span-1 flex justify-center">Name</div>
-                                    <div className="col-span-1 flex justify-center">Category</div>
+     
                                     <div className="col-span-1 flex justify-center">Subcategory</div>
                                     <div className="col-span-1 flex justify-center">Stock</div>
                                     <div className="col-span-1 flex justify-center">Buying Price</div>

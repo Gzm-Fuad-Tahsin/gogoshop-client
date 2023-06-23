@@ -86,11 +86,11 @@ const ShowBestDeals = () => {
 
               <p className="flex text-[9px] lg:text-sm text-[#807F7F]">
                 <TbCurrencyTaka></TbCurrencyTaka>
-                {product.finalPrice}
-                {product.mainPrice && (
+                {product?.sellingPrice}
+                {(product?.MRP !==product?.sellingPrice) && (
                   <s className="flex text-[9px] lg:text-xs text-[#A9A9A9]">
                     <TbCurrencyTaka></TbCurrencyTaka>
-                    {product.mainPrice}
+                    {product.MRP}
                   </s>
                 )}
               </p>
