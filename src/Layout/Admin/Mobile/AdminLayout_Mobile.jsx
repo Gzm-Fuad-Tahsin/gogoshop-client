@@ -4,7 +4,7 @@ import { AdminDataContext } from '../Admin';
 
 const AdminLayout_Mobile = ({ children }) => {
     const {adminSideNavData} = useContext(AdminDataContext);
-    console.log(adminSideNavData)
+    // console.log(adminSideNavData)
     return (
         <>
             <div className="w-screen border-b-[1px] max-w-full  sticky top-0 z-[1000] ">

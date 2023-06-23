@@ -10,9 +10,9 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 const steps = [
-    'Select master blaster campaign settings',
-    'Create an ad group',
-    'Create an ad',
+    'Processing',
+    'Shipping',
+    'Delivered',
 ];
 
 export async function loader({ params }) {
@@ -52,7 +52,7 @@ const OrderStatus = () => {
                     
                     {/* Stepper code */}
                     <Box sx={{ width: '100%' }}>
-                        <Stepper activeStep={0} alternativeLabel className='custom-font'>
+                        <Stepper activeStep={1} alternativeLabel>
                             {steps.map((label) => (
                                 <Step key={label}>
                                     <StepLabel>{label}</StepLabel>
