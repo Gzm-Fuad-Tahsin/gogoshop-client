@@ -51,11 +51,11 @@ const Admin_ProductList = () => {
             {
                 products ?
                     <>
-                        <div className='px-3 md:px-6 mt-5 md:mt-9 mx-auto'>
+                        <div className='px-3 md:px-6 mt-5 md:mt-9  mx-auto'>
                             <div className=" w-full flex justify-between items-center" aria-label='title-bar'>
                                 <p aria-label='title' className='text-xl'>Products</p>
 
-                                <Link to='upload-subcategory' className='text-white bg-root-100 hover:bg-root-200 text-lg py-1  px-3 lg:px-5 rounded-3xl text-center'>Add New Product</Link>
+                                <Link to='/admin/products-list/upload-product' className='text-white bg-root-100 hover:bg-root-200 text-lg py-1  px-3 lg:px-5 rounded-3xl text-center'>Add New Product</Link>
 
                             </div>
 
