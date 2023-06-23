@@ -20,7 +20,7 @@ export async function loader({ params }) {
 }
 const ProductDetail = () => {
     const productData = useLoaderData();
-    const { product_id, img, name, product_slug, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
+    const { _id, img, name, size, shortdescription, description, sellingPrice, MRP, subcategory, images } = productData;
 
 
     const { cart, updateCart } = useContext(UtilityContext);
@@ -29,11 +29,11 @@ const ProductDetail = () => {
 
     useEffect(() => {
 
-        if (cart.find(item => item.product_id === product_id)) {
+        if (cart.find(item => item._id === _id)) {
             setAlreadyAdded(true);
         }
 
-    }, [cart, product_id])
+    }, [cart, _id])
 
 
     //animation effect
@@ -53,13 +53,13 @@ const ProductDetail = () => {
                             {/* <title>{name}</title> */}
                             <meta property="og:title" content={name} />
                             <meta name="whatever" value="notImportant" />
-                            <meta property="og:description" content={description} />
+                            <meta property="og:description" content={shortdescription} />
                             <meta property="og:image" content={img} />
                             <link rel="notImportant" href="https://www.chipotle.com _____________ei page er path___" />
                         </Helmet>
 
                         <ScrollToTop />
-                        <PageTitleBreadCrumb data={[category, subcategory]} />
+                        <PageTitleBreadCrumb data={[subcategory]} />
                         <div className='flex justify-center p-2  pt-4  '>
 
                             <div className="w-full lg:max-w-4xl">
@@ -114,11 +114,11 @@ const ProductDetail = () => {
 
                                         <p className="my-3 flex items-center text-lg text-[#807F7F]">
                                             <TbCurrencyTaka></TbCurrencyTaka>
-                                            {finalPrice}
-                                            {mainPrice!==finalPrice && (
+                                            {sellingPrice}
+                                            {MRP!==sellingPrice && (
                                                 <s className="flex items-center text-base ml-3 text-[#878080]">
                                                     <TbCurrencyTaka></TbCurrencyTaka>
-                                                    {mainPrice}
+                                                    {MRP}
                                                 </s>
                                             )}
                                         </p>
@@ -136,7 +136,7 @@ const ProductDetail = () => {
 
                                                         </button>
                                                         :
-                                                         <button onClick={() => updateCart({ product_id, quantity: 1 })} className="btn text-white h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
+                                                         <button onClick={() => updateCart({ _id, quantity: 1 })} className="btn text-white h-14 w-full border-0 rounded-2xl lg:rounded-lg bg-root-100 hover:bg-root-200   ">
                                                          <CiShoppingCart className='text-2xl ' />
                                                          <span className="px-3 md:font-medium md:text-[20px] lg:font-medium lg:text-[20px] 2xl:font-medium 2xl:text-[20px] normal-case">Add to Cart</span>
 

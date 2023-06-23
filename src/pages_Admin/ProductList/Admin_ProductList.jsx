@@ -51,11 +51,11 @@ const Admin_ProductList = () => {
             {
                 products ?
                     <>
-                        <div className='px-3 md:px-6 mt-5 md:mt-9 mx-auto'>
+                        <div className='px-3 md:px-6 mt-5 md:mt-9  mx-auto'>
                             <div className=" w-full flex justify-between items-center" aria-label='title-bar'>
                                 <p aria-label='title' className='text-xl'>Products</p>
 
-                                <Link to='upload-subcategory' className='text-white bg-root-100 hover:bg-root-200 text-lg py-1  px-3 lg:px-5 rounded-3xl text-center'>Add New Product</Link>
+                                <Link to='/admin/products-list/upload-product' className='text-white bg-root-100 hover:bg-root-200 text-lg py-1  px-3 lg:px-5 rounded-3xl text-center'>Add New Product</Link>
 
                             </div>
 
@@ -63,13 +63,13 @@ const Admin_ProductList = () => {
 
                                 {/* table header */}
                                 <div className="w-[1000px] 2xl:w-[1150px] 3xl:w-[1300px] mx-auto grid grid-cols-10 text-[#A3A3A3] text-base lg:text-lg">
-                                    <div className="col-span-1 grid grid-cols-5 justify-center">
+                                    <div className="col-span-2 grid grid-cols-5 justify-center">
                                         <div className="col flex justify-center">#</div>
                                         <div className="col-span-4 flex justify-center">Thumbnail</div>
 
                                     </div>
                                     <div className="col-span-1 flex justify-center">Name</div>
-                                    <div className="col-span-1 flex justify-center">Category</div>
+     
                                     <div className="col-span-1 flex justify-center">Subcategory</div>
                                     <div className="col-span-1 flex justify-center">Stock</div>
                                     <div className="col-span-1 flex justify-center">Buying Price</div>
