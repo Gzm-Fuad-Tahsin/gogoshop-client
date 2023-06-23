@@ -11,7 +11,7 @@ import bkashLogo from '../../../assets/icons/BKash-Logo 1.svg';
 import nagadLogo from '../../../assets/icons/Nagad-Logo 1.svg'
 import mastercardlogo from '../../../assets/icons/Mastercard-Logo.wine.svg'
 import visalogo from '../../../assets/icons/Visa_Inc.-Logo.wine.svg'
-import { WebpageDataContext } from '../../../Layout/Main/Main';
+import { WebpageDataContext } from '../../../Layout/User/Main';
 
 
 const Footer = () => {

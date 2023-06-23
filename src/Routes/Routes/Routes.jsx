@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../../Layout/Main/Main";
+import Main from "../../Layout/User/Main";
 import Home from "../../pages/Home/Home/Home";
 
 import NotFound from "../../pages/ErrorPages/NotFound/NotFound";
@@ -15,7 +15,7 @@ import ProductDetail from "../../pages/ProductDetail/ProductDetail";
 
 
 // loader 
-import { loader as HomePageAllDataLoader } from '../../Layout/Main/Main'
+import { loader as HomePageAllDataLoader } from '../../Layout/User/Main'
 import { loader as subcategoryLoader } from '../../pages/SubCategoryProductView/SubCategoryProductView';
 import { loader as productDetailLoader } from '../../pages/ProductDetail/ProductDetail';
 import { loader as CurrentRunningOrdersLoader } from "../../pages/OrdersMangement/CurrentOrders/CurrentOrder/CurrentOrder";
@@ -26,15 +26,10 @@ import { loader as orderItemLoader } from "../../pages/CartManagement/PlaceOrder
 
 // admin 
 import { loader as admin_DashboardLoader } from '../../pages_Admin/Dashboard/Dashboard';
-import { loader as admin_TopBannerLoader } from '../../pages_Admin/BuyerSite_manipulation/Upload_Topbanner/Upload_Topbanner';
-import { loader as admin_BottomBannerLoader } from '../../pages_Admin/BuyerSite_manipulation/Upload_BottomBanner/Upload_BottomBanner';
 import { loader as admin_footerDataLoader } from '../../pages_Admin/BuyerSite_manipulation/Upload_footerData/Upload_footerData';
-import { loader as admin_allcategoriesLoader } from '../../pages_Admin/Category/Category';
-import { loader as admin_allsubCategoriesLoader } from '../../pages_Admin/SubCategory/SubCategory';
-import { loader as admin_allProductsLoader } from '../../pages_Admin/ProductList/ProductList';
 import { loader as admin_stocksDataLoader } from '../../pages_Admin/Stock/StockList';
 import { loader as admin_customOrderLoader } from '../../pages_Admin/HandleOrders/Admin_CustomOrder/Admin_CustomOrder';
-import { loader as admin_allOrdersLoader } from '../../pages_Admin/HandleOrders/AllOrders/AllOrders';
+import { loader as admin_allOrdersLoader } from '../../pages_Admin/HandleOrders/AllOrders/Admin_All_OrderList';
 import { loader as admin_orderDetailViewLoader } from '../../pages_Admin/HandleOrders/Admin_OrderDetailView/Admin_OrderDetailView';
 
 import ReviewCartsDiv from "../../pages/CartManagement/PlaceOrder/ReviewCartsDiv";
@@ -47,16 +42,20 @@ import ViewCart from "../../pages/CartManagement/ViewCart/ViewCart";
 import Admin from "../../Layout/Admin/Admin";
 import Dashboard from "../../pages_Admin/Dashboard/Dashboard";
 import AdminLogin from "../../pages_Admin/Admin/AdminLogin/AdminLogin";
-import Category from "../../pages_Admin/Category/Category";
-import SubCategory from "../../pages_Admin/SubCategory/SubCategory";
-import ProductList from "../../pages_Admin/ProductList/ProductList";
+import Category from "../../pages_Admin/Category/Admin_Category";
+import ProductList from "../../pages_Admin/ProductList/Admin_ProductList";
 import StockList from "../../pages_Admin/Stock/StockList";
-import AllOrders from "../../pages_Admin/HandleOrders/AllOrders/AllOrders";
+import AllOrders from "../../pages_Admin/HandleOrders/AllOrders/Admin_All_OrderList";
 import Admin_OrderDetailView from "../../pages_Admin/HandleOrders/Admin_OrderDetailView/Admin_OrderDetailView";
 import Admin_CustomOrder from "../../pages_Admin/HandleOrders/Admin_CustomOrder/Admin_CustomOrder";
 import Upload_Topbanner from "../../pages_Admin/BuyerSite_manipulation/Upload_Topbanner/Upload_Topbanner";
 import Upload_BottomBanner from "../../pages_Admin/BuyerSite_manipulation/Upload_BottomBanner/Upload_BottomBanner";
 import Upload_footerData from "../../pages_Admin/BuyerSite_manipulation/Upload_footerData/Upload_footerData";
+import SubCategory from "../../pages_Admin/SubCategory/Admin_SubCategory";
+import Admin_categoryUpload from "../../pages_Admin/Category/Admin_categoryUpload/Admin_categoryUpload";
+import Admin_categoryEdit from "../../pages_Admin/Category/Admin_categoryEdit/Admin_categoryEdit";
+import Admin_subcategoryUpload from "../../pages_Admin/SubCategory/Admin_subcategoryUpload/Admin_subcategoryUpload";
+import Admin_subcategoryEdit from "../../pages_Admin/SubCategory/Admin_subcategoryEdit/Admin_subcategoryEdit";
 
 
 
@@ -144,7 +143,7 @@ export const router = createBrowserRouter([
         element: <Admin />,
         children: [
             {
-                path: 'admin',
+                path: '/admin',
                 element: <AdminLogin />,
 
             },
@@ -156,17 +155,36 @@ export const router = createBrowserRouter([
             {
                 path: 'category-list',
                 element: <Category />,
-                loader: admin_allcategoriesLoader
+                
+            },
+            {
+                path: 'category-list/upload-category',
+                element: <Admin_categoryUpload />,
+                
+            },
+            {
+                path: 'category-list/:category_slug/edit',
+                element: <Admin_categoryEdit />,
+                
             },
             {
                 path: 'subcategory-list',
-                element: <SubCategory />,
-                loader: admin_allsubCategoriesLoader
+                element: <SubCategory />
+            },
+            {
+                path: 'subcategory-list/upload-subcategory',
+                element: <Admin_subcategoryUpload />,
+                
+            },
+            {
+                path: 'subcategory-list/:subcategory_slug/edit',
+                element: <Admin_subcategoryEdit />,
+                
             },
             {
                 path: 'products-list',
                 element: <ProductList />,
-                loader: admin_allProductsLoader
+               
             },
             {
                 path: 'inventroy',
@@ -189,14 +207,14 @@ export const router = createBrowserRouter([
                 loader: admin_customOrderLoader
             },
             {
-                path: 'uplaod-top-banner',
-                element: <Upload_Topbanner />,
-                loader: admin_TopBannerLoader
+                path: 'upload-top-banner',
+                element: <Upload_Topbanner />
+             
             },
             {
-                path: 'uplaod-bottom-banner',
-                element: <Upload_BottomBanner />,
-                loader: admin_BottomBannerLoader
+                path: 'upload-bottom-banner',
+                element: <Upload_BottomBanner />
+               
             },
             {
                 path: 'upload-footer-data',

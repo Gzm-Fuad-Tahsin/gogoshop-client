@@ -20,7 +20,7 @@ export async function loader({ params }) {
 }
 const ProductDetail = () => {
     const productData = useLoaderData();
-    const { product_id, img, name, slug_name, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
+    const { product_id, img, name, product_slug, size, description, finalPrice, mainPrice, category, subcategory, images } = productData;
 
 
     const { cart, updateCart } = useContext(UtilityContext);
@@ -115,7 +115,7 @@ const ProductDetail = () => {
                                         <p className="my-3 flex items-center text-lg text-[#807F7F]">
                                             <TbCurrencyTaka></TbCurrencyTaka>
                                             {finalPrice}
-                                            {mainPrice && (
+                                            {mainPrice!==finalPrice && (
                                                 <s className="flex items-center text-base ml-3 text-[#878080]">
                                                     <TbCurrencyTaka></TbCurrencyTaka>
                                                     {mainPrice}

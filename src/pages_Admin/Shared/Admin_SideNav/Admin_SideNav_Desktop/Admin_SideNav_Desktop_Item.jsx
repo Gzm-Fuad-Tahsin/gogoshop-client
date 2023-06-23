@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
-import './SideNavBar.module.css';
 import { GoChevronRight } from 'react-icons/go';
 import { Link, NavLink } from 'react-router-dom';
-
-
-
-const SideNavbarItem = ({ data }) => {
+const Admin_SideNav_Desktop_Item = ({ data }) => {
+    const { title, icon, href, subItem } = data;
 
     const [isOpen, setIsOpen] = useState(false);
-
-    const { _id, isActive, category_slug, img, category_name, sub_category, path } = data;
-
-
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
@@ -19,44 +12,40 @@ const SideNavbarItem = ({ data }) => {
     //button 
     const button =
         <>
-            <button 
+            <button
                 className="w-full flex items-center justify-between p-2  text-gray-700 hover:bg-gray-100"
                 onClick={toggleMenu} >
                 <div className='flex items-center'>
-                    <img src={img} alt={category_slug} className='w-6 h-6' />
-                    <span className="ml-2">{category_name}</span>
+                   {icon}
+                    <span className="ml-2">{title}</span>
                 </div>
 
 
                 {
-                    (sub_category && (sub_category.length > 0)) && <GoChevronRight className={`w-5 h-5 transition-transform duration-50000 ${isOpen ? 'transform rotate-90' : ''}`} />
+                    subItem && <GoChevronRight className={`w-5 h-5 transition-transform duration-50000 ${isOpen ? 'transform rotate-90' : ''}`} />
                 }
 
             </button>
         </>
-
     return (
         <div className="relative text-sm">
-
             {
-                //  if the path dont have any child or dropdwon, then it will redirect to path
-                path ?
-                    <Link to={`products/${path}`}>
-                        {
-                            button
-                        }
-                    </Link>
+                href ?
+                    <>
+                        <NavLink  to={href}>{button}</NavLink>
+                    </>
                     :
-                    button
+                    <>
+                        {button}
+                    </>
             }
 
-
-            {(isOpen && sub_category && (sub_category.length > 0)) && (
+            {(isOpen && subItem) && (
                 <div className=" ml-4  border-l px-1 space-y-2 ">
                     {
-                        sub_category.map((item,_idx) => <NavLink
+                        subItem.map((item, _idx) => <NavLink
                             key={_idx}
-                            to={`sub-category/${item.sub_category_slug}`}
+                            to={item?.href}
 
                             className={({ isActive }) =>
                                 isActive
@@ -66,16 +55,17 @@ const SideNavbarItem = ({ data }) => {
 
                         >
 
-                            <img src={item.img} alt={item.sub_category_slug} className='w-6 h-6 bg-transparent' />
-                            <p className='ml-2'>{item.sub_category_name}</p>
+
+                            <p className='ml-2'>{item?.title}</p>
                         </NavLink>
                         )
                     }
 
                 </div>
             )}
+
         </div>
     );
 };
 
-export default SideNavbarItem;
+export default Admin_SideNav_Desktop_Item;
