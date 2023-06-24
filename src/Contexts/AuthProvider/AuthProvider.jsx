@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 import axios from 'axios';
+import LoadingIcon from '../../pages/ErrorPages/LoadingIcon/LoadingIcon';
 
 export const AuthContext = createContext();
 
@@ -31,7 +32,7 @@ const AuthProvider = ({ children }) => {
 
 
     //laoding
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
 
     const createUserByEmailPass = (email, password) => {
@@ -72,7 +73,7 @@ const AuthProvider = ({ children }) => {
 
 
             if (currentUser) {
-               
+
                 axios.post(`${import.meta.env.VITE_SERVER_ADDRESS}/jwt`, {
                     email: currentUser.email,
                     username: currentUser.displayName,
@@ -118,7 +119,17 @@ const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={authInfo}>
-            {children}
+            {
+                loading ?
+                    <>
+                        <LoadingIcon />
+                    </>
+                    :
+                    <>
+                        {children}
+                    </>
+            }
+
         </AuthContext.Provider>
     );
 };
