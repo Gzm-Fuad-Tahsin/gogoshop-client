@@ -9,7 +9,7 @@ const Admin_ProductUpload = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            axios.get(`${import.meta.env.VITE_SERVER_ADDRESS}/admin/category-list`)
+            axios.get(`${import.meta.env.VITE_SERVER_ADDRESS}/admin/subcategory-list`)
                 .then(data => {
                     if (data.status === 200) {
                         setCategories(data.data);

@@ -4,6 +4,7 @@ import { UtilityContext } from '../../Contexts/Utility/UtilityProvider';
 import AdminLayout_Desktop from './Desktop/AdminLayout_Desktop';
 import AdminLayout_Mobile from './Mobile/AdminLayout_Mobile';
 import { createContext } from 'react';
+import AdminAuthProvider from '../../Contexts/AdminAuthProvider/AdminAuthProvider';
 
 const adminSideNavData = [
     {
@@ -15,7 +16,7 @@ const adminSideNavData = [
                 <path d="M15.6 13.2844C15.1806 13.2844 14.8328 12.9366 14.8328 12.5172V11.2385H13.5541C13.1347 11.2385 12.7869 10.8907 12.7869 10.4713C12.7869 10.0519 13.1347 9.7041 13.5541 9.7041H15.6C16.0194 9.7041 16.3672 10.0519 16.3672 10.4713V12.5172C16.3672 12.9366 16.0194 13.2844 15.6 13.2844Z" fill="#434343" />
             </svg>
         </>,
-        'href': '/admin/dashboard'
+        'href': '/admin'
     },
     {
         'title': 'Customers',
@@ -29,7 +30,7 @@ const adminSideNavData = [
                 <path d="M8.45827 17.5671C6.97517 18.5539 6.97517 20.1706 8.45827 21.1575C10.1412 22.2808 12.897 22.2808 14.58 21.1575C16.0631 20.1706 16.0631 18.5539 14.58 17.5671C12.9076 16.4542 10.1412 16.4542 8.45827 17.5671Z" stroke="#292D32" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         </>,
-        'href': '/admin/customers'
+        'href': '/admin/customers-list'
     },
     {
         'title': 'Orders',
@@ -128,6 +129,18 @@ const adminSideNavData = [
             },
         ]
     },
+    {
+        'title': 'Admin List',
+        'icon': <>
+            <svg width="22" height="22" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="11.5" cy="11.5" r="10.5" stroke="#292D32" strokeOpacity="0.4" />
+                <path d="M11.5 14.5C9.84315 14.5 8.5 13.1569 8.5 11.5C8.5 9.84315 9.84315 8.5 11.5 8.5C13.1569 8.5 14.5 9.84315 14.5 11.5C14.5 13.1569 13.1569 14.5 11.5 14.5Z" stroke="#292D32" strokeLinecap="round" strokeLinejoin="round" fill="#292D32" fillOpacity="0.4" />
+                <path d="M15.5 15.5L18.5 18.5" stroke="#292D32" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+
+        </>,
+        'href': '/admin/admin-list'
+    }
 ]
 
 export const AdminDataContext = createContext();
@@ -139,23 +152,27 @@ const Admin = () => {
 
     return (
         <>
-            <AdminDataContext.Provider value={contextvalue}>
-                {
-                    screenWidth < 1300 ?
-                        <>
-                            <AdminLayout_Mobile>
-                                <Outlet></Outlet>
-                            </AdminLayout_Mobile>
-                        </>
-                        :
-                        <>
-                            <AdminLayout_Desktop>
-                                <Outlet></Outlet>
-                            </AdminLayout_Desktop>
-                        </>
-                }
-            </AdminDataContext.Provider>
+            <AdminAuthProvider>
 
+
+                <AdminDataContext.Provider value={contextvalue}>
+                    {
+                        screenWidth < 1300 ?
+                            <>
+                                <AdminLayout_Mobile>
+                                    <Outlet></Outlet>
+                                </AdminLayout_Mobile>
+                            </>
+                            :
+                            <>
+                                <AdminLayout_Desktop>
+                                    <Outlet></Outlet>
+                                </AdminLayout_Desktop>
+                            </>
+                    }
+                </AdminDataContext.Provider>
+
+            </AdminAuthProvider>
         </>
     );
 };

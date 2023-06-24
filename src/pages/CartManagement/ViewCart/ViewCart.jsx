@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ScrollToTop from '../../../components/ScrollToTop/ScrollTotop';
-import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
 import IndividualProductBar from './IndividualProductComponentForCart';
 import Loading from '../../ErrorPages/Loading/Loading';
 import { CiShoppingBasket } from 'react-icons/ci';
 import { TbCurrencyTaka } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
+import { cartDataContext } from '../../../Contexts/CartDataProvider/CartDataProvider';
 
 const ViewCart = () => {
 
-  const { cart, setCart, deleteCartItem, loadingpage, setLoadingPage } = useContext(UtilityContext);
+  const { cart, setCart, deleteCartItem, loadingpage, setLoadingPage } = useContext(cartDataContext);
   const navigate = useNavigate();
 
 

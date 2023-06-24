@@ -4,6 +4,8 @@ import { UtilityContext } from "../../Contexts/Utility/UtilityProvider";
 import { fetchJson } from "../../assets/Scripts/utility";
 import Mobile from "./Mobile/Mobile";
 import Desktop from "./Desktop/Desktop";
+import AuthProvider from "../../Contexts/AuthProvider/AuthProvider";
+import CartDataProvider from "../../Contexts/CartDataProvider/CartDataProvider";
 
 export const WebpageDataContext = createContext();
 
@@ -16,6 +18,8 @@ const Main = () => {
     const homepageInformation = useLoaderData();
     const { categories, topBanner, bottomBanner, footerData } = homepageInformation;
 
+
+
     const { screenWidth, showSideNav } = useContext(UtilityContext);
     const contextvalue = {
         categories,
@@ -26,22 +30,35 @@ const Main = () => {
 
     return (
         <>
-            <WebpageDataContext.Provider value={contextvalue}>
-                {
-                    screenWidth < 768 ?
-                        <>
-                            <Mobile>
-                                <Outlet></Outlet>
-                            </Mobile>
-                        </>
-                        :
-                        <>
-                            <Desktop>
-                                <Outlet></Outlet>
-                            </Desktop>
-                        </>
-                }
-            </WebpageDataContext.Provider>
+            <AuthProvider>
+
+
+                {/* cart data for user provider context  */}
+                <CartDataProvider>
+
+                    {/* home page information  */}
+                    <WebpageDataContext.Provider value={contextvalue}>
+                        {
+                            screenWidth < 768 ?
+                                <>
+                                    <Mobile>
+                                        <Outlet></Outlet>
+                                    </Mobile>
+                                </>
+                                :
+                                <>
+                                    <Desktop>
+                                        <Outlet></Outlet>
+                                    </Desktop>
+                                </>
+                        }
+                    </WebpageDataContext.Provider>
+
+
+                </CartDataProvider>
+
+                
+            </AuthProvider>
         </>
     );
 };

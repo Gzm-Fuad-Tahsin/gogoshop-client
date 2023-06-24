@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
+
 import { useParams } from 'react-router-dom';
 import LoadingIcon from '../../../pages/ErrorPages/LoadingIcon/LoadingIcon';
 import { useForm } from 'react-hook-form';
@@ -36,7 +36,7 @@ const Admin_categoryEdit = () => {
 
     useEffect(()=>{
         if(category){
-            console.log(category);
+           
             setSelectedImage(category?.img);
         }
 
@@ -171,7 +171,7 @@ const Admin_categoryEdit = () => {
                                                         className="input-area border border-gray-200 block   w-full text-base text-gray-900  rounded-lg mx-auto p-2 pl-4  bg-gray-50 "
 
                                                         placeholder="About the category ............"
-                                                        defaultValue={category?.shortDescription}
+                                                        defaultValue={category?.shortdescription}
 
                                                         {...register("shortDescription", {
                                                             required: "*short Description required",
