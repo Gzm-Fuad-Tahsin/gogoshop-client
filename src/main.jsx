@@ -21,8 +21,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <HelmetProvider context={helmetContext}>
 
         <UtilityProvider>
-
-          <AuthProvider>
             <div className='mx-auto'>
 
               <RouterProvider router={router}></RouterProvider>
@@ -32,7 +30,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 reverseOrder={false} />
 
             </div>
-          </AuthProvider>
         </UtilityProvider>
       </HelmetProvider>
     </StyledEngineProvider>

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import logoFull from '../../../../assets/icons/logo-full.png';
 import { Link } from 'react-router-dom';
 import Admin_SideNav_Mobile from '../../Admin_SideNav/Admin_SideNav_Mobile/Admin_SideNav_Mobile';
+import { AdminAuthContext } from '../../../../Contexts/AdminAuthProvider/AdminAuthProvider';
 
 const Admin_TopNav_Mobile = () => {
+
+    const {adminSignOut} = useContext(AdminAuthContext);
 
     // SIDENAV mui 
     const [sideNavstate, setsideNavstate] = useState(false);
@@ -66,7 +69,7 @@ const Admin_TopNav_Mobile = () => {
 
                 {/* logo  */}
                 <div className="grow flex justify-center ">
-                    <Link to='/' className="indicator flex items-center  w-28 pl-3">
+                    <Link to='/admin' className="indicator flex items-center  w-28 pl-3">
                         <img src={logoFull} alt='gogoshop logo' className='w-full' />
                     </Link>
                 </div>
@@ -75,7 +78,7 @@ const Admin_TopNav_Mobile = () => {
 
             {/* top nav admin icon */}
             <div className="navbar-end w-fit flex justify-center items-center pr-2 sm:pr-5 ">
-                <button className='flex justify-center items-center' onClick={() => alert('df')}><FiLogOut className='mr-1' />Logout</button>
+                <button className='flex justify-center items-center' onClick={adminSignOut}><FiLogOut className='mr-1' />Logout</button>
             </div>
         </div >
 

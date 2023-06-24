@@ -11,32 +11,32 @@ const BottomBar = () => {
 
 
         <div className="fixed bottom-0 w-screen bg-white">
-            <ul className="flex items-center justify-between px-10 py-3 shadow-inner shadow-gray-300/60" style={{borderRadius: "20px"}}>
+            <ul className="flex items-center justify-between px-10 py-3 backdrop-blur-xl bg-white/70 drop-shadow-md" style={{ borderRadius: "20px" }}>
 
 
                 <li>
                     <Link to='/' className='flex flex-col items-center  relative '>
-                     
-                            <GrHomeRounded className='text-2xl'/>
-                       
+
+                        <GrHomeRounded className='text-2xl' />
+
                         <span className='text-sm'>Home</span>
 
                     </Link>
                 </li>
                 <li>
                     <Link to='/cart' className='flex flex-col items-center   relative '>
-                        
-                            <FiShoppingBag className='text-2xl'/>
-                       
+
+                        <FiShoppingBag className='text-2xl' />
+
                         <span className='text-sm'>Cart</span>
 
                     </Link>
                 </li>
                 <li>
                     <Link to='/profile' className='flex flex-col items-center   relative '>
-                      
-                            <BsPerson className='text-2xl'/>
-                        
+
+                        <BsPerson className='text-2xl' />
+
                         <span className='text-sm'>Profile</span>
 
                     </Link>

@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import logoFull from '../../../../assets/icons/logo-full.png';
 import { FiLogOut } from 'react-icons/fi';
 import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
+import { AdminAuthContext } from '../../../../Contexts/AdminAuthProvider/AdminAuthProvider';
 
 const AdminTopNav = () => {
+
+    const {adminSignOut} = useContext(AdminAuthContext);
     const { showSideNav, setShowSideNav } = useContext(UtilityContext);
 
 
@@ -39,7 +42,7 @@ const AdminTopNav = () => {
 
                     {/* logo  */}
                     <div className="ml-0 md:ml-2">
-                        <Link to='/' className="indicator flex items-center  w-28 pl-3">
+                        <Link to='/admin' className="indicator flex items-center  w-28 pl-3">
                             <img src={logoFull} alt='gogoshop logo' className='w-full' />
                         </Link>
                     </div>
@@ -53,7 +56,7 @@ const AdminTopNav = () => {
                             <div className="relative w-7 h-7 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-500">
                                 <svg className="absolute w-9 h-9 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" ></path></svg>
                             </div>
-                            <button className='pl-2 flex justify-center  items-center' onClick={() => console.log('admin log out')}>
+                            <button className='pl-2 flex justify-center  items-center' onClick={adminSignOut}>
                                 <FiLogOut className='mr-1' />
                                 Log out
                             </button>
