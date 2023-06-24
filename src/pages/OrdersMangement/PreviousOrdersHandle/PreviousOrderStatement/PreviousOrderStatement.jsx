@@ -19,7 +19,7 @@ export async function loader({ params }) {
 const PreviousOrderStatement = () => {
     const orderDetailedInformation = useLoaderData();
     const { id, orderNo, orderDate, deliveryDate, paidThrough, products } = orderDetailedInformation;
-    
+
     const { screenWidth } = useContext(UtilityContext);
 
 

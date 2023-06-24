@@ -7,7 +7,10 @@ export async function loader() {
 const Admin_All_OrderList = () => {
     return (
         <div>
-            AllOrders
+            <p>Place an Order</p>
+            <div>
+
+            </div>
         </div>
     );
 };
