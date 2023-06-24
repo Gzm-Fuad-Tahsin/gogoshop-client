@@ -5,9 +5,11 @@ import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
 import TopNavUserProfileButton from './TopNavUserProfileButton';
 import TopNavSearchField from './TopNavSearchField';
+import { cartDataContext } from '../../../Contexts/CartDataProvider/CartDataProvider';
 const TopNav = () => {
     const { user } = useContext(AuthContext);
-    const { cart, screenWidth, showSideNav, setShowSideNav } = useContext(UtilityContext);
+    const {  showSideNav, setShowSideNav } = useContext(UtilityContext);
+    const {cart} = useContext(cartDataContext);
 
 
 

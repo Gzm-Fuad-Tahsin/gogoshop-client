@@ -171,7 +171,7 @@ const Admin_categoryEdit = () => {
                                                         className="input-area border border-gray-200 block   w-full text-base text-gray-900  rounded-lg mx-auto p-2 pl-4  bg-gray-50 "
 
                                                         placeholder="About the category ............"
-                                                        defaultValue={category?.shortDescription}
+                                                        defaultValue={category?.shortdescription}
 
                                                         {...register("shortDescription", {
                                                             required: "*short Description required",

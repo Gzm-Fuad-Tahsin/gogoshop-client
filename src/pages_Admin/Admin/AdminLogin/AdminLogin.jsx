@@ -1,9 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { BiError} from 'react-icons/bi';
+import { AdminAuthContext } from '../../../Contexts/AdminAuthProvider/AdminAuthProvider';
 const AdminLogin = () => {
+
+    const {loginAdminByEmailPass} = useContext(AdminAuthContext)
     const [showPass, setShowPass] = useState(false);
     const [errormessage, seterrormessage] = useState('');
 
@@ -20,17 +23,7 @@ const AdminLogin = () => {
             toast.error('Provide necessary information');
             return;
         }
-        const logininfo = {
-            email: email,
-            password: password
-        }
-
-        axios.post(`${import.meta.env.VITE_SERVER_ADDRESS}/admin/jwt`, { logininfo })
-            .then(data => {
-
-                console.log(data)
-
-            })
+       loginAdminByEmailPass(email,password);
 
     }
     return (

@@ -14,6 +14,7 @@ import visa from '../../../assets/icons/Visa_Inc.-Logo.wine.svg';
 import ScrollToTop from "../../../components/ScrollToTop/ScrollTotop";
 import { fetchJson } from "../../../assets/Scripts/utility";
 import { useLoaderData } from "react-router-dom";
+import axios from "axios";
 
 
 export async function loader() {
@@ -39,6 +40,27 @@ const ReviewCartsDiv = () => {
     }
     setTotal(totalammount)
   }, [products])
+
+
+  // _______________________________voucher _______________________________
+  const [voucher_cutPrice,setvoucher_cutPrice] = useState(0);
+  const handlevoucher = (event) =>{
+    event.preventDefault();
+
+    const vouchername = event.target.vouchername.value;
+    console.log(vouchername);
+  
+
+          // axios.get(`${import.meta.env.VITE_SERVER_ADDRESS}/admin/products-list`)
+          //     .then(data => {
+                  
+          //       })
+                  
+
+              
+
+
+  }
 
 
   return (
@@ -112,13 +134,15 @@ const ReviewCartsDiv = () => {
           <div className="grid grid-cols-12 justify-between items-center mt-2 md:mt-7 mr-2 md:mr-5" aria-label="coupon-discount">
 
             <div className="col-span-8 md:col-span-7 relative">
-              <form className="bg-[#F7F7F7] rounded-md md:rounded-lg  px-2 md:px-4 py-2 flex items-center">
+
+              {/* ____________________________________voucher ________________________________ */}
+              <form onSubmit={handlevoucher} className="bg-[#F7F7F7] rounded-md md:rounded-lg  px-2 md:px-4 py-2 flex items-center">
 
                 <div className="relative w-full">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <BsFillGiftFill className="text-[#4ABA6F] text-xl" />
                   </div>
-                  <input type="text" id="simple-search" className=" text-gray-900 text-sm rounded-lg  block w-full pl-10 p-2.5 " placeholder="Coupon" />
+                  <input type="text" id="simple-search" className=" text-gray-900 text-sm rounded-lg  block w-full pl-10 p-2.5"  name="vouchername" placeholder="Coupon" />
                 </div>
                 <button type="submit" className="p-2.5 md:px-4 ml-2 text-sm font-medium text-white  rounded-lg bg-root-100 ">
                   Apply
@@ -129,7 +153,7 @@ const ReviewCartsDiv = () => {
 
 
             <div className="col-span-4 md:col-span-5 ">
-              <p className="flex justify-end items-center " ><span className="text-lg md:text-3xl">-</span><TbCurrencyTaka className="ml-2" />00</p>
+              <p className="flex justify-end items-center " ><span className="text-lg md:text-3xl">-</span><TbCurrencyTaka className="ml-2" />{voucher_cutPrice}</p>
             </div>
           </div>
           <hr className="my-2 md:my-5" />
@@ -139,7 +163,7 @@ const ReviewCartsDiv = () => {
               <p className="text-black">Total Payment</p>
             </div>
             <div className="col-span-4 md:col-span-5 ">
-              <p className="flex justify-end items-center py-3 " ><TbCurrencyTaka />{Math.ceil(total + shippingCharge)}</p>
+              <p className="flex justify-end items-center py-3 " ><TbCurrencyTaka />{Math.ceil(total + shippingCharge-voucher_cutPrice)}</p>
             </div>
 
           </div>

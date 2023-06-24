@@ -14,6 +14,7 @@ import { Navigation, Autoplay, Pagination } from "swiper";
 import { TbCurrencyTaka } from 'react-icons/tb';
 import { UtilityContext } from '../../../Contexts/Utility/UtilityProvider';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { cartDataContext } from '../../../Contexts/CartDataProvider/CartDataProvider';
 
 
 
@@ -26,7 +27,7 @@ const ShowBestDeals = () => {
       .then(data => setProducts(data))
   }, [])
 
-  const { cart, updateCart } = useContext(UtilityContext);
+  const { cart, updateCart } = useContext(cartDataContext);
 
   const [alreadyAdded, setAlreadyAdded] = useState(false);
 

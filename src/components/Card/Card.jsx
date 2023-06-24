@@ -4,11 +4,12 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { UtilityContext } from "../../Contexts/Utility/UtilityProvider";
 import { toast } from "react-hot-toast";
+import { cartDataContext } from "../../Contexts/CartDataProvider/CartDataProvider";
 
 const Card = ({ product }) => {
   const { _id, img, name, size, sellingPrice, MRP, slug_name } = product;
 
-  const { cart, updateCart } = useContext(UtilityContext);
+  const { cart, updateCart } = useContext(cartDataContext);
 
   const [alreadyAdded, setAlreadyAdded] = useState(false);
 

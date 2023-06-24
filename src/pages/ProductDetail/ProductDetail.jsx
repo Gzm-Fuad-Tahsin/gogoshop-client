@@ -11,6 +11,7 @@ import PageTitleBreadCrumb from '../../components/PageTitleBreadCrumb/PageTitleB
 import ScrollToTop from '../../components/ScrollToTop/ScrollTotop';
 import { Helmet } from 'react-helmet-async';
 import NotFound from '../ErrorPages/NotFound/NotFound';
+import { cartDataContext } from '../../Contexts/CartDataProvider/CartDataProvider';
 
 
 export async function loader({ params }) {
@@ -23,7 +24,7 @@ const ProductDetail = () => {
     const { _id, img, name, size, shortdescription, description, sellingPrice, MRP, subcategory, images } = productData;
 
 
-    const { cart, updateCart } = useContext(UtilityContext);
+    const { cart, updateCart } = useContext(cartDataContext);
 
     const [alreadyAdded, setAlreadyAdded] = useState(false);
 

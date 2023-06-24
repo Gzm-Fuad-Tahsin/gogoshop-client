@@ -1,9 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { BsFillClipboard2CheckFill } from 'react-icons/bs';
-import { GoChevronRight } from 'react-icons/go'
-import { UtilityContext } from '../../../../Contexts/Utility/UtilityProvider';
-import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
 import { WebpageDataContext } from '../../../../Layout/User/Main';
 import SideNavbarItem from '../SideNavbarItem/SideNavbarItem';
 import './SideNavbar.module.css'

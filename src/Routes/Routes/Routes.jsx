@@ -57,6 +57,10 @@ import Admin_subcategoryUpload from "../../pages_Admin/SubCategory/Admin_subcate
 import Admin_subcategoryEdit from "../../pages_Admin/SubCategory/Admin_subcategoryEdit/Admin_subcategoryEdit";
 import Admin_ProductUpload from "../../pages_Admin/ProductList/Admin_ProductUpload/Admin_ProductUpload";
 import Admin_stockItem_Add from "../../pages_Admin/Stock/Admin_stockItem_Add/Admin_stockItem_Add";
+import AdminList from "../../pages_Admin/Admin/AdminList/AdminList";
+import AddAdmin from "../../pages_Admin/Admin/AddAdmin/AddAdmin";
+import Admin_Users_List from "../../pages_Admin/Users/Admin_Customers_list/Admin_Customer_List";
+import Admin_CustomerDetailView from "../../pages_Admin/Users/Admin_CustomerDetailView/Admin_CustomerDetailView";
 
 
 
@@ -145,28 +149,45 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/admin',
-                element: <AdminLogin />,
+                element: <Dashboard />,
+                loader: admin_DashboardLoader
+            },
+
+            {
+                path: 'add-admin',
+                element: <AddAdmin />,
+
+            },
+
+            {
+                path: 'admin-list',
+                element: <AdminList />,
 
             },
             {
-                path: 'dashboard',
-                element: <Dashboard />,
-                loader: admin_DashboardLoader
+                path: 'customers-list',
+                element: <Admin_Users_List />,
+
+            },
+            {
+                path: 'customers-list/userID',
+                element: <Admin_CustomerDetailView />,
+
             },
             {
                 path: 'category-list',
                 element: <Category />,
-                
+
             },
             {
                 path: 'category-list/upload-category',
                 element: <Admin_categoryUpload />,
-                
+
             },
             {
                 path: 'category-list/:category_slug/edit',
                 element: <Admin_categoryEdit />,
-                
+
             },
             {
                 path: 'subcategory-list',
@@ -175,32 +196,37 @@ export const router = createBrowserRouter([
             {
                 path: 'subcategory-list/upload-subcategory',
                 element: <Admin_subcategoryUpload />,
-                
+
             },
             {
                 path: 'subcategory-list/:subcategory_slug/edit',
                 element: <Admin_subcategoryEdit />,
-                
+
             },
             {
                 path: 'products-list',
                 element: <ProductList />,
-               
+
             },
             {
                 path: 'products-list/upload-product',
                 element: <Admin_ProductUpload />,
-               
+
+            },
+            {
+                path: 'products-list/:product_slug/edit',
+                element: <Admin_ProductUpload />,
+
             },
             {
                 path: 'inventory',
                 element: <StockList />,
-                
+
             },
             {
                 path: 'inventory/:product_slug/add',
                 element: <Admin_stockItem_Add />,
-                
+
             },
             {
                 path: 'orders-list',
@@ -220,12 +246,12 @@ export const router = createBrowserRouter([
             {
                 path: 'upload-top-banner',
                 element: <Upload_Topbanner />
-             
+
             },
             {
                 path: 'upload-bottom-banner',
                 element: <Upload_BottomBanner />
-               
+
             },
             {
                 path: 'upload-footer-data',

@@ -118,23 +118,24 @@ const Admin_categoryUpload = () => {
                         <div className='grid grid-cols-1 justify-center gap-6 mb-6 '>
                             <div className=''>
                                 <div className='flex items-center'>
-                                    <label htmlFor="first_name" className="block my-1 pl-2 text-md font-medium">Short Description</label>
+                                    <label htmlFor="shortdescription" className="block my-1 pl-2 text-md font-medium">Short Description</label>
                                 </div>
                                 <div>
                                     <textarea
                                         rows="3"
+                                        id='shortdescription'
                                         className="input-area border border-gray-200 block   w-full text-base text-gray-900  rounded-lg mx-auto p-2 pl-4  bg-gray-50 "
 
                                         placeholder="About the category ............"
 
-                                        {...register("shortDescription", {
+                                        {...register("shortdescription", {
                                             required: "*short Description required",
                                             maxLength: {
                                                 value: 200,
                                                 message: "Max length is 200"
                                             }
                                         })} />
-                                    {errors.shortDescription && <p className='p-1 text-xs text-red-600'>{errors.shortDescription.message}</p>}
+                                    {errors.shortdescription && <p className='p-1 text-xs text-red-600'>{errors.shortdescription.message}</p>}
                                 </div>
                             </div>
                         </div>
